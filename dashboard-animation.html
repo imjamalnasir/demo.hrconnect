@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Connect Dashboard</title>
+<meta name="description" content="A laptop showing the HR Connect People dashboard loading pod by pod.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#6C3845; --brand-deep:#4A2530; --brand-ink:#2E1820; --brand-soft:#F6EEF0; --brand-tint:#D9C8CC;
+  --ink:#1B1620; --muted:#6B6470; --line:#ECE4E7; --canvas:#F7F6F9;
+  --ok:#0F8A5F; --ok-soft:#E5F6EF; --warn:#9A5B00; --warn-soft:#FFF4E2;
+  --sk:#ECE7EA; --sk-hi:#F7F3F5;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;background:var(--brand-ink);overflow-x:hidden}
+
+/* ---------- Stage ---------- */
+.stage{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:56px 16px;overflow:hidden;
+  background:
+    radial-gradient(60% 55% at 50% 42%, rgba(217,200,204,.30), transparent 70%),
+    radial-gradient(90% 70% at 50% 0%, rgba(108,56,69,.9), transparent 75%),
+    linear-gradient(160deg,var(--brand-deep) 0%,var(--brand-ink) 100%)}
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(40% 30% at 50% 88%, rgba(0,0,0,.35), transparent 70%)}
+.brand{position:absolute;top:22px;left:24px;display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:17px;letter-spacing:-.02em;z-index:2}
+.brand svg{width:28px;height:28px}
+.replay{position:absolute;right:20px;bottom:20px;z-index:2;display:flex;align-items:center;gap:8px;font:600 13px Inter,sans-serif;color:#fff;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(6px)}
+.replay:hover{background:rgba(255,255,255,.2)}
+.replay svg{width:15px;height:15px}
+
+/* ---------- Laptop ---------- */
+.laptop{--w:min(94vw, 1360px, calc((100svh - 112px) / .69));width:var(--w);position:relative;z-index:1;filter:drop-shadow(0 40px 60px rgba(0,0,0,.45))}
+.lid{background:linear-gradient(180deg,#2b2a2f,#18171b);border-radius:calc(var(--w) * .022) calc(var(--w) * .022) 0 0;padding:calc(var(--w) * .018) calc(var(--w) * .018) calc(var(--w) * .022);position:relative;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.cam{position:absolute;top:calc(var(--w) * .007);left:50%;width:calc(var(--w) * .006);height:calc(var(--w) * .006);margin-left:calc(var(--w) * -.003);border-radius:50%;background:#3a3940;box-shadow:inset 0 0 0 1px #4a4950}
+.screen{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#0c0b0e}
+.base{height:calc(var(--w) * .028);margin:0 calc(var(--w) * -.06);border-radius:0 0 calc(var(--w) * .04) calc(var(--w) * .04) / 0 0 calc(var(--w) * .02) calc(var(--w) * .02);
+  background:linear-gradient(180deg,#d9d6dc 0%,#b9b5bd 45%,#8e8a93 100%);position:relative}
+.base::before{content:"";position:absolute;left:50%;top:0;width:16%;height:38%;transform:translateX(-50%);border-radius:0 0 10px 10px;background:linear-gradient(180deg,#a7a3ab,#c6c2c9)}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 38%)}
+
+/* ---------- App (laid out at 1280x800, scaled to fit) ---------- */
+.app{position:absolute;top:0;left:0;width:1280px;height:800px;transform-origin:0 0;background:var(--canvas);display:grid;grid-template-columns:232px 1fr;color:var(--ink);font-size:14px;opacity:0;transition:opacity .5s ease}
+.on .app{opacity:1}
+.side{background:#fff;border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:6px;transform:translateX(-24px);opacity:0;transition:transform .6s cubic-bezier(.2,.8,.2,1) .15s,opacity .6s ease .15s}
+.on .side{transform:none;opacity:1}
+.side .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;letter-spacing:-.02em;padding:4px 8px 16px}
+.side .logo svg{width:28px;height:28px}
+.ws{display:grid;grid-template-columns:1fr 1fr;background:var(--canvas);border-radius:10px;padding:3px;margin-bottom:12px}
+.ws span{text-align:center;padding:7px 0;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted)}
+.ws span.on{background:#fff;color:var(--brand);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.nav a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;color:#3A3340;text-decoration:none;font-weight:500}
+.nav a svg{width:18px;height:18px;color:var(--muted)}
+.nav a.on{background:var(--brand-soft);color:var(--brand);font-weight:600}
+.nav a.on svg{color:var(--brand)}
+.side .help{margin-top:auto;background:var(--brand-soft);border-radius:12px;padding:14px;font-size:12.5px;color:var(--brand)}
+.side .help b{display:block;font-size:13px;margin-bottom:3px}
+
+.main{display:flex;flex-direction:column;min-width:0}
+.top{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:0 24px}
+.search{flex:1;max-width:380px;height:38px;border-radius:10px;background:var(--canvas);display:flex;align-items:center;gap:8px;padding:0 12px;color:#9a929e;font-size:13px}
+.search svg{width:16px;height:16px}
+.top .sp{flex:1}
+.bell{position:relative;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+.bell svg{width:18px;height:18px}
+.bell i{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:#D9534F;border:2px solid #fff;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.toasted .bell i{transform:scale(1)}
+.me{display:flex;align-items:center;gap:10px}
+.me .av{width:36px;height:36px;font-size:13px}
+.me b{display:block;font-size:13.5px}
+.me span{display:block;font-size:12px;color:var(--muted)}
+
+.content{padding:18px 24px 20px;display:flex;flex-direction:column;gap:14px;min-height:0;flex:1}
+.list .av{width:30px;height:30px}
+.pod .sk,.pod .ct{padding:16px 18px}
+.hello{display:flex;justify-content:space-between;align-items:flex-end}
+.hello h1{margin:0;font-size:22px;letter-spacing:-.02em}
+.hello p{margin:3px 0 0;color:var(--muted);font-size:13.5px}
+.hello .btn{background:var(--brand);color:#fff;border-radius:10px;padding:9px 14px;font-weight:600;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:112px .92fr 1.08fr;gap:14px;flex:1;min-height:0}
+.span2{grid-column:span 2}
+
+/* Pods: skeleton layer + content layer */
+.pod{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pod .sk,.pod .ct{position:absolute;inset:0;padding:18px}
+.pod .sk{transition:opacity .35s ease}
+.pod .ct{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.pod.loaded .sk{opacity:0}
+.pod.loaded .ct{opacity:1;transform:none}
+.pod.loaded{box-shadow:0 1px 2px rgba(46,24,32,.04),0 6px 18px rgba(46,24,32,.05)}
+.sk i{display:block;border-radius:6px;background:linear-gradient(90deg,var(--sk) 0%,var(--sk-hi) 50%,var(--sk) 100%);background-size:200% 100%;animation:shimmer 1.2s linear infinite}
+@keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+.sk .row{display:flex;gap:10px;align-items:center;margin-top:14px}
+.sk .row i:first-child{width:30px;height:30px;border-radius:50%;flex-shrink:0}
+
+.kpi .lbl{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;font-weight:500}
+.kpi .ic{width:30px;height:30px;border-radius:9px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
+.kpi .ic svg{width:16px;height:16px}
+.kpi .val{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-top:12px;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+.kpi .sub b{color:var(--ok);font-weight:600}
+
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ph h3{margin:0;font-size:15px;letter-spacing:-.01em}
+.ph span{font-size:12px;color:var(--muted)}
+
+/* Bars */
+.bars{display:flex;align-items:flex-end;gap:14px;height:calc(100% - 58px);padding-top:6px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.bar .b{width:100%;max-width:38px;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,var(--brand),#8E5563);height:0;transition:height .7s cubic-bezier(.2,.8,.2,1)}
+.bar .n{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s}
+.bar small{font-size:11.5px;color:var(--muted)}
+.loaded .bar .b{height:var(--h)}
+.loaded .bar .n{opacity:1}
+
+/* Line chart */
+.chart{position:relative;height:calc(100% - 44px)}
+.chart svg{width:100%;height:100%;overflow:visible}
+.chart .grid-l{stroke:var(--line);stroke-width:1}
+.chart .area{fill:url(#area);opacity:0;transition:opacity .6s ease .9s}
+.chart .line{fill:none;stroke:var(--brand);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.3s cubic-bezier(.4,.1,.2,1) .15s}
+.chart .dot{fill:#fff;stroke:var(--brand);stroke-width:3;opacity:0;transition:opacity .3s ease 1.3s}
+.chart text{font:11.5px Inter,sans-serif;fill:var(--muted)}
+.chart .tip{font-weight:700;fill:var(--ink);font-size:12.5px;opacity:0;transition:opacity .3s ease 1.4s}
+.loaded .chart .line{stroke-dashoffset:0}
+.loaded .chart .area,.loaded .chart .dot,.loaded .chart .tip{opacity:1}
+
+/* Lists */
+.list .it{display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateX(14px);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.list .it:last-child{border-bottom:0}
+.loaded .list .it{opacity:1;transform:none}
+.av{width:32px;height:32px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
+.it .t{flex:1;min-width:0}
+.it .t b{display:block;font-size:13.5px;font-weight:600}
+.it .t span{display:block;font-size:12px;color:var(--muted)}
+.pill{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap;transition:background .3s,color .3s}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.br{background:var(--brand-soft);color:var(--brand)}
+.ai{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+
+.cel .it .av{transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.loaded.cel .it .av{transform:scale(1)}
+.cel .av.gift{background:#FFF1D6;color:#9A5B00}
+
+/* Toast */
+.toast{position:absolute;right:24px;bottom:24px;display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;padding:13px 18px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.25);font-size:13.5px;
+  transform:translateY(24px);opacity:0;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.toast .ck{width:24px;height:24px;border-radius:50%;background:var(--ok);display:grid;place-items:center}
+.toast .ck svg{width:14px;height:14px}
+.toast span{display:block;font-size:12px;color:rgba(255,255,255,.7)}
+.toasted .toast{transform:none;opacity:1}
+
+/* Cursor */
+.cursor{position:absolute;left:0;top:0;width:22px;height:22px;pointer-events:none;opacity:0;transition:opacity .3s;z-index:5;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.cursor.show{opacity:1}
+.cursor .clk{position:absolute;left:-9px;top:-9px;width:22px;height:22px;border-radius:50%;border:2px solid var(--brand);opacity:0;transform:scale(.4)}
+.cursor.click .clk{animation:clk .45s ease-out}
+@keyframes clk{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(1.6)}}
+
+.fade .content{opacity:0;transition:opacity .6s ease}
+.content{transition:opacity .4s ease}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+@media (max-width:600px){
+  .stage{padding:72px 12px 64px}
+  .brand{top:18px;left:16px}
+}
+</style>
+</head>
+<body>
+<main class="stage">
+  <div class="brand">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff" fill-opacity=".14"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="#fff" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="#D9C8CC" stroke-width="2.6"/></svg>
+    HR Connect
+  </div>
+
+  <div class="laptop" aria-label="HR Connect People dashboard loading on a laptop" role="img">
+    <div class="lid"><span class="cam"></span>
+      <div class="screen" id="screen">
+        <div class="app" id="app" aria-hidden="true">
+          <aside class="side">
+            <div class="logo"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#6C3845"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="#fff" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="#D9C8CC" stroke-width="2.6"/></svg>HR Connect</div>
+            <div class="ws"><span>Me</span><span class="on">People</span></div>
+            <nav class="nav">
+              <a class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Employees</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Leave</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>Payroll</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/></svg>Expenses</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>Policies</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg>Reports</a>
+              <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Settings</a>
+            </nav>
+            <div class="help"><b>HR AI assistant</b>Ask anything about your policies.</div>
+          </aside>
+
+          <div class="main">
+            <header class="top">
+              <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search employees, requests…</div>
+              <div class="sp"></div>
+              <div class="bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></div>
+              <div class="me"><span class="av">SA</span><div><b>Sara Al-Harbi</b><span>HR Manager</span></div></div>
+            </header>
+
+            <section class="content">
+              <div class="hello"><div><h1>Good morning, Sara</h1><p>Here’s what’s happening across your company today.</p></div><span class="btn">+ New payroll run</span></div>
+
+              <div class="grid">
+                <!-- 1 Employees -->
+                <div class="pod kpi" data-pod>
+                  <div class="sk"><i style="width:45%;height:12px"></i><i style="width:55%;height:26px;margin-top:16px"></i><i style="width:70%;height:10px;margin-top:10px"></i></div>
+                  <div class="ct"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>Employees</div>
+                    <div class="val" data-count="128" data-fmt="int">0</div><div class="sub"><b>+6</b> joined this month</div></div>
+                </div>
+                <!-- 2 Payroll -->
+                <div class="pod kpi" data-pod>
+                  <div class="sk"><i style="width:55%;height:12px"></i><i style="width:65%;height:26px;margin-top:16px"></i><i style="width:60%;height:10px;margin-top:10px"></i></div>
+                  <div class="ct"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg></span>Payroll this month</div>
+                    <div class="val" data-count="1.62" data-fmt="sarm">SAR 0.00M</div><div class="sub"><b>+2.5%</b> vs September</div></div>
+                </div>
+                <!-- 3 Approvals -->
+                <div class="pod kpi" data-pod>
+                  <div class="sk"><i style="width:50%;height:12px"></i><i style="width:35%;height:26px;margin-top:16px"></i><i style="width:75%;height:10px;margin-top:10px"></i></div>
+                  <div class="ct"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>Pending approvals</div>
+                    <div class="val" data-count="11" data-fmt="int" id="approvals">0</div><div class="sub">Leave 4 · Expenses 6 · Loans 1</div></div>
+                </div>
+                <!-- 4 On leave -->
+                <div class="pod kpi" data-pod>
+                  <div class="sk"><i style="width:40%;height:12px"></i><i style="width:30%;height:26px;margin-top:16px"></i><i style="width:65%;height:10px;margin-top:10px"></i></div>
+                  <div class="ct"><div class="lbl"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>On leave today</div>
+                    <div class="val" data-count="7" data-fmt="int">0</div><div class="sub">3 annual · 2 sick · 2 other</div></div>
+                </div>
+
+                <!-- 5 Headcount by department -->
+                <div class="pod span2" data-pod>
+                  <div class="sk"><i style="width:38%;height:14px"></i>
+                    <div style="display:flex;align-items:flex-end;gap:14px;height:150px;margin-top:22px"><i style="flex:1;height:40%"></i><i style="flex:1;height:75%"></i><i style="flex:1;height:95%"></i><i style="flex:1;height:22%"></i><i style="flex:1;height:35%"></i><i style="flex:1;height:28%"></i><i style="flex:1;height:40%"></i></div></div>
+                  <div class="ct"><div class="ph"><h3>Headcount by department</h3><span>128 employees</span></div>
+                    <div class="bars">
+                      <div class="bar"><span class="n">14</span><div class="b" style="--h:34%;transition-delay:.05s"></div><small>Finance</small></div>
+                      <div class="bar"><span class="n">32</span><div class="b" style="--h:78%;transition-delay:.12s"></div><small>Sales</small></div>
+                      <div class="bar"><span class="n">41</span><div class="b" style="--h:100%;transition-delay:.19s"></div><small>Operations</small></div>
+                      <div class="bar"><span class="n">6</span><div class="b" style="--h:15%;transition-delay:.26s"></div><small>HR</small></div>
+                      <div class="bar"><span class="n">12</span><div class="b" style="--h:29%;transition-delay:.33s"></div><small>IT</small></div>
+                      <div class="bar"><span class="n">9</span><div class="b" style="--h:22%;transition-delay:.40s"></div><small>Admin</small></div>
+                      <div class="bar"><span class="n">14</span><div class="b" style="--h:34%;transition-delay:.47s"></div><small>Marketing</small></div>
+                    </div></div>
+                </div>
+
+                <!-- 6 Payroll trend -->
+                <div class="pod span2" data-pod>
+                  <div class="sk"><i style="width:34%;height:14px"></i><i style="width:100%;height:150px;margin-top:22px;border-radius:10px"></i></div>
+                  <div class="ct"><div class="ph"><h3>Payroll cost</h3><span>Last 6 months · SAR</span></div>
+                    <div class="chart">
+                      <svg viewBox="0 0 520 170" preserveAspectRatio="none">
+                        <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6C3845" stop-opacity=".22"/><stop offset="1" stop-color="#6C3845" stop-opacity="0"/></linearGradient></defs>
+                        <line class="grid-l" x1="0" y1="20" x2="520" y2="20"/><line class="grid-l" x1="0" y1="70" x2="520" y2="70"/><line class="grid-l" x1="0" y1="120" x2="520" y2="120"/>
+                        <path class="area" d="M20 120 L116 110 L212 100 L308 84 L404 64 L500 40 L500 145 L20 145 Z"/>
+                        <path class="line" d="M20 120 L116 110 L212 100 L308 84 L404 64 L500 40"/>
+                        <circle class="dot" cx="500" cy="40" r="5"/>
+                        <text class="tip" x="500" y="24" text-anchor="end">SAR 1.62M</text>
+                        <text x="20" y="166" text-anchor="middle">May</text><text x="116" y="166" text-anchor="middle">Jun</text><text x="212" y="166" text-anchor="middle">Jul</text>
+                        <text x="308" y="166" text-anchor="middle">Aug</text><text x="404" y="166" text-anchor="middle">Sep</text><text x="500" y="166" text-anchor="middle">Oct</text>
+                      </svg>
+                    </div></div>
+                </div>
+
+                <!-- 7 Approvals list -->
+                <div class="pod span2" data-pod>
+                  <div class="sk"><i style="width:36%;height:14px"></i>
+                    <div class="row"><i></i><i style="flex:1;height:12px"></i><i style="width:64px;height:20px;border-radius:999px"></i></div>
+                    <div class="row"><i></i><i style="flex:1;height:12px"></i><i style="width:64px;height:20px;border-radius:999px"></i></div>
+                    <div class="row"><i></i><i style="flex:1;height:12px"></i><i style="width:64px;height:20px;border-radius:999px"></i></div>
+                    <div class="row"><i></i><i style="flex:1;height:12px"></i><i style="width:64px;height:20px;border-radius:999px"></i></div></div>
+                  <div class="ct"><div class="ph"><h3>Waiting for approval</h3><span>View all</span></div>
+                    <div class="list">
+                      <div class="it" style="transition-delay:.05s"><span class="av">OP</span><span class="t"><b>October payroll</b><span>48 employees · SAR 571,950 net</span></span><span class="pill warn" id="payrollPill">Pending approval</span></div>
+                      <div class="it" style="transition-delay:.15s"><span class="av">LH</span><span class="t"><b>Layla Hassan</b><span>Annual leave · 4 working days</span></span><span class="pill warn">Pending</span></div>
+                      <div class="it" style="transition-delay:.25s"><span class="av">OK</span><span class="t"><b>Omar Khalid <em class="ai">✦ AI scanned</em></b><span>Expense claim · SAR 146.00</span></span><span class="pill warn">Pending</span></div>
+                      <div class="it" style="transition-delay:.35s"><span class="av">YR</span><span class="t"><b>Yousef Rahman</b><span>Loan · SAR 24,000 over 12 months</span></span><span class="pill warn">Pending</span></div>
+                    </div></div>
+                </div>
+
+                <!-- 8 Celebrations -->
+                <div class="pod span2 cel" data-pod>
+                  <div class="sk"><i style="width:42%;height:14px"></i>
+                    <div class="row"><i></i><i style="flex:1;height:12px"></i></div><div class="row"><i></i><i style="flex:1;height:12px"></i></div>
+                    <div class="row"><i></i><i style="flex:1;height:12px"></i></div><div class="row"><i></i><i style="flex:1;height:12px"></i></div></div>
+                  <div class="ct"><div class="ph"><h3>Birthdays & anniversaries</h3><span>This week</span></div>
+                    <div class="list">
+                      <div class="it" style="transition-delay:.05s"><span class="av gift" style="transition-delay:.15s">NF</span><span class="t"><b>Noura Fahad</b><span>Birthday · Tuesday</span></span><span class="pill br">Card scheduled</span></div>
+                      <div class="it" style="transition-delay:.15s"><span class="av" style="transition-delay:.25s">IS</span><span class="t"><b>Imran Sheikh</b><span>5-year work anniversary · Wednesday</span></span><span class="pill br">Card scheduled</span></div>
+                      <div class="it" style="transition-delay:.25s"><span class="av" style="transition-delay:.35s">AS</span><span class="t"><b>Ahmed Saleh</b><span>3-year work anniversary · Thursday</span></span><span class="pill br">Card scheduled</span></div>
+                      <div class="it" style="transition-delay:.35s"><span class="av gift" style="transition-delay:.45s">DY</span><span class="t"><b>Dina Yousef</b><span>Birthday · Monday</span></span><span class="pill ok">Card sent</span></div>
+                    </div></div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="toast"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><div><b>October payroll approved</b><span>48 employees · ready to disburse</span></div></div>
+          <div class="cursor" id="cursor"><svg viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.6-3.6 6.9Z" fill="#1B1620" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg><span class="clk"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="base"></div>
+  </div>
+
+  <button class="replay" type="button" id="replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Replay</button>
+</main>
+
+<script>
+(function () {
+  var LOOP = 12000;               // full cycle, ms
+  var FIRST_POD = 800, STEP = 600; // pods load one by one
+  var TOAST = 6500, FADE = 10600, RESET = 11300;
+  var COUNT_MS = 900;
+
+  var screen = document.getElementById("screen");
+  var app = document.getElementById("app");
+  var pods = [].slice.call(app.querySelectorAll("[data-pod]"));
+  var counters = [].slice.call(app.querySelectorAll("[data-count]"));
+  var cursor = document.getElementById("cursor");
+  var pill = document.getElementById("payrollPill");
+  var approvals = document.getElementById("approvals");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Scale the 1280x800 app to the laptop screen
+  function fit() { app.style.transform = "scale(" + (screen.clientWidth / 1280) + ")"; }
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(screen); else window.addEventListener("resize", fit);
+
+  function fmt(el, v) {
+    if (el.getAttribute("data-fmt") === "sarm") el.textContent = "SAR " + v.toFixed(2) + "M";
+    else el.textContent = Math.round(v).toLocaleString("en-US");
+  }
+  function ease(x) { return 1 - Math.pow(1 - x, 3); }
+
+  // Cursor path in app coordinates: moves to the payroll row's pill and "clicks" it
+  function cursorAt(t) {
+    var start = TOAST - 1300, end = TOAST - 250;
+    if (t < start - 300 || t > TOAST + 1200) { cursor.classList.remove("show"); return; }
+    cursor.classList.add("show");
+    var p = Math.max(0, Math.min(1, (t - start) / (end - start)));
+    var target = pill.getBoundingClientRect(), box = app.getBoundingClientRect();
+    var s = box.width / 1280;
+    var tx = (target.left - box.left) / s + 50, ty = (target.top - box.top) / s + 12;
+    var fx = 980, fy = 300;
+    var e = ease(p);
+    cursor.style.transform = "translate(" + (fx + (tx - fx) * e) + "px," + (fy + (ty - fy) * e) + "px)";
+    if (t >= end && t < end + 60) { cursor.classList.remove("click"); void cursor.offsetWidth; cursor.classList.add("click"); }
+  }
+
+  function frame(t) {
+    screen.classList.toggle("on", true);
+    var resetting = t >= RESET;
+    pods.forEach(function (p, i) { p.classList.toggle("loaded", !resetting && t >= FIRST_POD + i * STEP); });
+    counters.forEach(function (c) {
+      var i = pods.indexOf(c.closest("[data-pod]"));
+      var start = FIRST_POD + i * STEP + 150;
+      var target = parseFloat(c.getAttribute("data-count"));
+      if (c === approvals && t >= TOAST) target = 10;
+      var p = Math.max(0, Math.min(1, (t - start) / COUNT_MS));
+      if (c === approvals && t >= TOAST) p = 1;
+      fmt(c, target * ease(p));
+    });
+    var approved = t >= TOAST && !resetting;
+    app.classList.toggle("toasted", approved && t < FADE);
+    pill.textContent = approved ? "Approved" : "Pending approval";
+    pill.className = "pill " + (approved ? "ok" : "warn");
+    app.classList.toggle("fade", t >= FADE && t < RESET + 200);
+    cursorAt(t);
+  }
+
+  if (reduced) { frame(TOAST + 2000); app.classList.remove("toasted"); cursor.classList.remove("show"); document.getElementById("replay").hidden = true; return; }
+
+  var t = 0, last = null;
+  function tick(now) {
+    if (last !== null) t += Math.min(now - last, 250); // cap big jumps (e.g. after the tab was hidden)
+    last = now;
+    if (t >= LOOP) t = 0;
+    frame(t);
+    requestAnimationFrame(tick);
+  }
+  document.addEventListener("visibilitychange", function () { last = null; });
+  document.getElementById("replay").addEventListener("click", function () {
+    t = RESET; // run the reset so pods go back to skeletons, then restart
+    setTimeout(function () { t = 0; }, 450);
+  });
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

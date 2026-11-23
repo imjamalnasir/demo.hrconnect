@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Connect Sitemap</title>
+<meta name="description" content="Proposed pages for the new HR Connect marketing website, based on the product's live features and competitor websites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7fb; --surface:#ffffff; --surface-2:#f1f3f9; --text:#14182b; --muted:#5d6480;
+  --border:#e3e6ef; --accent:#3b5bdb; --accent-soft:#e8edff; --bar:#3b5bdb; --bar-us:#0ca678;
+  --ok-soft:#e3f8ef; --ok:#087f5b; --warn-soft:#fff4e0; --warn:#a15c00;
+  --shadow:0 1px 2px rgba(20,24,43,.05),0 4px 16px rgba(20,24,43,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1220; --surface:#171b2e; --surface-2:#1e2339; --text:#e8eaf3; --muted:#9aa1bd;
+    --border:#2a3050; --accent:#8ea2ff; --accent-soft:#232b52; --bar:#7b91ff; --bar-us:#38d9a9;
+    --ok-soft:#123b30; --ok:#63e6be; --warn-soft:#3d2c10; --warn:#ffc078; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1220; --surface:#171b2e; --surface-2:#1e2339; --text:#e8eaf3; --muted:#9aa1bd;
+  --border:#2a3050; --accent:#8ea2ff; --accent-soft:#232b52; --bar:#7b91ff; --bar-us:#38d9a9;
+  --ok-soft:#123b30; --ok:#63e6be; --warn-soft:#3d2c10; --warn:#ffc078; --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:30px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+header p{margin:0;color:var(--muted);max-width:760px}
+.meta{margin-top:10px;font-size:13px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+h2{font-size:18px;margin:40px 0 14px;letter-spacing:-.01em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.stat{padding:16px 18px}
+.stat .v{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-size:13px;color:var(--muted);margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num{font-weight:600}
+.bar{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden;margin-top:6px}
+.bar span{display:block;height:100%;background:var(--bar);border-radius:4px}
+tr.us td{background:var(--ok-soft)}
+tr.us .bar span{background:var(--bar-us)}
+.table-scroll{overflow-x:auto}
+.toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.toolbar input{flex:1;min-width:200px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:inherit}
+.toolbar nav{display:flex;flex-wrap:wrap;gap:6px}
+.toolbar nav a{font-size:13px;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--border);color:var(--text)}
+.group{margin-top:16px;overflow:hidden;scroll-margin-top:72px}
+.group summary{cursor:pointer;padding:16px 20px;display:flex;gap:12px;align-items:baseline;list-style:none}
+.group summary::-webkit-details-marker{display:none}
+.group summary::before{content:"›";display:inline-block;width:12px;color:var(--muted);transition:transform .15s}
+.group[open] summary::before{transform:rotate(90deg)}
+.group summary h3{margin:0;font-size:17px;flex:1}
+.group summary .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:14px}
+.group .why{margin:-6px 20px 10px 44px;font-size:13.5px;color:var(--muted)}
+.pages td:first-child{width:36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pages td.name{font-weight:600;min-width:180px}
+.pages code{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);display:block;margin-top:2px;font-weight:400}
+.pages td.feat{font-size:13px;color:var(--muted);min-width:180px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.tag.launch{background:var(--ok-soft);color:var(--ok)}
+.tag.later{background:var(--warn-soft);color:var(--warn)}
+.hidden{display:none!important}
+mark{background:#ffe58a;color:#14182b;border-radius:2px}
+ul.plain{margin:0;padding:6px 20px 16px 40px}
+ul.plain li{padding:4px 0}
+.note{font-size:13px;color:var(--muted)}
+footer{margin-top:48px;font-size:13px;color:var(--muted)}
+@media (max-width:720px){
+  .wrap{padding:28px 16px 60px}
+  header h1{font-size:24px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  th,td{padding:10px}
+  .pages td.feat{display:none}
+  .group .why{margin-left:20px}
+  .toolbar{position:static}
+  .group{scroll-margin-top:12px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>HR Connect Website: Proposed Pages</h1>
+    <p>A page plan for the new HR Connect marketing site. It is based on what the app can do today (checked in the frontend and backend code) and how the competitors structure their sites. Every product page describes a feature that is live, and nothing is promised that isn't built yet.</p>
+    <div class="meta">Prepared 12 November 2026 · English first, with URLs ready for <code>/ar/</code> copies later · <a href="competitors-websites.html">See the competitor websites →</a></div>
+  </header>
+
+  <div class="stats">
+    <div class="card stat"><div class="v" id="s-total">42</div><div class="l">pages at launch</div></div>
+    <div class="card stat"><div class="v" id="s-product">12</div><div class="l">product pages</div></div>
+    <div class="card stat"><div class="v" id="s-country">7</div><div class="l">country pages</div></div>
+    <div class="card stat"><div class="v" id="s-later">0</div><div class="l">pages planned for later</div></div>
+  </div>
+
+  <h2>How it compares</h2>
+  <div class="card table-scroll">
+    <table>
+      <thead><tr><th>Website</th><th class="num">Main site pages</th><th style="width:40%"></th><th>Notes</th></tr></thead>
+      <tbody id="compare"></tbody>
+    </table>
+  </div>
+  <p class="note">Main site pages exclude blog posts, glossary entries and other articles. HR Connect starts a little above PalmHR and Cercli and grows through the blog and glossary after launch, the way Bayzat and Deel grew.</p>
+
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="Search proposed pages…" aria-label="Search proposed pages">
+    <nav id="jump"></nav>
+  </div>
+
+  <div id="groups"></div>
+
+  <h2 id="not-yet">Not on the site yet</h2>
+  <div class="card">
+    <ul class="plain" id="notyet"></ul>
+  </div>
+
+  <footer>Feature claims come from <code>hrconnect-frontend</code> and <code>hrconnect-backend</code>. Before publishing, re-check any page whose feature has changed.</footer>
+</div>
+
+<script>
+const GROUPS = [
+  { id:"main", name:"Main Pages", why:"Pages every competitor has. Pricing and Book a Demo are the main conversion pages.", pages:[
+    ["Home","/","Value proposition, module overview, Book a Demo call to action","All live modules"],
+    ["Why HR Connect","/why-hr-connect","Reasons to choose HR Connect over spreadsheets and other tools","Gulf focus, AI features, self-service"],
+    ["Pricing","/pricing","Basic and Premium plans, priced per employee per month","Basic/Premium tiers, per-seat billing"],
+    ["Book a Demo","/book-a-demo","Demo request form","—"],
+    ["About Us","/about","Company story, mission and team","—"],
+    ["Contact Us","/contact","Sales and support contact details","Support tickets"],
+    ["Security & Privacy","/security","How customer data is kept separate and protected","Tenant isolation, roles & permissions, audit trail, S3 storage"],
+  ]},
+  { id:"product", name:"Product", why:"One page per live module, as PalmHR, ZenHR and Cercli do. Each page can rank in search for its own keyword (e.g. \"payroll software\").", pages:[
+    ["Platform Overview","/product","All modules on one page, with links to each","Me and People workspaces"],
+    ["Core HR & Employee Records","/product/core-hr","Employee directory, profiles, documents and org chart","Employees, documents (Iqama, passport), bank details, org chart, export"],
+    ["Payroll","/product/payroll","Run payroll with approvals, payslips and bank files","Payroll setup wizard, payroll runs, payslips, bank advice, pro-rating for new joiners"],
+    ["Leave Management","/product/leave","Leave requests, balances and policies","Leave types incl. Hajj and maternity, balances, carry-forward, approvals"],
+    ["Expenses & Advances","/product/expenses","Expense claims with AI receipt scanning (Premium)","Expense claims, AI receipt reading, cash advances, expense analytics"],
+    ["Employee Loans","/product/loans","Loan requests with automatic payroll deduction","Loan approvals, repayment plans, payroll deduction"],
+    ["Offboarding & Final Settlement","/product/offboarding","Separation cases, exit checklist and final settlement","Separation types, exit checklist, final settlement paid through payroll"],
+    ["Employee Self-Service","/product/self-service","What employees can do for themselves","Me workspace: profile, payslips, leave, loans, expenses, policies"],
+    ["HR AI Assistant","/product/ai","AI that answers policy and how-to questions and reads documents","Policy Q&A, in-app help chat, document reading"],
+    ["Company Policies","/product/policies","Publish policies and let employees read them","Policy upload, My Policies"],
+    ["Employee Celebrations","/product/celebrations","Automatic birthday and work-anniversary e-cards","Card templates, scheduled sending"],
+    ["Dashboards & Reports","/product/reports","Dashboards for each role, plus HR reports","Role-based dashboards, payroll register, leave balance, headcount"],
+  ]},
+  { id:"solutions", name:"Solutions by Role", why:"Bayzat and Deel write a page for each type of buyer. The same features are described from each reader's point of view.", pages:[
+    ["For HR Teams","/solutions/hr-teams","Less admin, all employee records in one place","Core HR, leave, offboarding, policies"],
+    ["For Finance & Payroll Teams","/solutions/finance-teams","Accurate payroll, expense control and loans","Payroll, expenses, loans, GL code mapping"],
+    ["For Business Owners","/solutions/business-owners","Workforce costs and approvals at a glance","Dashboards, approvals, reports"],
+    ["For Employees & Managers","/solutions/employees","Requests, payslips and approvals from one portal","Self-service, approvals"],
+  ]},
+  { id:"countries", name:"Countries", why:"ZenHR has six country pages and FlowHCM has several. They bring search traffic like \"HR software Saudi Arabia\". These pages present multi-currency, per-country payroll setup and do not claim GOSI or WPS automation.", pages:[
+    ["HR & Payroll Software in Saudi Arabia","/countries/saudi-arabia","KSA landing page","SAR payroll, Iqama records, Hajj leave"],
+    ["HR & Payroll Software in the UAE","/countries/uae","UAE landing page","AED payroll, UAE leave setup"],
+    ["HR & Payroll Software in Qatar","/countries/qatar","Qatar landing page","Multi-currency payroll"],
+    ["HR & Payroll Software in Kuwait","/countries/kuwait","Kuwait landing page","Multi-currency payroll"],
+    ["HR & Payroll Software in Bahrain","/countries/bahrain","Bahrain landing page","Multi-currency payroll"],
+    ["HR & Payroll Software in Oman","/countries/oman","Oman landing page","Multi-currency payroll"],
+    ["HR & Payroll Software in Pakistan","/countries/pakistan","Pakistan landing page","PKR payroll"],
+  ]},
+  { id:"tools", name:"Free Tools", why:"ZenHR and Deel get a lot of traffic from free calculators. The end-of-service logic already exists in the app and can be reused.", pages:[
+    ["KSA End-of-Service Calculator","/tools/ksa-end-of-service-calculator","End-of-service amount under Saudi labour law","Logic in hrconnect-frontend/src/lib/eosb/ksa.ts"],
+    ["UAE Gratuity Calculator","/tools/uae-gratuity-calculator","Gratuity amount under UAE labour law","Logic in hrconnect-frontend/src/lib/eosb/uae.ts"],
+    ["Leave Balance Calculator","/tools/leave-balance-calculator","Leave earned to date for an employee","Same rules as the leave module"],
+  ]},
+  { id:"resources", name:"Resources", why:"Hub pages for content. Blog posts and glossary terms are added after launch and are not counted here.", pages:[
+    ["Resources Hub","/resources","Links to the blog, glossary, guides and tools","—"],
+    ["Blog","/blog","HR, payroll and labour-law articles","—"],
+    ["HR Glossary","/glossary","Definitions of HR terms, one page per term","—"],
+    ["Help Center","/help","Product how-to guides","Backend support-chat knowledge docs"],
+  ]},
+  { id:"company", name:"Company", why:"Trust and growth pages.", pages:[
+    ["Careers","/careers","Open roles at HR Connect","—"],
+    ["Partners & Referral","/partners","Reseller and referral programme","—"],
+  ]},
+  { id:"legal", name:"Legal", why:"Required pages.", pages:[
+    ["Privacy Policy","/privacy","How personal data is handled","—"],
+    ["Terms of Service","/terms","Subscription terms","—"],
+    ["Cookie Policy","/cookies","Cookie use and consent","—"],
+  ]},
+  { id:"later", name:"Planned for Later", later:true, why:"Not counted in the 42. Add these once the content is written or the feature is live.", pages:[
+    ["Blog posts (about 10 in the first quarter)","/blog/…","Articles that bring search traffic","—"],
+    ["Glossary terms (30 or more)","/glossary/…","One page per HR term","—"],
+    ["KSA Labour Law Guide","/guides/saudi-labor-law","Labour-law guide, like ZenHR's","—"],
+    ["UAE Labour Law Guide","/guides/uae-labor-law","Labour-law guide, like ZenHR's","—"],
+    ["Arabic version of all pages","/ar/…","Arabic copies of the launch pages","Needs Arabic support in the app"],
+  ]},
+];
+
+const NOT_YET = [
+  ["Asset Tracking (QR codes)","The screens exist in the frontend, but the backend module is switched off."],
+  ["Performance Reviews","The screens exist in the frontend, but the backend module is switched off."],
+  ["Access Management / ID cards","The screens exist in the frontend, but the backend module is switched off."],
+  ["Attendance, Shifts & Timesheets","Not built."],
+  ["Recruitment / ATS & Onboarding","Not built."],
+  ["GOSI / WPS automation and integrations (accounting, biometrics, SSO)","Not built. Don't claim these on country or product pages."],
+  ["Arabic website","Planned for later. The app has no Arabic interface yet."],
+];
+
+const COMPETITORS = [
+  ["ZenHR",98,"Many country, industry and calculator pages"],
+  ["FlowHCM",76,"Many small module pages"],
+  ["Bayzat",73,"Includes insurance pages"],
+  ["Cercli",25,"Few, focused product pages"],
+  ["PalmHR",21,"Lean site in English and Arabic"],
+  ["Deel",471,"Global company; shown for scale"],
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const launch = GROUPS.filter(g => !g.later);
+const total = launch.reduce((a, g) => a + g.pages.length, 0);
+document.getElementById("s-total").textContent = total;
+document.getElementById("s-product").textContent = GROUPS.find(g => g.id === "product").pages.length;
+document.getElementById("s-country").textContent = GROUPS.find(g => g.id === "countries").pages.length;
+document.getElementById("s-later").textContent = GROUPS.find(g => g.later).pages.length;
+
+const rows = [["HR Connect (proposed)", total, "Launch pages", true], ...COMPETITORS.map(c => [c[0], c[1], c[2], false])]
+  .sort((a, b) => b[1] - a[1]);
+const scaleMax = 100; // Deel is clipped so the smaller sites stay readable
+document.getElementById("compare").innerHTML = rows.map(([n, v, note, us]) => `
+  <tr class="${us ? "us" : ""}"><td><b>${esc(n)}</b></td><td class="num">${v}</td>
+  <td><div class="bar"><span style="width:${Math.min(100, v / scaleMax * 100)}%"></span></div></td>
+  <td class="note">${esc(note)}${v > scaleMax ? " (bar clipped)" : ""}</td></tr>`).join("");
+
+let num = 0;
+const jump = document.getElementById("jump");
+document.getElementById("groups").innerHTML = GROUPS.map(g => {
+  jump.insertAdjacentHTML("beforeend", `<a href="#${g.id}">${esc(g.name.replace("Solutions by Role","Solutions").replace("Planned for Later","Later"))}</a>`);
+  const body = g.pages.map(([name, url, purpose, feat]) => {
+    const idx = g.later ? "–" : ++num;
+    return `<tr data-s="${esc((name + " " + url + " " + purpose + " " + feat).toLowerCase())}">
+      <td>${idx}</td>
+      <td class="name"><span class="nm">${esc(name)}</span><code>${esc(url)}</code></td>
+      <td>${esc(purpose)}</td>
+      <td class="feat">${esc(feat)}</td>
+      <td><span class="tag ${g.later ? "later" : "launch"}">${g.later ? "Later" : "Launch"}</span></td></tr>`;
+  }).join("");
+  return `<details class="card group" id="${g.id}" open>
+    <summary><h3>${esc(g.name)}</h3><span class="n">${g.pages.length} ${g.pages.length === 1 ? "page" : "pages"}</span></summary>
+    <p class="why">${esc(g.why)}</p>
+    <div class="table-scroll"><table class="pages">
+      <thead><tr><th>#</th><th>Page</th><th>Purpose</th><th class="feat">App feature it covers</th><th>Phase</th></tr></thead>
+      <tbody>${body}</tbody></table></div>
+  </details>`;
+}).join("");
+
+document.getElementById("notyet").innerHTML = NOT_YET.map(([n, r]) => `<li><b>${esc(n)}</b>: ${esc(r)}</li>`).join("");
+
+const q = document.getElementById("q");
+q.addEventListener("input", () => {
+  const t = q.value.trim().toLowerCase();
+  document.querySelectorAll(".group").forEach(g => {
+    let hits = 0;
+    g.querySelectorAll("tbody tr").forEach(tr => {
+      const show = !t || tr.dataset.s.includes(t);
+      tr.classList.toggle("hidden", !show);
+      const nm = tr.querySelector(".nm");
+      nm.innerHTML = t && show ? esc(nm.textContent).replace(new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), m => `<mark>${m}</mark>`) : esc(nm.textContent);
+      if (show) hits++;
+    });
+    g.classList.toggle("hidden", !!t && !hits);
+    if (t && hits) g.open = true;
+  });
+});
+</script>
+</body>
+</html>
