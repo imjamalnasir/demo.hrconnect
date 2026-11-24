@@ -292,3 +292,149 @@ td.no{color:var(--muted)}
   .mock-row .v{font-size:13px}
   .hero .ctas .btn{flex:1;justify-content:center}
 }
+
+/* Solutions spotlight slider (home) */
+.sp-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:-16px auto 40px}
+.sp-tab{font:inherit;font-size:14.5px;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;cursor:pointer;transition:color .15s,border-color .15s,background .15s}
+.sp-tab:hover{color:var(--brand);border-color:var(--brand-tint)}
+.sp-tab[aria-selected="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.sp-tab:focus-visible,.sp-arrow:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.sp-viewport{overflow:hidden;border-radius:24px}
+.sp-track{display:flex;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.sp-slide{flex:0 0 100%;min-width:0;padding:4px 4px 24px}
+.sp-title{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em}
+.sp-cta{margin-top:28px}
+.sp-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
+.sp-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .15s,color .15s}
+.sp-arrow:hover{border-color:var(--brand-tint);color:var(--brand)}
+.sp-arrow svg{width:18px;height:18px}
+.sp-progress{width:160px;height:4px;border-radius:999px;background:var(--line);overflow:hidden}
+.sp-progress span{display:block;height:100%;width:0;background:var(--brand);border-radius:inherit}
+.sp-progress span.run{animation:sp-fill var(--sp-ms,7000ms) linear forwards}
+.spotlight.paused .sp-progress span.run{animation-play-state:paused}
+@keyframes sp-fill{to{width:100%}}
+@media (max-width:900px){
+  .sp-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin:-16px -24px 28px;padding:2px 24px;scrollbar-width:none}
+  .sp-tabs::-webkit-scrollbar{display:none}
+  .sp-tab{flex-shrink:0}
+  .sp-slide .split{gap:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sp-track{transition:none}
+  .sp-progress span.run{animation:none;width:100%}
+}
+
+/* Dark hero (home): brand background, light text, like the CTA band */
+.hero.dark{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 480px at 85% 0%,rgba(255,255,255,.10),transparent 60%),linear-gradient(135deg,var(--brand-ink) 0%,var(--brand-deep) 45%,var(--brand) 100%)}
+.hero.dark::before,.hero.dark::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero.dark::before{right:-140px;top:-160px;width:520px;height:520px;border:72px solid rgba(255,255,255,.05)}
+.hero.dark::after{left:-120px;bottom:-200px;width:420px;height:420px;border:56px solid rgba(255,255,255,.04)}
+.hero.dark .wrap{position:relative;z-index:1}
+.hero.dark h1{color:#fff}
+.hero.dark h1 b{color:var(--brand-tint)}
+.hero.dark .eyebrow{color:var(--brand-tint)}
+.hero.dark .lead{color:rgba(255,255,255,.82)}
+.hero.dark .trust{color:rgba(255,255,255,.78)}
+.hero.dark .trust svg{color:#8FE3C0}
+.hero.dark .crumbs,.hero.dark .crumbs a{color:rgba(255,255,255,.7)}
+.hero.dark .mock{border-color:rgba(255,255,255,.18);box-shadow:0 30px 70px -20px rgba(0,0,0,.45),0 0 0 8px rgba(255,255,255,.08)}
+
+/* Hero slider (home): rotating dark hero with arrows and dots */
+.hs-viewport{overflow:hidden}
+.hs-track{display:flex;transition:transform .6s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hs-slide{flex:0 0 100%;min-width:0}
+.hero-slider .hs-title{font-size:clamp(34px,5vw,56px);font-weight:700;color:#fff}
+.hero-slider .hs-title b{color:var(--brand-tint)}
+/* Each slide's .wrap is wider by the arrow gutters, so content width stays the same */
+/* 120px side padding = 16px edge + 42px arrow + ~62px clear space before the content */
+.hero-slider .hs-slide .wrap{max-width:calc(var(--wrap) + 192px);padding:0 120px}
+.hs-stage{position:relative}
+.hs-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:44px;min-height:8px}
+.hs-arrow{position:absolute;z-index:2;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:#fff;display:grid;place-items:center;cursor:pointer;transition:border-color .15s,background .15s}
+.hs-arrow:hover{border-color:#fff;background:rgba(255,255,255,.14)}
+.hs-arrow svg{width:18px;height:18px}
+.hs-dots{display:flex;align-items:center;gap:8px}
+.hs-dot{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.35);cursor:pointer;transition:width .3s,background .3s}
+.hs-dot:hover{background:rgba(255,255,255,.6)}
+.hs-dot[aria-current="true"]{width:24px;background:#fff}
+.hs-arrow:focus-visible,.hs-dot:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.hs-prev{left:max(16px,calc((100% - var(--wrap)) / 2 - 80px))}
+.hs-next{right:max(16px,calc((100% - var(--wrap)) / 2 - 80px))}
+@media (max-width:900px){.hs-controls{margin-top:32px}}
+/* Tablets/phones: content stacks, so arrows move beside the dots (dots stay put) */
+@media (max-width:1000px){
+  .hero-slider{padding-bottom:64px}
+  .hero-slider .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-slider .hs-slide .wrap{max-width:none;padding:0 24px}
+  .hs-stage{position:static}
+  .hs-arrow{top:auto;transform:none;bottom:47px}
+  .hs-prev{left:calc(50% - 98px)}
+  .hs-next{right:calc(50% - 98px);left:auto}
+}
+@media (max-width:560px){.hero-slider .hs-slide .wrap{padding:0 16px}}
+@media (prefers-reduced-motion:reduce){.hs-track{transition:none}.hs-dot{transition:none}}
+
+/* AI hub (hero slide): AI core linked to modules, pulses along the links */
+.hub{position:relative;width:100%;max-width:440px;aspect-ratio:1;margin:0 auto}
+.hub-links{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hub-links line{stroke:rgba(255,255,255,.28);stroke-width:1.5;stroke-dasharray:4 6}
+.hub-pulse{fill:var(--brand-tint);filter:drop-shadow(0 0 6px rgba(255,255,255,.8))}
+.hub-core{position:absolute;left:50%;top:50%;width:124px;height:124px;transform:translate(-50%,-50%);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;background:linear-gradient(135deg,#fff,var(--brand-soft));color:var(--brand-deep);box-shadow:0 20px 50px -12px rgba(0,0,0,.45),0 0 0 10px rgba(255,255,255,.08),0 0 0 22px rgba(255,255,255,.04);animation:hub-breathe 4s ease-in-out infinite}
+.hub-core .hub-logo{width:38px;height:38px;border-radius:10px;box-shadow:0 6px 14px -6px rgba(74,37,48,.5)}
+.hub-core b{font-size:12.5px;font-weight:700;line-height:1.2;max-width:90px}
+.hub-node{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 7px;border-radius:999px;background:#fff;color:var(--ink);font-size:13.5px;font-weight:600;white-space:nowrap;box-shadow:0 14px 30px -10px rgba(0,0,0,.4),0 0 0 4px rgba(255,255,255,.08)}
+.hub-ic{width:28px;height:28px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex-shrink:0}
+.hub-ic svg{width:15px;height:15px}
+@keyframes hub-breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.05)}}
+@media (max-width:560px){
+  .hub{max-width:300px}
+  .hub-core{width:96px;height:96px}
+  .hub-core .hub-logo{width:30px;height:30px;border-radius:8px}
+  .hub-core b{font-size:11px}
+  .hub-node{font-size:12px;gap:6px;padding:5px 10px 5px 5px}
+  .hub-ic{width:22px;height:22px}
+  .hub-ic svg{width:12px;height:12px}
+}
+@media (prefers-reduced-motion:reduce){.hub-pulse{display:none}.hub-core{animation:none}}
+
+/* Dark hero: big background circles drift slowly up and down */
+.hero.dark::before{animation:hero-drift-a 24s ease-in-out infinite alternate}
+.hero.dark::after{animation:hero-drift-b 30s ease-in-out infinite alternate}
+@keyframes hero-drift-a{from{transform:translateY(-40px)}to{transform:translateY(60px)}}
+@keyframes hero-drift-b{from{transform:translateY(50px)}to{transform:translateY(-50px)}}
+@media (prefers-reduced-motion:reduce){.hero.dark::before,.hero.dark::after{animation:none}}
+
+/* Hero slider: one very big, very faint circle drifting from top left to bottom right, inside the hero */
+.hs-orb{position:absolute;left:50%;top:50%;width:1100px;height:1100px;margin:-550px 0 0 -550px;border-radius:50%;border:110px solid rgba(255,255,255,.03);pointer-events:none;z-index:0;opacity:0;animation:hs-orb-drift 48s linear infinite}
+@keyframes hs-orb-drift{
+  0%{transform:translate(-30vw,-180px);opacity:0}
+  12%{opacity:1}
+  88%{opacity:1}
+  100%{transform:translate(30vw,180px);opacity:0}
+}
+@media (max-width:560px){.hs-orb{width:700px;height:700px;margin:-350px 0 0 -350px;border-width:70px}}
+@media (prefers-reduced-motion:reduce){.hs-orb{animation:none;opacity:1;transform:translate(-20vw,-120px)}}
+
+/* Hero slider: content of the incoming slide slides in, one element after another */
+.hs-slide.is-active .hero-grid>div:first-child>*{animation:hs-text-in .8s cubic-bezier(.22,.61,.36,1) both}
+.hs-slide.is-active .hero-grid>div:first-child>.eyebrow{animation-delay:.15s}
+.hs-slide.is-active .hero-grid>div:first-child>h1,
+.hs-slide.is-active .hero-grid>div:first-child>.hs-title{animation-delay:.25s}
+.hs-slide.is-active .hero-grid>div:first-child>.lead{animation-delay:.38s}
+.hs-slide.is-active .hero-grid>div:first-child>.ctas{animation-delay:.5s}
+.hs-slide.is-active .hero-grid>div:first-child>.trust{animation-delay:.62s}
+.hs-slide.is-active .hero-grid>div:last-child>*{animation:hs-visual-in 1s cubic-bezier(.22,.61,.36,1) .3s both}
+@keyframes hs-text-in{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:none}}
+@keyframes hs-visual-in{from{opacity:0;transform:translateX(60px) scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .hs-slide.is-active .hero-grid>div:first-child>*,
+  .hs-slide.is-active .hero-grid>div:last-child>*{animation:none}
+}
+
+/* Scroll reveal (site.js adds these classes; without JS nothing is hidden) */
+.rv-ready .rv{opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:var(--rv-delay,0ms);will-change:opacity,transform}
+.rv-ready .rv.rv-up{transform:translateY(36px)}
+.rv-ready .rv.rv-left{transform:translateX(-56px)}
+.rv-ready .rv.rv-right{transform:translateX(56px)}
+.rv-ready .rv.rv-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv-ready .rv{opacity:1;transform:none;transition:none}}
