@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>HRConnect.AI Product One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#ddd}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#3A3340;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:10.5px;line-height:1.45}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:#fff;margin:0 auto}
+@media screen{.page{margin:24px auto;box-shadow:0 10px 30px rgba(0,0,0,.15)}}
+h1,h2,h3{margin:0;color:#1B1620;letter-spacing:-.02em}
+p{margin:0}
+.ico{display:inline-grid!important;place-items:center;flex:none;border-radius:8px;background:#F6EEF0;color:#6C3845;line-height:0}
+.ico svg{width:56%;height:56%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hdr{position:relative;height:57mm;padding:10mm 13mm 0;color:#fff;background:radial-gradient(520px 340px at 92% -10%,rgba(185,122,138,.5),transparent 60%),linear-gradient(140deg,#4A2530,#2E1820);overflow:hidden}
+.hdr .ring{position:absolute;right:-70px;top:-90px;width:330px;height:330px;border-radius:50%;border:46px solid rgba(255,255,255,.05)}
+.brand{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.02em}
+.brand .ai{color:#E6CFD5}
+.hdr h1{color:#fff;font-size:29px;font-weight:800;line-height:1.06;letter-spacing:-.035em;margin-top:6mm;max-width:128mm}
+.hdr h1 b{font-weight:inherit;color:#E6CFD5}
+.hdr .lead{margin-top:3mm;font-size:12.5px;color:rgba(255,255,255,.82);max-width:122mm}
+.chips{position:absolute;right:13mm;top:20mm;display:grid;gap:6px;width:52mm}
+.chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:7px 9px;font-size:11px;font-weight:600;color:#fff}
+.body{padding:6mm 13mm 0}
+.sec-t{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6C3845;margin-bottom:2.5mm}
+.sec-t::after{content:"";flex:1;height:1px;background:#ECE4E7}
+.problem{display:grid;grid-template-columns:1.1fr 1fr;gap:6mm;align-items:center;background:#FBF8F9;border-radius:10px;padding:3.5mm 5mm;margin-bottom:5mm}
+.problem h2{font-size:14.5px;line-height:1.25}
+.problem h2 b{color:#6C3845;font-weight:inherit}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:2.8mm 3.5mm;margin-bottom:5mm}
+.f{display:flex;gap:7px;align-items:flex-start}
+.f b{display:block;font-size:10.5px;line-height:1.3;color:#1B1620}
+.f > div > span{display:block;color:#6B6470;font-size:9.5px;line-height:1.35}
+.ben{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-bottom:5mm}
+.b{border:1px solid #ECE4E7;border-radius:9px;padding:2.4mm 3mm}
+.b h3{font-size:11.5px;display:flex;align-items:center;gap:6px}
+.b p{margin-top:1mm;color:#6B6470;font-size:9.5px;line-height:1.38}
+.two{display:grid;grid-template-columns:1.35fr 1fr;gap:5mm}
+table{border-collapse:collapse;width:100%}
+td{padding:1.15mm 0;border-top:1px solid #F0E9EC;vertical-align:top;font-size:9.5px;line-height:1.38}
+td:first-child{width:21mm;font-weight:700;color:#1B1620;padding-right:3mm}
+.plan{border:1px solid #ECE4E7;border-radius:9px;padding:2.4mm 3.4mm;margin-bottom:2.2mm}
+.plan.hot{border:1.5px solid #6C3845}
+.plan h3{font-size:13px;display:flex;justify-content:space-between;align-items:baseline}
+.plan h3 small{font-size:9.5px;font-weight:600;color:#6B6470;letter-spacing:0}
+.plan p{color:#6B6470;font-size:9.5px;line-height:1.38;margin-top:.6mm}
+.steps{display:grid;gap:1.6mm}
+.st{display:flex;gap:7px;align-items:flex-start;font-size:9.5px;line-height:1.38}
+.st i{flex:none;width:17px;height:17px;border-radius:50%;background:#6C3845;color:#fff;font-style:normal;font-weight:700;font-size:9.5px;display:grid;place-items:center}
+.st b{color:#1B1620}
+.ftr{position:absolute;left:0;right:0;bottom:0;height:17mm;padding:0 13mm;display:flex;align-items:center;justify-content:space-between;background:#6C3845;color:#fff}
+.ftr .cta{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.ftr .cta span{display:block;font-size:10.5px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:0;margin-top:1mm}
+.ftr .btn{background:#fff;color:#4A2530;border-radius:999px;padding:9px 16px;font-size:12px;font-weight:800;white-space:nowrap}
+.note{font-size:9px;color:#8A828E;margin-top:2mm}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hdr">
+    <span class="ring"></span>
+    <div class="brand"><svg width="28" height="28" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#fff"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="#6C3845" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="#B97A8A" stroke-width="2.6"/></svg><span>HRConnect<span class="ai">.AI</span></span></div>
+    <h1>The AI-powered HR app that <b>connects everything</b></h1>
+    <p class="lead">HR, payroll and expense software for growing companies. Records, payroll, leave and expenses share one set of data, and AI does the busywork.</p>
+    <div class="chips">
+      <div class="chip">%%ICON_S:receipt%%Reads receipts</div>
+      <div class="chip">%%ICON_S:chat%%Answers from your policies</div>
+      <div class="chip">%%ICON_S:help%%In-app help</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="problem">
+      <h2>Stop stitching HR together from <b>spreadsheets, email and a separate payroll tool.</b></h2>
+      <p style="color:#6B6470">HRConnect.AI puts core HR, payroll, leave, expenses, loans and offboarding in one place. A change in one place flows everywhere it should, so there is one version of the truth.</p>
+    </div>
+
+    <div class="sec-t">Features</div>
+    <div class="feat">
+      %%FEAT:users|Core HR &amp; Employee Records|Profiles, documents and org chart%%
+      %%FEAT:pay|Payroll|Monthly payroll with approvals and payslips%%
+      %%FEAT:cal|Leave Management|Requests, balances and carry-over%%
+      %%FEAT:receipt|Expenses &amp; Advances|Claims with AI receipt scanning%%
+      %%FEAT:coins|Employee Loans|Loans repaid through payroll%%
+      %%FEAT:exit|Offboarding &amp; Final Settlement|Exit checklist and final pay%%
+      %%FEAT:self|Employee Self-Service|Everything employees need, in one place%%
+      %%FEAT:spark|HR AI Assistant|Answers from your policies and our guides%%
+      %%FEAT:file|Company Policies|Publish policies employees can read%%
+      %%FEAT:gift|Employee Celebrations|Automatic birthday and anniversary cards%%
+      %%FEAT:chart|Dashboards &amp; Reports|Dashboards for every role%%
+      %%FEAT:lock|Roles &amp; Permissions|Per module and action, with user overrides%%
+    </div>
+
+    <div class="sec-t">Benefits</div>
+    <div class="ben">
+      %%BEN:pay|One connected system|Leave, loans, expenses and final settlements feed payroll directly. No re-typing.%%
+      %%BEN:spark|AI that does real work|Receipts read for you and policy questions answered from your own documents.%%
+      %%BEN:self|Employees serve themselves|Payslips, leave balances and requests in their own workspace.%%
+      %%BEN:check|Approvals you can trust|Every payroll run, leave request, claim and loan has a clear approval trail.%%
+      %%BEN:lock|Control over who sees what|Permissions per module and action, with per-user overrides.%%
+      %%BEN:globe|Works across borders|Payroll setups per country and currency, and your own leave rules.%%
+    </div>
+
+    <div class="two">
+      <div>
+        <div class="sec-t">Specifications</div>
+        <table>
+          <tr><td>Platform</td><td>Web app for phones and computers, in any browser.</td></tr>
+          <tr><td>Payroll</td><td>Monthly runs with approvals, recalculation and pro-rating.</td></tr>
+          <tr><td>Currencies</td><td>Payroll setups per country, currency or entity, accurate to the cent.</td></tr>
+          <tr><td>Outputs</td><td>Bank payment file (CSV or XLSX) and PDF payslips.</td></tr>
+          <tr><td>Leave rules</td><td>Your own leave types, days per year, weekends and carry-over.</td></tr>
+          <tr><td>AI</td><td>Reads receipts, answers from your policies, in-app help.</td></tr>
+          <tr><td>Security</td><td>Separate company data, hashed passwords, short-lived sessions, signed file links, audit trail.</td></tr>
+          <tr><td>Not included</td><td>Payroll tax filing and sending salary payments, which stay with your bank or tax provider.</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="sec-t">Pricing</div>
+        <div class="plan"><h3>Basic <small>Custom quote</small></h3><p>Core HR, payroll, leave, loans, offboarding, self-service, policies, AI assistant, celebrations, reports, permissions.</p></div>
+        <div class="plan hot"><h3>Premium <small>Custom quote</small></h3><p>Everything in Basic, plus expenses and advances, AI receipt scanning and expense analytics.</p></div>
+        <p class="note" style="margin-top:0;margin-bottom:3mm">Priced per employee per month and invoiced monthly, plus any taxes that apply.</p>
+        <div class="sec-t">Get started</div>
+        <div class="steps">
+          <div class="st"><i>1</i><span><b>Tell us about your company.</b> We set up departments and payroll rules with you.</span></div>
+          <div class="st"><i>2</i><span><b>Add your people</b> and invite them to self-service.</span></div>
+          <div class="st"><i>3</i><span><b>Run your first payroll</b> and issue payslips.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="cta">See it with your own team's data<span>Book a 30-minute demo · hrconnect.ai/book-a-demo · hello@hrconnect.ai</span></div>
+    <div class="btn">Book a demo →</div>
+  </div>
+</div>
+</body>
+</html>

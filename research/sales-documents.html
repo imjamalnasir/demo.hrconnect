@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sales Documents</title>
+<meta name="description" content="HRConnect.AI sales pitch deck and product one-pager as PDF. Internal page, not linked from the website.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#6C3845;--brand-deep:#4A2530;--brand-soft:#F6EEF0;--brand-tint:#D9C8CC;--ink:#1B1620;--text:#3A3340;--muted:#6B6470;--bg:#FBF8F9;--line:#ECE4E7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{padding-top:56px;padding-bottom:12px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:5px 10px;border-radius:999px}
+h1{margin:14px 0 8px;font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.025em;color:var(--ink)}
+h2{margin:0;font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.lead{max-width:720px;color:var(--muted);font-size:16px;margin:0}
+.doc{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;margin-top:28px;box-shadow:0 1px 2px rgba(46,24,32,.04),0 12px 30px rgba(46,24,32,.06)}
+.doc.portrait{grid-template-columns:minmax(0,360px) minmax(0,1fr)}
+@media (max-width:860px){.doc,.doc.portrait{grid-template-columns:1fr}}
+.cover{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 34px -14px rgba(46,24,32,.35);background:#eee;cursor:zoom-in;padding:0}
+.cover img{display:block;width:100%;height:auto}
+.kind{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.doc h2{margin-top:6px}
+.doc p{margin:10px 0 0;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.meta span{font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:8px;background:var(--brand-soft);color:var(--brand-deep)}
+.contents{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}
+.contents li{display:flex;gap:10px}
+.contents b{flex:none;min-width:22px;color:var(--brand);font-variant-numeric:tabular-nums}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{font:inherit;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{border-color:var(--brand-tint);background:var(--brand-soft)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-deep)}
+.btn svg{width:16px;height:16px}
+.strip{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px}
+.strip h3{margin:0 0 10px;font-size:14px;color:var(--ink)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.thumbs button{position:relative;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#eee;cursor:zoom-in}
+.thumbs img{display:block;width:100%;height:auto}
+.thumbs span{position:absolute;left:6px;bottom:6px;font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);border-radius:5px;padding:1px 6px}
+.thumbs button:hover,.cover:hover{border-color:var(--brand-tint);outline:2px solid var(--brand-tint)}
+.notes{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.notes h3{margin:0;font-size:16px;color:var(--ink)}
+.notes ul{margin:10px 0 0;padding-left:18px}
+.notes li{margin:5px 0}
+code{font:13px ui-monospace,Menlo,monospace;background:var(--brand-soft);padding:2px 6px;border-radius:5px}
+footer{padding:28px 0 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:40px}
+@media (max-width:560px){.wrap{padding:0 16px}.doc{padding:16px}}
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(18,10,14,.9);display:none;align-items:center;justify-content:center;padding:56px 64px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#fff}
+.lb button{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:20px;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.26)}
+.lb .x{top:14px;right:14px}.lb .p{left:12px;top:50%;transform:translateY(-50%)}.lb .n{right:12px;top:50%;transform:translateY(-50%)}
+.lb .c{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:#fff;font-size:13px;font-weight:600}
+@media (max-width:560px){.lb{padding:56px 8px}.lb .p,.lb .n{top:auto;bottom:6px;transform:none}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <span class="eyebrow">Internal · not linked from the site</span>
+  <h1>HRConnect.AI sales documents</h1>
+  <p class="lead">A pitch deck for sales meetings and a one-page product summary to send after them. Both are built from the website's own copy and pricing. View them here or download the PDF.</p>
+</header>
+
+<main class="wrap">
+  <!-- Pitch deck -->
+  <section class="doc" aria-labelledby="deck-title">
+    <button class="cover" type="button" data-set="deck" data-i="0" aria-label="Enlarge the cover slide"><img src="sales-docs/previews/HRConnect-AI-Sales-Pitch-Deck-1.jpg" width="1280" height="720" alt="Pitch deck cover: The AI-powered HR app that connects everything"></button>
+    <div>
+      <div class="kind">Sales pitch deck</div>
+      <h2 id="deck-title">The AI-powered HR app that connects everything</h2>
+      <p>13 slides that walk a prospect from their problem to the product, proof and pricing, ending with a demo booking.</p>
+      <div class="meta"><span>13 slides</span><span>16:9 · 1280 × 720</span><span>PDF · <span data-size="deck">1.8 MB</span></span></div>
+      <ol class="contents">
+        <li><b>1</b>Cover</li>
+        <li><b>2–3</b>The problem and what the status quo costs</li>
+        <li><b>4–8</b>The solution: platform, payroll, leave, expenses, AI</li>
+        <li><b>9</b>Who it's for</li>
+        <li><b>10</b>Proof: controls you can check</li>
+        <li><b>11–12</b>Getting started and pricing</li>
+        <li><b>13</b>Next step: book a demo</li>
+      </ol>
+      <div class="actions">
+        <a class="btn primary" href="sales-docs/HRConnect-AI-Sales-Pitch-Deck.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Download PDF</a>
+        <a class="btn" href="sales-docs/HRConnect-AI-Sales-Pitch-Deck.pdf" target="_blank" rel="noopener">Open PDF</a>
+      </div>
+    </div>
+    <div class="strip">
+      <h3>All slides</h3>
+      <div class="thumbs" id="deck-thumbs"></div>
+    </div>
+  </section>
+
+  <!-- One-pager -->
+  <section class="doc portrait" aria-labelledby="one-title">
+    <button class="cover" type="button" data-set="one" data-i="0" aria-label="Enlarge the one-pager"><img src="sales-docs/previews/HRConnect-AI-Product-One-Pager-1.jpg" width="794" height="1123" alt="Product one-pager"></button>
+    <div>
+      <div class="kind">Product one-pager</div>
+      <h2 id="one-title">Features, benefits and specifications on one page</h2>
+      <p>A single A4 page to send after a call or hand out at events: the problem, all 12 features, six benefits, specifications, pricing and how to get started.</p>
+      <div class="meta"><span>1 page</span><span>A4 portrait</span><span>PDF · <span data-size="one">0.4 MB</span></span></div>
+      <ol class="contents">
+        <li><b>·</b>The problem it solves</li>
+        <li><b>·</b>Features: 12 modules</li>
+        <li><b>·</b>Benefits: why teams switch</li>
+        <li><b>·</b>Specifications, including what's not included</li>
+        <li><b>·</b>Pricing and getting started</li>
+      </ol>
+      <div class="actions">
+        <a class="btn primary" href="sales-docs/HRConnect-AI-Product-One-Pager.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Download PDF</a>
+        <a class="btn" href="sales-docs/HRConnect-AI-Product-One-Pager.pdf" target="_blank" rel="noopener">Open PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="notes">
+    <h3>Before sending these out</h3>
+    <ul>
+      <li>Contact details use the site's placeholders, <code>hrconnect.ai</code> and <code>hello@hrconnect.ai</code>. Update them in <code>_build/content.py</code> and in the document templates once they're final.</li>
+      <li>There are no customer logos or testimonials yet, so the "Proof" slide shows controls a buyer can check in a demo. Add real customer results there when you have them.</li>
+      <li>Pricing says "Custom quote", like the website. Add prices when they're set.</li>
+      <li>To change the wording, edit <code>research/sales-docs/src/*.tpl.html</code> and run <code>python3 research/sales-docs/src/build_docs.py</code>. It rebuilds both PDFs and these previews (needs Google Chrome on a Mac).</li>
+    </ul>
+  </div>
+</main>
+
+<footer class="wrap">Internal sales material. This page is blocked in robots.txt, marked noindex, and nothing on the site links to it.</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Page preview">
+  <img alt="">
+  <button class="x" type="button" aria-label="Close">✕</button>
+  <button class="p" type="button" aria-label="Previous page">‹</button>
+  <button class="n" type="button" aria-label="Next page">›</button>
+  <div class="c"></div>
+</div>
+
+<script>
+const SETS = {
+  deck: Array.from({ length: 13 }, (_, i) => `sales-docs/previews/HRConnect-AI-Sales-Pitch-Deck-${i + 1}.jpg`),
+  one: ['sales-docs/previews/HRConnect-AI-Product-One-Pager-1.jpg']
+};
+document.getElementById('deck-thumbs').innerHTML = SETS.deck.map((src, i) =>
+  `<button type="button" data-set="deck" data-i="${i}" aria-label="Enlarge slide ${i + 1}"><img src="${src}" width="1280" height="720" alt="" loading="lazy"><span>${i + 1}</span></button>`).join('');
+
+/* Show real file sizes */
+for (const [k, f] of [['deck', 'HRConnect-AI-Sales-Pitch-Deck.pdf'], ['one', 'HRConnect-AI-Product-One-Pager.pdf']]) {
+  fetch('sales-docs/' + f, { method: 'HEAD' }).then(r => {
+    const n = +r.headers.get('content-length');
+    if (n) document.querySelector(`[data-size="${k}"]`).textContent = (n / 1048576).toFixed(1) + ' MB';
+  }).catch(() => {});
+}
+
+/* Lightbox */
+const lb = document.getElementById('lb'), img = lb.querySelector('img'), cap = lb.querySelector('.c');
+let set = 'deck', idx = 0, opener = null;
+function show(i) {
+  const list = SETS[set]; idx = (i + list.length) % list.length;
+  img.src = list[idx]; img.alt = set === 'deck' ? `Slide ${idx + 1}` : 'One-pager';
+  cap.textContent = set === 'deck' ? `Slide ${idx + 1} of ${list.length}` : 'One-pager';
+  lb.querySelector('.p').hidden = lb.querySelector('.n').hidden = list.length < 2;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-set]');
+  if (b) { set = b.dataset.set; opener = b; show(+b.dataset.i); lb.classList.add('open'); lb.querySelector('.x').focus(); return; }
+  if (e.target === lb || e.target.closest('.x')) close();
+  if (e.target.closest('.p')) show(idx - 1);
+  if (e.target.closest('.n')) show(idx + 1);
+});
+function close() { lb.classList.remove('open'); opener && opener.focus(); }
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') close();
+  if (e.key === 'ArrowRight') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+});
+</script>
+</body>
+</html>

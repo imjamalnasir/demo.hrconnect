@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>HRConnect.AI Product One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#ddd}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#3A3340;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:10.5px;line-height:1.45}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:#fff;margin:0 auto}
+@media screen{.page{margin:24px auto;box-shadow:0 10px 30px rgba(0,0,0,.15)}}
+h1,h2,h3{margin:0;color:#1B1620;letter-spacing:-.02em}
+p{margin:0}
+.ico{display:inline-grid!important;place-items:center;flex:none;border-radius:8px;background:#F6EEF0;color:#6C3845;line-height:0}
+.ico svg{width:56%;height:56%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hdr{position:relative;height:57mm;padding:10mm 13mm 0;color:#fff;background:radial-gradient(520px 340px at 92% -10%,rgba(185,122,138,.5),transparent 60%),linear-gradient(140deg,#4A2530,#2E1820);overflow:hidden}
+.hdr .ring{position:absolute;right:-70px;top:-90px;width:330px;height:330px;border-radius:50%;border:46px solid rgba(255,255,255,.05)}
+.brand{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.02em}
+.brand .ai{color:#E6CFD5}
+.hdr h1{color:#fff;font-size:29px;font-weight:800;line-height:1.06;letter-spacing:-.035em;margin-top:6mm;max-width:128mm}
+.hdr h1 b{font-weight:inherit;color:#E6CFD5}
+.hdr .lead{margin-top:3mm;font-size:12.5px;color:rgba(255,255,255,.82);max-width:122mm}
+.chips{position:absolute;right:13mm;top:20mm;display:grid;gap:6px;width:52mm}
+.chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:7px 9px;font-size:11px;font-weight:600;color:#fff}
+.body{padding:6mm 13mm 0}
+.sec-t{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6C3845;margin-bottom:2.5mm}
+.sec-t::after{content:"";flex:1;height:1px;background:#ECE4E7}
+.problem{display:grid;grid-template-columns:1.1fr 1fr;gap:6mm;align-items:center;background:#FBF8F9;border-radius:10px;padding:3.5mm 5mm;margin-bottom:5mm}
+.problem h2{font-size:14.5px;line-height:1.25}
+.problem h2 b{color:#6C3845;font-weight:inherit}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:2.8mm 3.5mm;margin-bottom:5mm}
+.f{display:flex;gap:7px;align-items:flex-start}
+.f b{display:block;font-size:10.5px;line-height:1.3;color:#1B1620}
+.f > div > span{display:block;color:#6B6470;font-size:9.5px;line-height:1.35}
+.ben{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-bottom:5mm}
+.b{border:1px solid #ECE4E7;border-radius:9px;padding:2.4mm 3mm}
+.b h3{font-size:11.5px;display:flex;align-items:center;gap:6px}
+.b p{margin-top:1mm;color:#6B6470;font-size:9.5px;line-height:1.38}
+.two{display:grid;grid-template-columns:1.35fr 1fr;gap:5mm}
+table{border-collapse:collapse;width:100%}
+td{padding:1.15mm 0;border-top:1px solid #F0E9EC;vertical-align:top;font-size:9.5px;line-height:1.38}
+td:first-child{width:21mm;font-weight:700;color:#1B1620;padding-right:3mm}
+.plan{border:1px solid #ECE4E7;border-radius:9px;padding:2.4mm 3.4mm;margin-bottom:2.2mm}
+.plan.hot{border:1.5px solid #6C3845}
+.plan h3{font-size:13px;display:flex;justify-content:space-between;align-items:baseline}
+.plan h3 small{font-size:9.5px;font-weight:600;color:#6B6470;letter-spacing:0}
+.plan p{color:#6B6470;font-size:9.5px;line-height:1.38;margin-top:.6mm}
+.steps{display:grid;gap:1.6mm}
+.st{display:flex;gap:7px;align-items:flex-start;font-size:9.5px;line-height:1.38}
+.st i{flex:none;width:17px;height:17px;border-radius:50%;background:#6C3845;color:#fff;font-style:normal;font-weight:700;font-size:9.5px;display:grid;place-items:center}
+.st b{color:#1B1620}
+.ftr{position:absolute;left:0;right:0;bottom:0;height:17mm;padding:0 13mm;display:flex;align-items:center;justify-content:space-between;background:#6C3845;color:#fff}
+.ftr .cta{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.ftr .cta span{display:block;font-size:10.5px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:0;margin-top:1mm}
+.ftr .btn{background:#fff;color:#4A2530;border-radius:999px;padding:9px 16px;font-size:12px;font-weight:800;white-space:nowrap}
+.note{font-size:9px;color:#8A828E;margin-top:2mm}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hdr">
+    <span class="ring"></span>
+    <div class="brand"><svg width="28" height="28" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#fff"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="#6C3845" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="#B97A8A" stroke-width="2.6"/></svg><span>HRConnect<span class="ai">.AI</span></span></div>
+    <h1>The AI-powered HR app that <b>connects everything</b></h1>
+    <p class="lead">HR, payroll and expense software for growing companies. Records, payroll, leave and expenses share one set of data, and AI does the busywork.</p>
+    <div class="chips">
+      <div class="chip"><span class="ico" style="width:22px;height:22px;border-radius:6px;background:#fff;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>Reads receipts</div>
+      <div class="chip"><span class="ico" style="width:22px;height:22px;border-radius:6px;background:#fff;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Answers from your policies</div>
+      <div class="chip"><span class="ico" style="width:22px;height:22px;border-radius:6px;background:#fff;color:#6C3845"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></span>In-app help</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="problem">
+      <h2>Stop stitching HR together from <b>spreadsheets, email and a separate payroll tool.</b></h2>
+      <p style="color:#6B6470">HRConnect.AI puts core HR, payroll, leave, expenses, loans and offboarding in one place. A change in one place flows everywhere it should, so there is one version of the truth.</p>
+    </div>
+
+    <div class="sec-t">Features</div>
+    <div class="feat">
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><b>Core HR &amp; Employee Records</b><span>Profiles, documents and org chart</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span><div><b>Payroll</b><span>Monthly payroll with approvals and payslips</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div><b>Leave Management</b><span>Requests, balances and carry-over</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><b>Expenses &amp; Advances</b><span>Claims with AI receipt scanning</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18M7 6h1v4M16.71 13.88l.7.71-2.82 2.82"/></svg></span><div><b>Employee Loans</b><span>Loans repaid through payroll</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></span><div><b>Offboarding &amp; Final Settlement</b><span>Exit checklist and final pay</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.66V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.66"/></svg></span><div><b>Employee Self-Service</b><span>Everything employees need, in one place</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4"/></svg></span><div><b>HR AI Assistant</b><span>Answers from your policies and our guides</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span><div><b>Company Policies</b><span>Publish policies employees can read</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><div><b>Employee Celebrations</b><span>Automatic birthday and anniversary cards</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></span><div><b>Dashboards &amp; Reports</b><span>Dashboards for every role</span></div></div>
+      <div class="f"><span class="ico" style="width:24px;height:24px;border-radius:7px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><b>Roles &amp; Permissions</b><span>Per module and action, with user overrides</span></div></div>
+    </div>
+
+    <div class="sec-t">Benefits</div>
+    <div class="ben">
+      <div class="b"><h3><span class="ico" style="width:20px;height:20px;border-radius:6px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span>One connected system</h3><p>Leave, loans, expenses and final settlements feed payroll directly. No re-typing.</p></div>
+      <div class="b"><h3><span class="ico" style="width:20px;height:20px;border-radius:6px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4"/></svg></span>AI that does real work</h3><p>Receipts read for you and policy questions answered from your own documents.</p></div>
+      <div class="b"><h3><span class="ico" style="width:20px;height:20px;border-radius:6px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.66V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.66"/></svg></span>Employees serve themselves</h3><p>Payslips, leave balances and requests in their own workspace.</p></div>
+      <div class="b"><h3><span class="ico" style="width:20px;height:20px;border-radius:6px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Approvals you can trust</h3><p>Every payroll run, leave request, claim and loan has a clear approval trail.</p></div>
+      <div class="b"><h3><span class="ico" style="width:20px;height:20px;border-radius:6px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>Control over who sees what</h3><p>Permissions per module and action, with per-user overrides.</p></div>
+      <div class="b"><h3><span class="ico" style="width:20px;height:20px;border-radius:6px;background:#F6EEF0;color:#6C3845"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>Works across borders</h3><p>Payroll setups per country and currency, and your own leave rules.</p></div>
+    </div>
+
+    <div class="two">
+      <div>
+        <div class="sec-t">Specifications</div>
+        <table>
+          <tr><td>Platform</td><td>Web app for phones and computers, in any browser.</td></tr>
+          <tr><td>Payroll</td><td>Monthly runs with approvals, recalculation and pro-rating.</td></tr>
+          <tr><td>Currencies</td><td>Payroll setups per country, currency or entity, accurate to the cent.</td></tr>
+          <tr><td>Outputs</td><td>Bank payment file (CSV or XLSX) and PDF payslips.</td></tr>
+          <tr><td>Leave rules</td><td>Your own leave types, days per year, weekends and carry-over.</td></tr>
+          <tr><td>AI</td><td>Reads receipts, answers from your policies, in-app help.</td></tr>
+          <tr><td>Security</td><td>Separate company data, hashed passwords, short-lived sessions, signed file links, audit trail.</td></tr>
+          <tr><td>Not included</td><td>Payroll tax filing and sending salary payments, which stay with your bank or tax provider.</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="sec-t">Pricing</div>
+        <div class="plan"><h3>Basic <small>Custom quote</small></h3><p>Core HR, payroll, leave, loans, offboarding, self-service, policies, AI assistant, celebrations, reports, permissions.</p></div>
+        <div class="plan hot"><h3>Premium <small>Custom quote</small></h3><p>Everything in Basic, plus expenses and advances, AI receipt scanning and expense analytics.</p></div>
+        <p class="note" style="margin-top:0;margin-bottom:3mm">Priced per employee per month and invoiced monthly, plus any taxes that apply.</p>
+        <div class="sec-t">Get started</div>
+        <div class="steps">
+          <div class="st"><i>1</i><span><b>Tell us about your company.</b> We set up departments and payroll rules with you.</span></div>
+          <div class="st"><i>2</i><span><b>Add your people</b> and invite them to self-service.</span></div>
+          <div class="st"><i>3</i><span><b>Run your first payroll</b> and issue payslips.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="cta">See it with your own team's data<span>Book a 30-minute demo · hrconnect.ai/book-a-demo · hello@hrconnect.ai</span></div>
+    <div class="btn">Book a demo →</div>
+  </div>
+</div>
+</body>
+</html>
