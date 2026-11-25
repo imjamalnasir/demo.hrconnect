@@ -401,7 +401,7 @@ def footer_html():
       <div class="foot-about"><a class="logo" href="/">{LOGO}<span>HRConnect.AI</span></a><p>{e(C.TAGLINE)}</p></div>
       {cols}
     </div>
-    <div class="foot-bottom"><span>© <span id="year">{date.today().year}</span> HR Connect. All rights reserved.</span><span><a href="mailto:{C.CONTACT_EMAIL}">{C.CONTACT_EMAIL}</a></span></div>
+    <div class="foot-bottom"><span><a href="mailto:{C.CONTACT_EMAIL}">{C.CONTACT_EMAIL}</a></span><span class="foot-copy">Copyright © HRConnect.AI <span id="year">{date.today().year}</span></span></div>
   </div>
 </footer>"""
 

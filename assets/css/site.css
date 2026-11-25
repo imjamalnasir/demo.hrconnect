@@ -255,6 +255,7 @@ td.no{color:var(--muted)}
 .site-footer a:hover{color:#fff}
 .foot-about p{margin-top:16px;max-width:280px}
 .foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px}
+.foot-copy{margin-left:auto;text-align:right}
 
 /* Responsive */
 @media (max-width:1080px){
