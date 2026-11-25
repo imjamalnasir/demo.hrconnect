@@ -290,7 +290,7 @@ td.no{color:var(--muted)}
   .mock-row{gap:8px}
   .mock-row .pill{white-space:normal;text-align:center;max-width:84px}
   .mock-row .v{font-size:13px}
-  .hero .ctas .btn{flex:1;justify-content:center}
+  .hero .ctas .btn{flex:1 1 180px;justify-content:center;text-align:center}
 }
 
 /* Solutions spotlight slider (home) */
@@ -319,6 +319,7 @@ td.no{color:var(--muted)}
   .sp-tab{flex-shrink:0}
   .sp-slide .split{gap:32px}
 }
+@media (max-width:560px){.sp-tabs{margin-left:-16px;margin-right:-16px;padding:2px 16px}}
 @media (prefers-reduced-motion:reduce){
   .sp-track{transition:none}
   .sp-progress span.run{animation:none;width:100%}
