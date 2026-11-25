@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LinkedIn Banners</title>
+<meta name="description" content="LinkedIn banners and posts for HRConnect.AI. Internal page, not linked from the website.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" crossorigin="anonymous">
+<style>
+:root{
+  --brand:#6C3845; --brand-deep:#4A2530; --brand-ink:#2E1820;
+  --brand-soft:#F6EEF0; --brand-tint:#D9C8CC;
+  --ink:#1B1620; --text:#3A3340; --muted:#6B6470;
+  --bg:#FBF8F9; --line:#ECE4E7;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+header.top{padding-top:56px;padding-bottom:12px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:5px 10px;border-radius:999px}
+h1{margin:14px 0 8px;font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.025em;color:var(--ink)}
+.lead{max-width:720px;color:var(--muted);font-size:16px;margin:0}
+.specs{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:13px;color:var(--muted)}
+.specs b{color:var(--ink);font-weight:600}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.jump a{font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none}
+.jump a:hover{border-color:var(--brand-tint);background:var(--brand-soft)}
+
+section.set{padding:40px 0;border-bottom:1px solid var(--line)}
+section.set:last-of-type{border-bottom:0}
+.set-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.set-head .n{font-size:13px;font-weight:600;color:var(--brand)}
+.set-head h2{margin:0;font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.label{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;font-size:13px;color:var(--muted)}
+.label b{color:var(--ink);font-weight:600}
+.btn{font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--brand-tint);background:var(--brand-soft)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-deep)}
+.btn[disabled]{opacity:.6;cursor:progress}
+.post-row{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:28px;margin-top:28px;align-items:start}
+.caption{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.caption pre{margin:0 0 14px;white-space:pre-wrap;font:14px/1.6 Inter,system-ui,sans-serif;color:var(--text)}
+@media (max-width:860px){.post-row{grid-template-columns:1fr}}
+footer{padding:28px 0 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:560px){.wrap{padding:0 16px}}
+
+/* Scaled preview of a fixed-size artwork */
+.stage{position:relative;width:100%;overflow:hidden;border-radius:12px;box-shadow:0 1px 2px rgba(46,24,32,.06),0 10px 30px rgba(46,24,32,.08);background:#fff}
+.art{position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--s,1));overflow:hidden;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
+.art *{box-sizing:border-box}
+.art b{font-weight:inherit}
+
+/* ===== Artwork building blocks (sizes in real pixels) ===== */
+.bg-dark{background:radial-gradient(900px 620px at 88% 0%,rgba(185,122,138,.45),transparent 60%),linear-gradient(140deg,#4A2530 0%,#2E1820 100%)}
+.bg-plum{background:radial-gradient(800px 500px at 100% 0%,rgba(255,255,255,.12),transparent 60%),linear-gradient(140deg,#7A4150 0%,#5A2E3A 100%)}
+.bg-soft{background:radial-gradient(900px 600px at 90% 0%,#F1E2E6,transparent 60%),linear-gradient(180deg,#FFFFFF,#FBF8F9);color:var(--ink)}
+.ring{position:absolute;border-radius:50%;pointer-events:none}
+.brandmark{display:inline-flex;align-items:center;gap:.45em;font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.brandmark svg{width:1.45em;height:1.45em;flex:none}
+.brandmark .ai{color:var(--acc,#D9C8CC)}
+.ey{font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hl b{color:var(--hl,#D9C8CC)}
+.ico{display:inline-grid;place-items:center;flex:none}
+.ico svg{width:56%;height:56%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chk svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <span class="eyebrow">Internal · not linked from the site</span>
+  <h1>HRConnect.AI LinkedIn banners and posts</h1>
+  <p class="lead">Four sets for the company page: Intro, Products, Solutions and Promotion. Each set has a cover banner, a square feed post and a caption you can copy. All wording comes from the website.</p>
+  <div class="specs">
+    <span><b>Banner:</b> 1128 × 191 px (LinkedIn company page cover), downloads at 2× for sharpness</span>
+    <span><b>Post:</b> 1200 × 1200 px square</span>
+    <span><b>Format:</b> PNG</span>
+  </div>
+  <nav class="jump" aria-label="Sets">
+    <a href="#intro">01 Intro</a><a href="#products">02 Products</a><a href="#solutions">03 Solutions</a><a href="#promotion">04 Promotion</a>
+  </nav>
+</header>
+
+<main class="wrap" id="sets"></main>
+
+<footer class="wrap">Internal design reference. This page is blocked in robots.txt, marked noindex, and nothing on the site links to it. On company pages LinkedIn places the logo over the lower-left of the banner, so banner text starts at about 300px from the left.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script>
+/* ---------- Icons (24px line icons) ---------- */
+const P = {
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+  pay: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>',
+  cal: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  receipt: '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+  coins: '<circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18M7 6h1v4M16.71 13.88l.7.71-2.82 2.82"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>',
+  gift: '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/>',
+  exit: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
+  self: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.66V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.66"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>',
+  spark: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4"/>',
+  case: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+  help: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/>',
+  chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>'
+};
+const ico = (k, size, bg, fg, r) => `<span class="ico" style="width:${size}px;height:${size}px;border-radius:${r ?? Math.round(size * .28)}px;background:${bg};color:${fg}"><svg viewBox="0 0 24 24">${P[k]}</svg></span>`;
+const chk = (size, color) => `<span class="chk" style="display:inline-block;width:${size}px;height:${size}px;color:${color};flex:none"><svg viewBox="0 0 24 24">${P.check}</svg></span>`;
+const arrow = (size) => `<span class="chk" style="display:inline-block;width:${size}px;height:${size}px;flex:none"><svg viewBox="0 0 24 24">${P.arrow}</svg></span>`;
+
+/* Logo: current Linked Rings mark. light = for dark backgrounds */
+const brand = (size, onDark) => {
+  const tile = onDark ? '#FFFFFF' : '#6C3845', r1 = onDark ? '#6C3845' : '#FFFFFF', r2 = onDark ? '#B97A8A' : '#D9C8CC';
+  return `<span class="brandmark" style="font-size:${size}px;color:${onDark ? '#fff' : '#1B1620'};--acc:${onDark ? '#D9C8CC' : '#6C3845'}"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="${tile}"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="${r1}" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="${r2}" stroke-width="2.6"/></svg><span>HRConnect<span class="ai">.AI</span></span></span>`;
+};
+const rings = (list) => list.map(([x, y, d, w, c]) => `<span class="ring" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px;border:${w}px solid ${c}"></span>`).join('');
+
+/* ---------- Artwork ---------- */
+const W = 'rgba(255,255,255,';
+
+const ART = {
+/* ===== 01 INTRO ===== */
+introBanner: `
+<div class="art bg-dark" style="width:1128px;height:191px">
+  ${rings([[-120, -150, 420, 46, W + '.05)'], [880, -260, 520, 60, W + '.05)']])}
+  <div style="position:absolute;left:300px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;width:500px">
+    <div class="ey" style="font-size:12px;color:#D9C8CC;margin-bottom:10px">AI-powered HR</div>
+    <div class="hl" style="font-size:33px;font-weight:800;line-height:1.08;letter-spacing:-.03em">The AI-powered HR app that <b>connects everything</b></div>
+  </div>
+  <div style="position:absolute;right:52px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:9px">
+    ${['Reads receipts', 'Answers from your policies', 'In-app help'].map(t => `<div style="display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;background:${W}.08);border:1px solid ${W}.16);border-radius:999px;padding:8px 16px 8px 10px">${chk(16, '#8FE3C0')}${t}</div>`).join('')}
+  </div>
+</div>`,
+
+introPost: `
+<div class="art bg-dark" style="width:1200px;height:1200px;padding:88px;display:flex;flex-direction:column">
+  ${rings([[640, -260, 900, 120, W + '.04)'], [-300, 780, 640, 80, W + '.035)']])}
+  <div style="position:relative">${brand(38, true)}</div>
+  <div style="position:relative;margin-top:96px">
+    <div class="ey" style="font-size:22px;color:#D9C8CC">AI-powered HR</div>
+    <div class="hl" style="margin-top:22px;font-size:96px;font-weight:800;line-height:1.02;letter-spacing:-.04em">The AI-powered HR app that <b>connects everything</b></div>
+    <div style="margin-top:30px;font-size:31px;line-height:1.4;color:${W}.82);max-width:900px">Records, payroll, leave and expenses share one set of data, and AI does the busywork.</div>
+  </div>
+  <div style="position:relative;margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    ${[['receipt', 'Reads receipts', 'AI fills in the expense claim'], ['chat', 'Answers from your policies', 'An HR assistant for everyone'], ['help', 'In-app help', 'Guides people through the app']].map(([k, t, d]) => `
+    <div style="background:${W}.08);border:1px solid ${W}.15);border-radius:26px;padding:28px">
+      ${ico(k, 58, '#FFFFFF', '#6C3845', 16)}
+      <div style="margin-top:22px;font-size:25px;font-weight:700;letter-spacing:-.01em">${t}</div>
+      <div style="margin-top:6px;font-size:19px;color:${W}.72)">${d}</div>
+    </div>`).join('')}
+  </div>
+  <div style="position:relative;margin-top:36px;display:flex;justify-content:space-between;align-items:center;font-size:21px;color:${W}.7)">
+    <span>Payroll · Leave · Expenses · Self-service · Policies · Loans</span>
+    <span style="font-weight:700;color:#fff">hrconnect.ai</span>
+  </div>
+</div>`,
+
+/* ===== 02 PRODUCTS ===== */
+productsBanner: `
+<div class="art bg-soft" style="width:1128px;height:191px">
+  ${rings([[-140, -160, 420, 46, 'rgba(108,56,69,.06)']])}
+  <div style="position:absolute;left:300px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;width:250px">
+    <div class="ey" style="font-size:12px;color:#6C3845;margin-bottom:10px">The platform</div>
+    <div class="hl" style="--hl:#6C3845;font-size:28px;font-weight:800;line-height:1.1;letter-spacing:-.03em;color:#1B1620">Everything HR, <b>one connected platform</b></div>
+  </div>
+  <div style="position:absolute;right:44px;top:0;bottom:0;display:grid;grid-template-columns:repeat(4,120px);gap:10px;align-content:center">
+    ${[['users', 'Core HR'], ['pay', 'Payroll'], ['cal', 'Leave'], ['receipt', 'Expenses'], ['coins', 'Loans'], ['file', 'Policies'], ['self', 'Self-service'], ['spark', 'AI assistant']].map(([k, t]) => `
+    <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #ECE4E7;border-radius:12px;padding:8px 10px;box-shadow:0 2px 8px rgba(46,24,32,.05)">
+      ${ico(k, 26, k === 'spark' ? '#6C3845' : '#F6EEF0', k === 'spark' ? '#fff' : '#6C3845', 8)}
+      <span style="font-size:12.5px;font-weight:700;color:#1B1620;white-space:nowrap">${t}</span>
+    </div>`).join('')}
+  </div>
+</div>`,
+
+productsPost: `
+<div class="art bg-soft" style="width:1200px;height:1200px;padding:88px;display:flex;flex-direction:column">
+  ${rings([[760, -300, 820, 110, 'rgba(108,56,69,.05)']])}
+  <div style="position:relative">${brand(38, false)}</div>
+  <div style="position:relative;margin-top:52px">
+    <div class="ey" style="font-size:22px;color:#6C3845">The platform</div>
+    <div class="hl" style="--hl:#6C3845;margin-top:16px;font-size:72px;font-weight:800;line-height:1.04;letter-spacing:-.04em;color:#1B1620">Everything HR,<br><b>one connected platform</b></div>
+    <div style="margin-top:18px;font-size:25px;line-height:1.4;color:#6B6470;max-width:960px">Core HR, payroll, leave, expenses, loans and offboarding share the same employee data.</div>
+  </div>
+  <div style="position:relative;margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+    ${[['users', 'Core HR', 'Profiles and documents'], ['pay', 'Payroll', 'Approvals and payslips'], ['cal', 'Leave', 'Balances and carry-over'], ['receipt', 'Expenses', 'AI receipt scanning'],
+       ['coins', 'Loans', 'Repaid through payroll'], ['exit', 'Offboarding', 'Checklist and final pay'], ['self', 'Self-service', 'Everything in one place'], ['file', 'Policies', 'Published and read'],
+       ['gift', 'Celebrations', 'Birthday cards, sent'], ['chart', 'Reports', 'Dashboards for every role'], ['help', 'In-app help', 'Guides for every screen'], ['spark', 'AI assistant', 'Answers from your policies']].map(([k, t, d]) => {
+      const hot = k === 'spark';
+      return `<div style="background:${hot ? '#6C3845' : '#fff'};border:1px solid ${hot ? '#6C3845' : '#ECE4E7'};border-radius:20px;padding:18px 20px;box-shadow:0 4px 16px rgba(46,24,32,.05)">
+        ${ico(k, 42, hot ? 'rgba(255,255,255,.16)' : '#F6EEF0', hot ? '#fff' : '#6C3845', 13)}
+        <div style="margin-top:12px;font-size:22px;font-weight:700;letter-spacing:-.01em;color:${hot ? '#fff' : '#1B1620'}">${t}</div>
+        <div style="margin-top:4px;font-size:16.5px;color:${hot ? 'rgba(255,255,255,.75)' : '#6B6470'}">${d}</div>
+      </div>`; }).join('')}
+  </div>
+  <div style="position:relative;margin-top:28px;display:flex;justify-content:space-between;font-size:21px;color:#6B6470">
+    <span>Start with what you need. Switch on more as you grow.</span>
+    <span style="font-weight:700;color:#6C3845">hrconnect.ai/product</span>
+  </div>
+</div>`,
+
+/* ===== 03 SOLUTIONS ===== */
+solutionsBanner: `
+<div class="art bg-plum" style="width:1128px;height:191px">
+  ${rings([[-140, -170, 440, 48, W + '.06)']])}
+  <div style="position:absolute;left:300px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;width:300px">
+    <div class="ey" style="font-size:12px;color:#F1DDE2;margin-bottom:10px">Solutions</div>
+    <div class="hl" style="--hl:#F1DDE2;font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-.03em">Made for every team <b>that touches HR</b></div>
+  </div>
+  <div style="position:absolute;right:48px;top:0;bottom:0;display:grid;grid-template-columns:repeat(2,232px);gap:10px;align-content:center">
+    ${[['users', 'HR Teams', 'One source of truth'], ['pay', 'Finance & Payroll', 'Payroll and spend control'], ['case', 'Business Owners', 'Workforce at a glance'], ['self', 'Employees & Managers', 'Requests in one portal']].map(([k, t, d]) => `
+    <div style="display:flex;align-items:center;gap:11px;background:${W}.1);border:1px solid ${W}.18);border-radius:14px;padding:10px 12px">
+      ${ico(k, 34, '#fff', '#6C3845', 10)}
+      <div><div style="font-size:14px;font-weight:700;white-space:nowrap">${t}</div><div style="font-size:12px;color:${W}.75);white-space:nowrap">${d}</div></div>
+    </div>`).join('')}
+  </div>
+</div>`,
+
+solutionsPost: `
+<div class="art" style="width:1200px;height:1200px;padding:88px;display:flex;flex-direction:column;background:#fff;color:#1B1620">
+  <div style="position:absolute;left:0;right:0;top:0;height:540px;background:linear-gradient(140deg,#7A4150,#4A2530)"></div>
+  ${rings([[700, -320, 860, 110, W + '.05)']])}
+  <div style="position:relative">${brand(38, true)}</div>
+  <div style="position:relative;margin-top:60px;color:#fff">
+    <div class="ey" style="font-size:22px;color:#F1DDE2">Solutions</div>
+    <div class="hl" style="--hl:#F1DDE2;margin-top:18px;font-size:84px;font-weight:800;line-height:1.03;letter-spacing:-.04em">Made for every team<br><b>that touches HR</b></div>
+  </div>
+  <div style="position:relative;margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    ${[['users', 'For HR Teams', 'Less admin, one source of truth', ['Profiles, documents and org chart', 'Leave balances and carry-over', 'Offboarding with final settlement']],
+       ['pay', 'For Finance & Payroll', 'Accurate payroll and spend control', ['Payroll with approvals and payslips', 'Expenses with AI receipt scanning', 'Loans repaid through payroll']],
+       ['case', 'For Business Owners', 'Your workforce at a glance', ['Dashboards for every role', 'Roles and permissions', 'Modules that grow with you']],
+       ['self', 'For Employees & Managers', 'Requests and approvals in one portal', ['Leave, expenses and loans', 'Payslips and policies on hand', 'Answers from the HR AI assistant']]].map(([k, t, tag, list]) => `
+    <div style="background:#fff;border:1px solid #ECE4E7;border-radius:26px;padding:30px;box-shadow:0 14px 40px -12px rgba(46,24,32,.18)">
+      <div style="display:flex;align-items:center;gap:16px">${ico(k, 54, '#F6EEF0', '#6C3845', 15)}<div style="font-size:27px;font-weight:800;letter-spacing:-.02em">${t}</div></div>
+      <div style="margin-top:16px;font-size:21px;font-weight:600;color:#6C3845">${tag}</div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:9px">
+        ${list.map(x => `<div style="display:flex;align-items:center;gap:11px;font-size:18.5px;color:#3A3340">${chk(19, '#0F8A5F')}${x}</div>`).join('')}
+      </div>
+    </div>`).join('')}
+  </div>
+  <div style="position:relative;margin-top:32px;display:flex;justify-content:space-between;font-size:21px;color:#6B6470">
+    <span>See how HRConnect.AI works for the people who use it every day.</span>
+    <span style="font-weight:700;color:#6C3845">hrconnect.ai</span>
+  </div>
+</div>`,
+
+/* ===== 04 PROMOTION ===== */
+promoBanner: `
+<div class="art" style="width:1128px;height:191px;background:#fff;color:#1B1620">
+  <div style="position:absolute;right:0;top:0;bottom:0;width:390px;background:linear-gradient(140deg,#7A4150,#4A2530);clip-path:polygon(70px 0,100% 0,100% 100%,0 100%)"></div>
+  ${rings([[930, -120, 300, 40, W + '.07)']])}
+  <div style="position:absolute;left:300px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;width:420px">
+    <div class="ey" style="font-size:12px;color:#6C3845;margin-bottom:10px">Book a demo</div>
+    <div class="hl" style="--hl:#6C3845;font-size:29px;font-weight:800;line-height:1.1;letter-spacing:-.03em">See HRConnect.AI with <b>your own team's data</b></div>
+    <div style="margin-top:8px;font-size:14px;color:#6B6470">30 minutes · payroll, leave and expenses, set up your way</div>
+  </div>
+  <div style="position:absolute;right:52px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:10px">
+    <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#4A2530;border-radius:999px;padding:13px 22px;font-size:17px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.2)">Book a 30-minute demo ${arrow(18)}</div>
+    <div style="font-size:14px;font-weight:600;color:${W}.85)">hrconnect.ai/book-a-demo</div>
+  </div>
+</div>`,
+
+promoPost: `
+<div class="art bg-dark" style="width:1200px;height:1200px;padding:88px;display:flex;flex-direction:column">
+  ${rings([[620, -300, 900, 120, W + '.04)'], [-260, 820, 600, 80, W + '.035)']])}
+  <div style="position:relative">${brand(38, true)}</div>
+  <div style="position:relative;margin-top:48px">
+    <span class="ey" style="display:inline-block;font-size:19px;color:#2E1820;background:#D9C8CC;border-radius:999px;padding:9px 18px">Book a demo</span>
+    <div class="hl" style="margin-top:20px;font-size:76px;font-weight:800;line-height:1.03;letter-spacing:-.04em">See HRConnect.AI with<br><b>your own team's data</b></div>
+    <div style="margin-top:18px;font-size:26px;line-height:1.4;color:${W}.8);max-width:920px">In 30 minutes, we'll show you payroll, leave and expenses set up the way your company works.</div>
+  </div>
+  <div style="position:relative;margin-top:auto;background:#fff;color:#1B1620;border-radius:28px;padding:30px 34px;box-shadow:0 30px 70px -20px rgba(0,0,0,.5),0 0 0 10px rgba(255,255,255,.07)">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="font-size:22px;font-weight:700">Payroll run · October 2026</div>
+      <div style="font-size:16px;font-weight:700;color:#0F8A5F;background:#E5F6EF;border-radius:999px;padding:6px 14px">Approved · ready to pay</div>
+    </div>
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      ${[['Employees', '48'], ['Gross pay', '$398,400'], ['Net pay', '$301,250']].map(([a, b]) => `<div style="background:#FBF8F9;border-radius:16px;padding:14px 18px"><div style="font-size:15px;color:#6B6470">${a}</div><div style="font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:2px">${b}</div></div>`).join('')}
+    </div>
+    <div style="margin-top:12px">
+      ${[['SM', 'Sarah Mitchell', 'Finance · Base salary + bonus', '$9,200'], ['AM', 'Ashley Martinez', 'Joined Oct 12 · pro-rated', '$3,980'], ['CN', 'Chris Nguyen', 'Loan installment deducted', '$6,150']].map(([i, n, d, v]) => `
+      <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-top:1px solid #ECE4E7">
+        <span style="width:44px;height:44px;border-radius:50%;background:#F6EEF0;color:#6C3845;display:grid;place-items:center;font-size:16px;font-weight:700">${i}</span>
+        <div style="flex:1"><div style="font-size:19px;font-weight:700">${n}</div><div style="font-size:15.5px;color:#6B6470">${d}</div></div>
+        <div style="font-size:19px;font-weight:700">${v}</div>
+        <span style="font-size:14px;font-weight:700;color:#0F8A5F;background:#E5F6EF;border-radius:999px;padding:5px 12px">Approved</span>
+      </div>`).join('')}
+    </div>
+  </div>
+  <div style="position:relative;margin-top:32px;display:flex;align-items:center;gap:24px">
+    <span style="display:inline-flex;align-items:center;gap:12px;background:#fff;color:#4A2530;border-radius:999px;padding:18px 30px;font-size:24px;font-weight:800">Book a demo ${arrow(24)}</span>
+    <span style="font-size:23px;font-weight:600;color:${W}.85)">hrconnect.ai/book-a-demo</span>
+  </div>
+</div>`
+};
+
+/* ---------- Sets ---------- */
+const SETS = [
+  { id: 'intro', n: '01', title: 'Intro', banner: 'introBanner', post: 'introPost',
+    caption: `Meet HRConnect.AI: the AI-powered HR app that connects everything.
+
+Records, payroll, leave and expenses share one set of data, and AI does the busywork:
+✓ Reads receipts and fills in the expense claim
+✓ Answers questions from your own policies
+✓ Guides people through the app
+
+See how it works: hrconnect.ai
+
+#HRTech #HRSoftware #Payroll #AI #PeopleOps` },
+  { id: 'products', n: '02', title: 'Products', banner: 'productsBanner', post: 'productsPost',
+    caption: `Everything HR, one connected platform.
+
+Core HR, payroll, leave, expenses, loans and offboarding share the same employee data, so a change in one place flows everywhere it should.
+
+Payroll sits at the centre: approved leave, loan installments, expense claims and final settlements are pulled into every run. No re-typing numbers between systems.
+
+Start with the modules you need and switch on more as you grow.
+
+Explore the platform: hrconnect.ai/product
+
+#HRSoftware #Payroll #HRTech #CoreHR` },
+  { id: 'solutions', n: '03', title: 'Solutions', banner: 'solutionsBanner', post: 'solutionsPost',
+    caption: `Made for every team that touches HR.
+
+→ HR teams: less admin, one source of truth
+→ Finance & payroll: accurate payroll and spend control
+→ Business owners: your workforce at a glance
+→ Employees & managers: requests and approvals in one portal
+
+Find out how HRConnect.AI works for your team: hrconnect.ai
+
+#HR #Finance #SmallBusiness #HRTech #Payroll` },
+  { id: 'promotion', n: '04', title: 'Promotion', banner: 'promoBanner', post: 'promoPost',
+    caption: `See HRConnect.AI with your own team's data.
+
+Book a 30-minute demo and we'll show you payroll, leave and expenses set up the way your company works.
+
+Book yours: hrconnect.ai/book-a-demo
+
+#HRTech #Payroll #HRSoftware #BookADemo` }
+];
+
+const stage = (key, w, h) => `<div class="stage" style="aspect-ratio:${w}/${h}" data-w="${w}">${ART[key]}</div>`;
+document.getElementById('sets').innerHTML = SETS.map(s => `
+<section class="set" id="${s.id}">
+  <div class="set-head"><span class="n">${s.n}</span><h2>${s.title}</h2></div>
+  <div class="label"><span><b>Company page banner</b> · 1128 × 191</span><button class="btn primary" data-dl="${s.banner}" data-name="hrconnect-linkedin-${s.id}-banner" data-ratio="2">Download PNG</button></div>
+  ${stage(s.banner, 1128, 191)}
+  <div class="post-row">
+    <div>
+      <div class="label"><span><b>Feed post</b> · 1200 × 1200</span><button class="btn primary" data-dl="${s.post}" data-name="hrconnect-linkedin-${s.id}-post" data-ratio="1">Download PNG</button></div>
+      ${stage(s.post, 1200, 1200)}
+    </div>
+    <div>
+      <div class="label"><span><b>Caption</b></span></div>
+      <div class="caption"><pre>${s.caption}</pre><button class="btn" data-copy>Copy caption</button></div>
+    </div>
+  </div>
+</section>`).join('');
+
+/* Scale each artwork to its preview box */
+const ro = new ResizeObserver(entries => entries.forEach(e => e.target.style.setProperty('--s', e.contentRect.width / +e.target.dataset.w)));
+document.querySelectorAll('.stage').forEach(el => ro.observe(el));
+
+/* Copy caption */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]');
+  if (!b) return;
+  const txt = b.parentElement.querySelector('pre').textContent;
+  try { await navigator.clipboard.writeText(txt); b.textContent = 'Copied'; }
+  catch { const r = document.createRange(); r.selectNodeContents(b.parentElement.querySelector('pre')); getSelection().removeAllRanges(); getSelection().addRange(r); b.textContent = 'Selected, press Ctrl/Cmd+C'; }
+  setTimeout(() => b.textContent = 'Copy caption', 1800);
+});
+
+/* PNG export */
+let fontCSS = null;
+async function exportPng(node, ratio) {
+  if (fontCSS === null) {
+    try { fontCSS = await htmlToImage.getFontEmbedCSS(node); } catch { fontCSS = ''; }
+  }
+  const w = parseInt(node.style.width), h = parseInt(node.style.height);
+  return htmlToImage.toPng(node, { width: w, height: h, pixelRatio: ratio, fontEmbedCSS: fontCSS || undefined, style: { transform: 'none' } });
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-dl]');
+  if (!b) return;
+  if (!window.htmlToImage) { alert('The export library did not load. Check your internet connection and reload.'); return; }
+  const node = b.closest('.label').parentElement.querySelector('.stage .art');
+  const label = b.textContent; b.disabled = true; b.textContent = 'Preparing…';
+  try {
+    await document.fonts.ready;
+    const url = await exportPng(node, +b.dataset.ratio);
+    const a = document.createElement('a'); a.href = url; a.download = b.dataset.name + '.png'; a.click();
+  } catch (err) { console.error(err); alert('Export failed: ' + err.message); }
+  finally { b.disabled = false; b.textContent = label; }
+});
+</script>
+</body>
+</html>
