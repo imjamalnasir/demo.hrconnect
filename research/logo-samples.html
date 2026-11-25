@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Logo Samples</title>
+<meta name="description" content="Logo concepts for HRConnect.AI. Internal page, not linked from the website.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#6C3845; --brand-deep:#4A2530; --brand-ink:#2E1820;
+  --brand-soft:#F6EEF0; --brand-tint:#D9C8CC;
+  --ink:#1B1620; --text:#3A3340; --muted:#6B6470;
+  --bg:#FBF8F9; --card:#FFFFFF; --line:#ECE4E7;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+header.top{padding-top:56px;padding-bottom:28px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:5px 10px;border-radius:999px}
+h1{margin:14px 0 8px;font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.025em;color:var(--ink)}
+.lead{max-width:680px;color:var(--muted);font-size:16px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;align-items:center}
+.toolbar span{font-size:13px;color:var(--muted);margin-right:4px}
+.chip{font:inherit;font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;padding:8px 0 72px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(46,24,32,.04),0 10px 30px rgba(46,24,32,.05)}
+.hero{display:flex;align-items:center;justify-content:center;min-height:190px;padding:28px 20px;background:#fff;border-bottom:1px solid var(--line)}
+.swatches{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.swatches > div{display:flex;align-items:center;justify-content:center;padding:18px 12px;min-height:84px}
+.sw-dark{background:#2E1820}
+.sw-brand{background:#6C3845}
+.sizes{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--bg)}
+.sizes small{font-size:11px;color:var(--muted);display:block;text-align:center;margin-top:4px}
+.meta{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.meta-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.num{font-size:12px;font-weight:600;color:var(--muted)}
+.meta h3{margin:0;font-size:17px;color:var(--ink);letter-spacing:-.01em}
+.meta p{margin:0;color:var(--muted);font-size:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tag{font-size:11.5px;padding:3px 8px;border-radius:6px;background:var(--brand-soft);color:var(--brand-deep)}
+.actions{display:flex;gap:8px;margin-top:10px}
+.actions button{font:inherit;font-size:13px;font-weight:500;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.actions button:hover{border-color:var(--brand-tint);background:var(--brand-soft)}
+
+/* Lockups */
+.lockup{display:inline-flex;align-items:center;gap:.45em;line-height:1;white-space:nowrap}
+.lockup.stack{flex-direction:column;gap:.35em}
+.lockup svg{width:1.9em;height:1.9em;flex:none}
+.lockup.stack svg{width:2.6em;height:2.6em}
+.wm{letter-spacing:-.02em;color:var(--wm)}
+.wm .ai{color:var(--wa)}
+.wm .pill{display:inline-block;font-size:.62em;font-weight:700;letter-spacing:.02em;padding:.22em .45em;border-radius:.4em;margin-left:.25em;vertical-align:.32em;background:var(--wa);color:var(--wp)}
+.wm .lt{font-weight:400}
+.wm .sai{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;color:var(--wa);letter-spacing:0}
+.wm.stk{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:.95}
+.wm.stk .sub{font-size:.5em;font-weight:800;letter-spacing:.5em;color:var(--wa);margin-top:.28em;padding-left:.08em}
+.lockup.stack .wm.stk{align-items:center}
+.tag.new{background:var(--brand);color:#fff}
+.wm.lc{letter-spacing:-.035em}
+.wm.big{font-size:1.2em}
+.lockup:has(.wm.big) svg{width:1.75em;height:1.75em}
+.lockup.stack:has(.wm.big) svg{width:2.3em;height:2.3em}
+.wm .caret{color:var(--wa);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.wm .caret{animation:none}}
+.hero .lockup{font-size:30px}
+.swatches .lockup{font-size:17px}
+
+/* Mark colour slots */
+.mb{fill:var(--mb)} .mf{fill:var(--mf)} .ma{fill:var(--ma)}
+.sf{stroke:var(--mf);fill:none} .sa{stroke:var(--ma);fill:none} .sb{stroke:var(--mb);fill:none}
+.v-light{--mb:#6C3845;--mf:#FFFFFF;--ma:#D9C8CC;--wm:#1B1620;--wa:#6C3845;--wp:#fff}
+.v-dark{--mb:#F6EEF0;--mf:#6C3845;--ma:#B97A8A;--wm:#FFFFFF;--wa:#D9C8CC;--wp:#2E1820}
+.v-brand{--mb:#FFFFFF;--mf:#6C3845;--ma:#B97A8A;--wm:#FFFFFF;--wa:#F6EEF0;--wp:#6C3845}
+.v-mono{--mb:#1B1620;--mf:#FFFFFF;--ma:#FFFFFF;--wm:#1B1620;--wa:#1B1620;--wp:#fff}
+
+/* Palette alternates (toolbar) */
+body[data-pal="black"] .v-light{--mb:#0A0A0A;--ma:#A3A3A3;--wm:#0A0A0A;--wa:#0A0A0A}
+body[data-pal="black"] .v-dark{--mb:#FFFFFF;--mf:#0A0A0A;--ma:#8A8A8A;--wa:#BDBDBD;--wp:#0A0A0A}
+body[data-pal="black"] .v-brand{--mf:#0A0A0A;--ma:#8A8A8A;--wa:#D4D4D4;--wp:#0A0A0A}
+body[data-pal="black"] .sw-dark{background:#0A0A0A}
+body[data-pal="black"] .sw-brand{background:#2B2B2B}
+body[data-pal="black"] .tag{background:#F1F1F1;color:#262626}
+body[data-pal="black"] .tag.new,body[data-pal="black"] .chip[aria-pressed="true"]{background:#0A0A0A;border-color:#0A0A0A;color:#fff}
+
+footer{padding-top:28px;padding-bottom:48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .grid{grid-template-columns:1fr}
+  .hero .lockup{font-size:24px}
+  .swatches .lockup{font-size:14px}
+}
+@media (max-width:400px){
+  .hero .lockup{font-size:21px}
+  .swatches{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-pal="brand">
+<header class="top wrap">
+  <span class="eyebrow">Internal · not linked from the site</span>
+  <h1>HRConnect.AI logo samples</h1>
+  <p class="lead">Twenty-seven logo directions, written as "HRConnect.AI", "HR Connect AI" or the short form "hrc.ai". Each card shows the main lockup, the logo on dark and brand backgrounds, and the icon at app, tab and favicon sizes. Use the palette switch to see each one in plum or black.</p>
+  <div class="toolbar" role="group" aria-label="Palette">
+    <span>Palette</span>
+    <button class="chip" data-pal="brand" aria-pressed="true">Plum (current)</button>
+    <button class="chip" data-pal="black" aria-pressed="false">Black</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="wrap">Internal design reference. This page is blocked in robots.txt, marked noindex, and nothing on the site links to it.</footer>
+
+<script>
+const SQ = '<rect class="mb" width="48" height="48" rx="13"/>';
+const star = (cx, cy, r) => {
+  const k = r * 0.18;
+  return `M${cx} ${cy-r} C${cx+k} ${cy-k} ${cx+k} ${cy-k} ${cx+r} ${cy} C${cx+k} ${cy+k} ${cx+k} ${cy+k} ${cx} ${cy+r} C${cx-k} ${cy+k} ${cx-k} ${cy+k} ${cx-r} ${cy} C${cx-k} ${cy-k} ${cx-k} ${cy-k} ${cx} ${cy-r}Z`;
+};
+
+const LOGOS = [
+  {
+    name: 'Linked Rings', note: 'The current mark. Two overlapping rings stand for HR and people working together.',
+    tags: ['Current', 'Geometric'], font: 'Inter', weight: 700, style: 'accent',
+    mark: SQ + '<circle class="sf" cx="19" cy="24" r="9" stroke-width="3.6"/><circle class="sa" cx="29" cy="24" r="9" stroke-width="3.6"/>'
+  },
+  {
+    name: 'HC Monogram', note: 'The bar of the H runs into a C, joining "HR" and "Connect" in one line. The dot inside the C stands for AI.',
+    tags: ['Monogram', 'Bold'], font: 'Manrope', weight: 800, style: 'accent',
+    mark: SQ + '<path class="sf" d="M12 14V34M12 24H17.5M34.5 16.9A10 10 0 1 0 34.5 31.1" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><circle class="ma" cx="33" cy="24" r="2.8"/>'
+  },
+  {
+    name: 'People Network', note: 'Three linked nodes show a team. Simple enough to read clearly at 16px.',
+    tags: ['Network', 'Friendly'], font: 'Plus Jakarta Sans', weight: 800, style: 'pill',
+    mark: SQ + '<path class="sa" d="M24 14L14.5 31.5H33.5Z" stroke-width="2.6" stroke-linejoin="round"/><circle class="mf" cx="24" cy="14" r="5"/><circle class="mf" cx="14.5" cy="31.5" r="5"/><circle class="mf" cx="33.5" cy="31.5" r="5"/>'
+  },
+  {
+    name: 'AI Spark', note: 'A four-point spark leads with the AI story. The small second spark suggests the assistant.',
+    tags: ['AI-first', 'Modern'], font: 'Sora', weight: 700, style: 'accent',
+    mark: SQ + `<path class="mf" d="${star(23, 26, 13)}"/><path class="ma" d="${star(35.5, 12.5, 5.5)}"/>`
+  },
+  {
+    name: 'Infinity Link', note: 'One unbroken loop in two colours: the employer and the employee, always connected.',
+    tags: ['Continuous', 'Elegant'], font: 'Manrope', weight: 700, style: 'light',
+    mark: SQ + '<path class="sf" d="M24 24C20 16.5 11 16.5 11 24C11 31.5 20 31.5 24 24" stroke-width="3.8" stroke-linecap="round"/><path class="sa" d="M24 24C28 16.5 37 16.5 37 24C37 31.5 28 31.5 24 24" stroke-width="3.8" stroke-linecap="round"/>'
+  },
+  {
+    name: 'Person + Spark', note: 'A simple person shape with an AI spark at the shoulder: people first, helped by AI.',
+    tags: ['Human', 'AI'], font: 'Inter', weight: 800, style: 'pill',
+    mark: SQ + `<circle class="mf" cx="21" cy="18.5" r="5.5"/><path class="mf" d="M10 37A11 11 0 0 1 32 37Z"/><path class="ma" d="${star(35, 15, 6)}"/>`
+  },
+  {
+    name: 'Hex Hub', note: 'A hexagon holding a central hub with three spokes. It feels technical and structured, like a platform.',
+    tags: ['Platform', 'Tech'], font: 'Space Grotesk', weight: 700, style: 'accent',
+    mark: '<path class="mb" d="M24 3.5L41.8 13.75V34.25L24 44.5L6.2 34.25V13.75Z" stroke-linejoin="round"/><path class="sf" d="M24 24V13.5M24 24L14.9 29.25M24 24L33.1 29.25" stroke-width="2.4" stroke-linecap="round"/><circle class="mf" cx="24" cy="13.5" r="3.4"/><circle class="mf" cx="14.9" cy="29.25" r="3.4"/><circle class="mf" cx="33.1" cy="29.25" r="3.4"/><circle class="ma" cx="24" cy="24" r="4.2"/>'
+  },
+  {
+    name: 'Open C', note: 'A heavy, open C ending in a dot: the moment of connection. Minimal and easy to own.',
+    tags: ['Minimal', 'Letterform'], font: 'Sora', weight: 800, style: 'accent',
+    mark: SQ + '<path class="sf" d="M32.5 15.5A12 12 0 1 0 32.5 32.5" stroke-width="5.2" stroke-linecap="round"/><circle class="ma" cx="35" cy="24" r="3.6"/>'
+  },
+  {
+    name: 'Orbit', note: 'A central core with a ring and a satellite: everything in HR circling one system.',
+    tags: ['System', 'Dynamic'], font: 'Plus Jakarta Sans', weight: 700, style: 'light',
+    mark: SQ + '<ellipse class="sa" cx="24" cy="24" rx="16" ry="7.5" transform="rotate(-30 24 24)" stroke-width="2.6"/><circle class="mf" cx="24" cy="24" r="6.5"/><circle class="mf" cx="37.86" cy="16" r="3"/>'
+  },
+  {
+    name: 'HR Badge', note: 'A plain "HR" monogram with an accent link bar. Clear and dependable, in the style of fintech brands.',
+    tags: ['Typographic', 'Trust'], font: 'Sora', weight: 800, style: 'caps',
+    mark: SQ + '<text class="mf" x="24" y="29.5" text-anchor="middle" font-family="Sora, Inter, sans-serif" font-weight="800" font-size="17" letter-spacing="-0.5">HR</text><rect class="ma" x="15" y="33" width="18" height="3" rx="1.5"/>'
+  },
+  {
+    name: 'Arch', note: 'An arch over a single dot: the structure that supports and shelters each employee.',
+    tags: ['Supportive', 'Calm'], font: 'Fraunces', weight: 700, style: 'accent',
+    mark: SQ + '<path class="sf" d="M13 35V24A11 11 0 0 1 35 24V35" stroke-width="4.4" stroke-linecap="round"/><circle class="ma" cx="24" cy="28" r="4"/>'
+  },
+  {
+    name: 'Chat Connect', note: 'A speech bubble with two faces joined by a smile. It points to the conversational AI assistant.',
+    tags: ['Conversational', 'Warm'], font: 'Manrope', weight: 800, style: 'pill',
+    mark: SQ + '<path class="mf" d="M10 15A4 4 0 0 1 14 11H34A4 4 0 0 1 38 15V29A4 4 0 0 1 34 33H22L15 38.5V33H14A4 4 0 0 1 10 29Z"/><circle class="mb" cx="19" cy="20" r="2.6"/><circle class="mb" cx="29" cy="20" r="2.6"/><path class="sb" d="M18.5 25.5Q24 30 29.5 25.5" stroke-width="2.4" stroke-linecap="round"/>'
+  },
+
+  /* ---- Round 2 ---- */
+  {
+    name: 'Brackets', note: 'Two brackets closing in on a dot: HR and the business meeting in the middle. It also hints at software.',
+    tags: ['Tech', 'Simple'], font: 'Space Grotesk', weight: 700, style: 'spaced',
+    mark: SQ + '<path class="sf" d="M19 14.5L11.5 24L19 33.5M29 14.5L36.5 24L29 33.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle class="ma" cx="24" cy="24" r="3.6"/>'
+  },
+  {
+    name: 'Team Pair', note: 'Two people side by side in two colours: manager and employee, or HR and staff, working together.',
+    tags: ['Human', 'Friendly'], font: 'Outfit', weight: 700, style: 'spaced',
+    mark: SQ + '<circle class="mf" cx="18" cy="17.5" r="5"/><path class="mf" d="M8.5 37A9.5 9.5 0 0 1 27.5 37Z"/><circle class="ma" cx="30" cy="17.5" r="5"/><path class="ma" d="M20.5 37A9.5 9.5 0 0 1 39.5 37Z"/>'
+  },
+  {
+    name: 'Neural H', note: 'The letter H drawn as a small neural network, with an accent node at its centre for AI.',
+    tags: ['AI', 'Monogram'], font: 'Sora', weight: 700, style: 'stack',
+    mark: SQ + '<path class="sf" d="M14 13V35M34 13V35M14 24H34" stroke-width="2.4" stroke-linecap="round"/><circle class="mf" cx="14" cy="13" r="3.4"/><circle class="mf" cx="14" cy="35" r="3.4"/><circle class="mf" cx="34" cy="13" r="3.4"/><circle class="mf" cx="34" cy="35" r="3.4"/><circle class="ma" cx="24" cy="24" r="4.4"/>'
+  },
+  {
+    name: 'Pixel C', note: 'Seven dots form a C, and the accent dot in the centre is the AI. Works well as a small app icon.',
+    tags: ['Grid', 'Digital'], font: 'Plus Jakarta Sans', weight: 800, style: 'accent',
+    mark: SQ + '<g class="mf"><circle cx="15" cy="15" r="3.6"/><circle cx="24" cy="15" r="3.6"/><circle cx="33" cy="15" r="3.6"/><circle cx="15" cy="24" r="3.6"/><circle cx="15" cy="33" r="3.6"/><circle cx="24" cy="33" r="3.6"/><circle cx="33" cy="33" r="3.6"/></g><circle class="ma" cx="24" cy="24" r="3.6"/><circle class="ma" cx="33" cy="24" r="2" opacity=".55"/>'
+  },
+  {
+    name: 'Pulse', note: 'A pulse line between two points: a live view of the workforce, from people data to reports.',
+    tags: ['Analytics', 'Live'], font: 'Manrope', weight: 800, style: 'tracked',
+    mark: SQ + '<path class="sf" d="M9.5 25H16.5L20 16.5L25.5 32L29 25H34" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle class="ma" cx="37" cy="25" r="3.4"/>'
+  },
+  {
+    name: 'AI Bubble', note: 'A speech bubble with "AI" inside. It says plainly that you can ask the app questions.',
+    tags: ['Conversational', 'Direct'], font: 'Inter', weight: 800, style: 'pillspaced',
+    mark: SQ + '<path class="mf" d="M10 15.5A4.5 4.5 0 0 1 14.5 11H33.5A4.5 4.5 0 0 1 38 15.5V28.5A4.5 4.5 0 0 1 33.5 33H21L14.5 38.5V33H14.5A4.5 4.5 0 0 1 10 28.5Z"/><text class="mb" x="24" y="27.4" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="13.5" letter-spacing="0.3">AI</text>'
+  },
+  {
+    name: 'Bridge', note: 'An arc joins two people, with a spark at the top: AI as the bridge between employer and employee.',
+    tags: ['Connection', 'Light'], font: 'Outfit', weight: 600, style: 'serifai',
+    mark: SQ + `<path class="sa" d="M13 32Q24 8 35 32" stroke-width="3" stroke-linecap="round"/><circle class="mf" cx="13" cy="32" r="4.6"/><circle class="mf" cx="35" cy="32" r="4.6"/><path class="mf" d="${star(24, 15.5, 4.8)}"/>`
+  },
+  {
+    name: 'Growth Link', note: 'A link that rises up and to the right: HR for growing companies, with a clear arrow forward.',
+    tags: ['Growth', 'Confident'], font: 'Sora', weight: 800, style: 'spaced',
+    mark: SQ + '<path class="sf" d="M16 32L33 15M22.5 15H33V25.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle class="ma" cx="15" cy="33" r="4"/>'
+  },
+  {
+    name: 'Trust Shield', note: 'A shield with a tick, for secure payroll and personal data. A good fit if security is the main message.',
+    tags: ['Security', 'Trust'], font: 'Plus Jakarta Sans', weight: 700, style: 'light',
+    mark: SQ + '<path class="mf" d="M24 8.5L37 13.5V23C37 31 31.5 36.8 24 39.5C16.5 36.8 11 31 11 23V13.5Z"/><path class="sb" d="M18 24L22.5 28.5L30.5 20" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>'
+  },
+  {
+    name: 'Loop Arrows', note: 'Two arrows chasing each other in a circle: information flowing both ways between people and HR.',
+    tags: ['Flow', 'Two-way'], font: 'Space Grotesk', weight: 700, style: 'stack',
+    mark: SQ + '<path class="sf" d="M13.5 22A11 11 0 0 1 33 16.5" stroke-width="3.6" stroke-linecap="round"/><path class="mf" d="M35.5 11.5L35.8 20.2L27.4 18Z"/><path class="sa" d="M34.5 26A11 11 0 0 1 15 31.5" stroke-width="3.6" stroke-linecap="round"/><path class="ma" d="M12.5 36.5L12.2 27.8L20.6 30Z"/>'
+  },
+
+  /* ---- Round 3: hrc.ai ---- */
+  {
+    isNew: true, name: 'hrc Tile', note: 'The short name set in the icon, with an accent dot. Short enough to work as an app icon and in a URL.',
+    tags: ['Short name', 'Typographic'], font: 'Sora', weight: 800, style: 'hrc',
+    mark: SQ + '<text class="mf" x="22.5" y="29.5" text-anchor="middle" font-family="Sora, Inter, sans-serif" font-weight="800" font-size="16.5" letter-spacing="-0.6">hrc</text><circle class="ma" cx="37.6" cy="27.6" r="2.4"/>'
+  },
+  {
+    isNew: true, name: 'Prompt', note: 'A command prompt with a cursor, as if you just typed hrc.ai. Says "you can ask it things" without a robot or sparkle.',
+    tags: ['AI', 'Product-led'], font: 'Space Grotesk', weight: 700, style: 'prompt',
+    mark: SQ + '<path class="sf" d="M12.5 16L20.5 24L12.5 32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect class="ma" x="24" y="29.5" width="12" height="4" rx="2"/>'
+  },
+  {
+    isNew: true, name: 'h Spark', note: 'A single lowercase h with an AI spark beside it. Calm and modern, with the full name in capitals next to it.',
+    tags: ['Letterform', 'AI'], font: 'Manrope', weight: 800, style: 'HRCai',
+    mark: SQ + `<path class="sf" d="M15 11V37M15 25.5A7.5 7.5 0 0 1 30 25.5V37" stroke-width="4.6" stroke-linecap="round"/><path class="ma" d="${star(35.5, 13, 5.5)}"/>`
+  },
+  {
+    isNew: true, name: 'Three Rings', note: 'The current two rings become three, one for each of h, r and c. A natural next step from today\'s logo.',
+    tags: ['Evolution', 'Geometric'], font: 'Outfit', weight: 600, style: 'hrc',
+    mark: SQ + '<circle class="sf" cx="14.5" cy="24" r="7.5" stroke-width="3"/><circle class="sa" cx="24" cy="24" r="7.5" stroke-width="3"/><circle class="sf" cx="33.5" cy="24" r="7.5" stroke-width="3"/>'
+  },
+  {
+    isNew: true, name: '.ai Tile', note: 'The icon is just ".ai", and the name puts ".ai" in a badge. Leans fully into the domain as the brand.',
+    tags: ['Domain', 'Bold'], font: 'Plus Jakarta Sans', weight: 800, style: 'hrcpill',
+    mark: SQ + '<circle class="ma" cx="12" cy="31.6" r="3.4"/><text class="mf" x="16.5" y="33.5" font-family="Plus Jakarta Sans, Inter, sans-serif" font-weight="800" font-size="22" letter-spacing="-1">ai</text>'
+  }
+];
+
+function wordmark(l) {
+  const f = `font-family:'${l.font}',Inter,sans-serif;font-weight:${l.weight}`;
+  switch (l.style) {
+    case 'pill':  return `<span class="wm" style="${f}">HRConnect<span class="pill">AI</span></span>`;
+    case 'light': return `<span class="wm" style="${f}">HR<span class="lt">Connect</span><span class="ai">.AI</span></span>`;
+    case 'caps':  return `<span class="wm" style="${f};letter-spacing:.02em">HRCONNECT<span class="ai">.AI</span></span>`;
+    case 'spaced': return `<span class="wm" style="${f}">HR Connect <span class="ai">AI</span></span>`;
+    case 'pillspaced': return `<span class="wm" style="${f}">HR Connect<span class="pill">AI</span></span>`;
+    case 'tracked': return `<span class="wm" style="${f};letter-spacing:.12em;font-size:.78em">HR CONNECT <span class="ai">AI</span></span>`;
+    case 'serifai': return `<span class="wm" style="${f}">HR Connect <span class="sai">AI</span></span>`;
+    case 'hrc': return `<span class="wm lc big" style="${f}">hrc<span class="ai">.ai</span></span>`;
+    case 'HRCai': return `<span class="wm big" style="${f}">HRC<span class="ai">.ai</span></span>`;
+    case 'hrcpill': return `<span class="wm lc big" style="${f}">hrc<span class="pill">.ai</span></span>`;
+    case 'prompt': return `<span class="wm lc big" style="${f}">hrc<span class="ai">.ai</span><span class="caret">_</span></span>`;
+    case 'stack': return `<span class="wm stk" style="${f}"><span>HR Connect</span><span class="sub">AI</span></span>`;
+    default:     return `<span class="wm" style="${f}">HRConnect<span class="ai">.AI</span></span>`;
+  }
+}
+const svg = (l, label) => `<svg viewBox="0 0 48 48" ${label ? `role="img" aria-label="${l.name} mark"` : 'aria-hidden="true"'}>${l.mark}</svg>`;
+const lockup = (l, v, stack) => `<span class="lockup v-${v}${stack ? ' stack' : ''}">${svg(l)}${wordmark(l)}</span>`;
+const icon = (l, px) => `<div><span class="v-light" style="display:block;width:${px}px;height:${px}px">${svg(l).replace('<svg', `<svg width="${px}" height="${px}"`)}</span><small>${px}</small></div>`;
+
+const spaced = l => ['spaced', 'pillspaced', 'tracked', 'serifai', 'stack'].includes(l.style);
+const short = l => ['hrc', 'HRCai', 'hrcpill', 'prompt'].includes(l.style);
+const spelling = l => short(l) ? 'hrc.ai' : spaced(l) ? 'HR Connect AI' : 'HRConnect.AI';
+const grid = document.getElementById('grid');
+grid.innerHTML = LOGOS.map((l, i) => `
+  <article class="card" data-i="${i}">
+    <div class="hero">${lockup(l, 'light')}</div>
+    <div class="swatches">
+      <div class="sw-dark">${lockup(l, 'dark')}</div>
+      <div class="sw-brand">${lockup(l, 'brand', true)}</div>
+    </div>
+    <div class="sizes">
+      ${icon(l, 64)}${icon(l, 40)}${icon(l, 32)}${icon(l, 16)}
+      <div style="margin-left:auto"><span class="lockup v-mono" style="font-size:14px">${svg(l)}${wordmark(l)}</span><small>Mono</small></div>
+    </div>
+    <div class="meta">
+      <div class="meta-top"><h3>${l.name}</h3><span class="num">${String(i + 1).padStart(2, '0')}</span></div>
+      <p>${l.note}</p>
+      <div class="tags">${l.isNew ? '<span class="tag new">New</span>' : ''}<span class="tag">${spelling(l)}</span>${l.tags.map(t => `<span class="tag">${t}</span>`).join('')}<span class="tag">${l.font}</span></div>
+      <div class="actions">
+        <button data-dl="mark">Download icon SVG</button>
+        <button data-dl="lockup">Download lockup SVG</button>
+      </div>
+    </div>
+  </article>`).join('');
+
+// Resolve CSS vars into plain fills so downloaded SVGs work anywhere.
+function resolved(l, withText) {
+  const host = document.querySelector(`.card[data-i="${LOGOS.indexOf(l)}"] .hero .lockup`);
+  const cs = getComputedStyle(host);
+  const c = k => cs.getPropertyValue(k).trim();
+  const mark = l.mark
+    .replace(/class="mb"/g, `fill="${c('--mb')}"`)
+    .replace(/class="mf"/g, `fill="${c('--mf')}"`)
+    .replace(/class="ma"/g, `fill="${c('--ma')}"`)
+    .replace(/class="sf"/g, `fill="none" stroke="${c('--mf')}"`)
+    .replace(/class="sa"/g, `fill="none" stroke="${c('--ma')}"`)
+    .replace(/class="sb"/g, `fill="none" stroke="${c('--mb')}"`);
+  if (!withText) return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="512" height="512">${mark}</svg>`;
+  const ff = `'${l.font}', Inter, sans-serif`;
+  const caps = l.style === 'caps';
+  const main = caps ? 'HRCONNECT' : 'HRConnect';
+  const acc = `fill="${c('--wa')}"`;
+  const svgHead = (h) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 ${h}" width="900" height="${h * 3}"><g transform="translate(4 ${(h - 48) / 2})">${mark}</g>`;
+  if (l.style === 'stack') {
+    return svgHead(60) + `<text x="64" y="32" font-family="${ff}" font-weight="${l.weight}" font-size="26" letter-spacing="-0.5" fill="${c('--wm')}">HR Connect</text><text x="65" y="52" font-family="${ff}" font-weight="800" font-size="13" letter-spacing="6.5" ${acc}>AI</text></svg>`;
+  }
+  const shortWords = {
+    hrc: `<tspan>hrc</tspan><tspan ${acc}>.ai</tspan>`,
+    hrcpill: `<tspan>hrc</tspan><tspan ${acc}>.ai</tspan>`,
+    HRCai: `<tspan>HRC</tspan><tspan ${acc}>.ai</tspan>`,
+    prompt: `<tspan>hrc</tspan><tspan ${acc}>.ai_</tspan>`
+  }[l.style];
+  if (shortWords) {
+    return svgHead(56).replace('viewBox="0 0 300 56" width="900"', 'viewBox="0 0 170 56" width="510"') + `<text x="64" y="38" font-family="${ff}" font-weight="${l.weight}" font-size="28" letter-spacing="-1" fill="${c('--wm')}">${shortWords}</text></svg>`;
+  }
+  const spacedWords = {
+    spaced: `<tspan>HR Connect </tspan><tspan ${acc}>AI</tspan>`,
+    pillspaced: `<tspan>HR Connect </tspan><tspan ${acc}>AI</tspan>`,
+    tracked: `<tspan>HR CONNECT </tspan><tspan ${acc}>AI</tspan>`,
+    serifai: `<tspan>HR Connect </tspan><tspan ${acc} font-family="Fraunces, Georgia, serif" font-style="italic">AI</tspan>`
+  }[l.style];
+  if (spacedWords) {
+    const tr = l.style === 'tracked';
+    return svgHead(56) + `<text x="64" y="${tr ? 36 : 38}" font-family="${ff}" font-weight="${l.weight}" font-size="${tr ? 20 : 26}" letter-spacing="${tr ? 2.4 : -0.5}" fill="${c('--wm')}">${spacedWords}</text></svg>`;
+  }
+  let words;
+  if (l.style === 'light') words = `<tspan>HR</tspan><tspan font-weight="400">Connect</tspan><tspan fill="${c('--wa')}">.AI</tspan>`;
+  else if (l.style === 'pill') words = `<tspan>${main}</tspan><tspan fill="${c('--wa')}"> AI</tspan>`;
+  else words = `<tspan>${main}</tspan><tspan fill="${c('--wa')}">.AI</tspan>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 56" width="900" height="168"><g transform="translate(4 4)">${mark}</g><text x="64" y="38" font-family="${ff}" font-weight="${l.weight}" font-size="26" letter-spacing="${caps ? '0.5' : '-0.5'}" fill="${c('--wm')}">${words}</text></svg>`;
+}
+
+grid.addEventListener('click', e => {
+  const b = e.target.closest('button[data-dl]');
+  if (!b) return;
+  const l = LOGOS[+b.closest('.card').dataset.i];
+  const blob = new Blob([resolved(l, b.dataset.dl === 'lockup')], { type: 'image/svg+xml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `hrconnect-${l.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${b.dataset.dl}.svg`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+
+document.querySelectorAll('.chip[data-pal]').forEach(btn => btn.addEventListener('click', () => {
+  document.body.dataset.pal = btn.dataset.pal;
+  document.querySelectorAll('.chip[data-pal]').forEach(x => x.setAttribute('aria-pressed', x === btn));
+}));
+</script>
+</body>
+</html>

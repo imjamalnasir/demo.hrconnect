@@ -124,7 +124,7 @@ def ai_hub(nodes):
         left, top = 50 + 37.5 * math.cos(a), 50 + 37.5 * math.sin(a)
         pills.append(f'<span class="hub-node" style="left:{left:.2f}%;top:{top:.2f}%"><span class="hub-ic">{icon(ic)}</span>{e(label)}</span>')
     svg = f'<svg class="hub-links" viewBox="0 0 400 400">{"".join(lines)}{"".join(pulses)}</svg>'
-    core = f'<span class="hub-core">{LOGO.replace("<svg ", '<svg class="hub-logo" ', 1)}<b>HR Connect AI</b></span>'
+    core = f'<span class="hub-core">{LOGO.replace("<svg ", '<svg class="hub-logo" ', 1)}<b>HRConnect.AI</b></span>'
     return f'<div class="hub" aria-hidden="true">{svg}{core}{"".join(pills)}</div>'
 
 def b_hero(b, page):
@@ -354,6 +354,13 @@ def b_spotlight(b, page):
             f'{head(b, True)}<div class="sp-tabs" role="tablist" aria-label="Choose a solution">{tabs}</div>'
             f'<div class="sp-viewport"><div class="sp-track">{"".join(out)}</div></div>{controls}</div></section>')
 
+def b_video(b, page):
+    """Animated promo video with chapter buttons. Needs promo-video.css/js (added in render)."""
+    player = ('<div class="pv-frame"><div class="pv" data-auto data-demo-href="/book-a-demo/"></div>'
+              '<div class="pv-chapters" role="group" aria-label="Video chapters"></div></div>')
+    cta = f'<div class="pv-cta">{btns(b["ctas"])}</div>' if b.get("ctas") else ""
+    return sec(head(b, True) + player + cta, {**b, "id": b.get("id")})
+
 def b_html(b, page):
     return sec(b["html"], b) if b.get("wrap", True) else b["html"]
 
@@ -422,6 +429,8 @@ def render(path, page, nav, foot):
     scripts = '<script src="/assets/js/site.js" defer></script>'
     if any(b["type"] == "calc" for b in page["blocks"]):
         scripts += '<script src="/assets/js/calculators.js" defer></script>'
+    if any(b["type"] == "video" for b in page["blocks"]):
+        scripts += '\n<link rel="stylesheet" href="/assets/css/promo-video.css">\n<script src="/assets/js/promo-video.js" defer></script>'
     canonical = C.SITE_URL + ("/" + path + "/" if path else "/")
     title = page["title"] if path == "" else f'{page["title"]} | HR Connect'
     doc = f"""<!doctype html>

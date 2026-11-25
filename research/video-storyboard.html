@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Video Storyboard</title>
+<meta name="description" content="Storyboard for a 60-second HRConnect.AI promotional video. Internal page, not linked from the website.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#6C3845; --brand-deep:#4A2530; --brand-ink:#2E1820;
+  --brand-soft:#F6EEF0; --brand-tint:#D9C8CC;
+  --ink:#1B1620; --text:#3A3340; --muted:#6B6470;
+  --bg:#FBF8F9; --line:#ECE4E7; --ok:#0F8A5F; --ok-soft:#E5F6EF;
+  --c1:#6C3845; --c2:#B97A8A; --c3:#3F7A73; --c4:#C08A2E;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+header.top{padding-top:56px;padding-bottom:8px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:5px 10px;border-radius:999px}
+h1{margin:14px 0 8px;font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.025em;color:var(--ink)}
+h2{margin:0 0 6px;font-size:24px;letter-spacing:-.02em;color:var(--ink)}
+.lead{max-width:760px;color:var(--muted);font-size:16px;margin:0}
+.btn{font:inherit;font-size:14px;font-weight:600;text-decoration:none;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.btn:hover{border-color:var(--brand-tint);background:var(--brand-soft)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-deep)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.fact{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.fact small{display:block;font-size:12px;color:var(--muted)}
+.fact strong{display:block;font-size:20px;color:var(--ink);letter-spacing:-.01em;margin-top:2px}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,1fr)}}
+
+/* Timeline */
+.timeline{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.tl-bar{display:flex;height:40px;border-radius:10px;overflow:hidden;gap:2px}
+.tl-bar a{display:block;line-height:40px;text-align:center;color:#fff;font-size:12.5px;font-weight:600;text-decoration:none;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 6px}
+.tl-bar .sm{display:none}
+@media (max-width:560px){.tl-bar a{font-size:10.5px;padding:0 3px}.tl-bar .lg{display:none}.tl-bar .sm{display:inline}}
+.tl-scenes{display:flex;gap:2px;margin-top:6px}
+.tl-scenes a{height:8px;border-radius:3px;background:var(--line)}
+.tl-scenes a:hover{background:var(--brand-tint)}
+.tl-ticks{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+
+/* Chapters & scenes */
+.chapter{padding-top:48px}
+.ch-head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.ch-dot{width:12px;height:12px;border-radius:4px;flex:none}
+.ch-time{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.ch-sub{color:var(--muted);margin:0 0 18px}
+.scene{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;scroll-margin-top:16px}
+@media (max-width:900px){.scene{grid-template-columns:1fr}}
+.frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#eee}
+.frame .art{position:absolute;left:0;top:0;width:960px;height:540px;transform-origin:0 0;transform:scale(var(--s,1));overflow:hidden}
+.frame-tag{position:absolute;left:10px;top:10px;z-index:2;font-size:11px;font-weight:700;letter-spacing:.04em;background:rgba(0,0,0,.55);color:#fff;border-radius:6px;padding:3px 7px;font-variant-numeric:tabular-nums}
+.sc-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.sc-num{font-size:12px;font-weight:700;color:var(--brand);letter-spacing:.06em;text-transform:uppercase}
+.sc-time{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.scene h3{margin:4px 0 12px;font-size:20px;letter-spacing:-.015em;color:var(--ink)}
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:104px 1fr;gap:10px;font-size:14px}
+.row dt{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.row dd{margin:0;color:var(--text)}
+.row.vo dd{font-size:15.5px;color:var(--ink);font-weight:500;border-left:3px solid var(--brand-tint);padding-left:10px}
+.row.ost dd{font-weight:700;color:var(--brand)}
+@media (max-width:480px){.row{grid-template-columns:1fr;gap:2px}}
+
+/* Extras */
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.script{white-space:pre-wrap;font:15px/1.7 Inter,system-ui,sans-serif;color:var(--ink);margin:12px 0 14px;background:var(--bg);border-radius:12px;padding:16px}
+.notes{margin:8px 0 0;padding-left:18px}
+.notes li{margin:6px 0}
+.cut{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.cut span{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--brand-soft);color:var(--brand-deep)}
+footer{padding:28px 0 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:56px}
+@media (max-width:560px){.wrap{padding:0 16px}}
+
+/* Animatic player */
+.player{position:fixed;inset:0;z-index:50;background:rgba(18,10,14,.92);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.player.open{display:flex}
+.p-stage{position:relative;width:min(100%,calc((100vh - 170px) * 16 / 9));aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.p-stage .art{position:absolute;left:0;top:0;width:960px;height:540px;transform-origin:0 0;transform:scale(var(--s,1));overflow:hidden;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.p-cap{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);max-width:86%;text-align:center;background:rgba(0,0,0,.72);color:#fff;font-size:clamp(13px,1.8vw,20px);font-weight:500;line-height:1.35;padding:8px 14px;border-radius:8px;z-index:3}
+.p-bar{width:min(100%,calc((100vh - 170px) * 16 / 9));height:5px;background:rgba(255,255,255,.18);border-radius:999px;margin-top:14px;overflow:hidden}
+.p-bar span{display:block;height:100%;width:0;background:#fff}
+.p-ctrl{display:flex;align-items:center;gap:10px;margin-top:12px;color:#fff;font-size:14px;font-variant-numeric:tabular-nums}
+.p-ctrl .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+.p-ctrl .btn:hover{background:rgba(255,255,255,.2)}
+
+/* ===== Frame artwork (960 × 540, real pixels) ===== */
+.art{font-family:Inter,system-ui,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.art *{box-sizing:border-box}
+.art b{font-weight:inherit;color:var(--hl,#D9C8CC)}
+.bg-dark{background:radial-gradient(700px 480px at 85% 0%,rgba(185,122,138,.45),transparent 60%),linear-gradient(140deg,#4A2530,#2E1820)}
+.bg-soft{background:radial-gradient(700px 480px at 90% 0%,#F1E2E6,transparent 60%),linear-gradient(180deg,#fff,#FBF8F9);color:#1B1620}
+.ring{position:absolute;border-radius:50%}
+.card{background:#fff;color:#1B1620;border-radius:20px;box-shadow:0 24px 60px -18px rgba(46,24,32,.35),0 0 0 1px rgba(46,24,32,.06)}
+.kpi{background:#FBF8F9;border-radius:12px;padding:10px 14px}
+.kpi small{display:block;font-size:12px;color:#6B6470}
+.kpi strong{display:block;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.li{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #ECE4E7}
+.av{width:34px;height:34px;border-radius:50%;background:#F6EEF0;color:#6C3845;display:grid;place-items:center;font-size:12.5px;font-weight:700;flex:none}
+.pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.ok{color:#0F8A5F;background:#E5F6EF}
+.pend{color:#9A5B00;background:#FFF4E2}
+.ey{font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.ico{display:inline-grid;place-items:center;flex:none}
+.ico svg{width:56%;height:56%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.callout{position:absolute;font-size:13px;font-weight:700;background:#1B1620;color:#fff;border-radius:999px;padding:7px 13px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#B97A8A,transparent);box-shadow:0 0 18px 4px rgba(185,122,138,.6)}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <span class="eyebrow">Internal · not linked from the site</span>
+  <h1>HRConnect.AI promo video storyboard</h1>
+  <p class="lead">A suggested 60-second promotional video in four parts: introduction, products, services and a call to book a demo. Each scene has a rough frame, the voiceover, the on-screen text and notes for the animator. Press "Play animatic" to watch the frames in sequence with the voiceover as subtitles.</p>
+  <div class="actions">
+    <button class="btn primary" id="play">▶ Play animatic</button>
+    <a class="btn" href="#script">Full script</a>
+    <a class="btn" href="#cutdowns">30s and 15s versions</a>
+    <a class="btn" href="#production">Production notes</a>
+  </div>
+  <div class="facts">
+    <div class="fact"><small>Length</small><strong>60 seconds</strong></div>
+    <div class="fact"><small>Scenes</small><strong id="f-scenes">11</strong></div>
+    <div class="fact"><small>Voiceover</small><strong id="f-words">0 words</strong></div>
+    <div class="fact"><small>Master format</small><strong>16:9 · 1920×1080</strong></div>
+  </div>
+  <div class="timeline" aria-label="Timeline">
+    <div class="tl-bar" id="tl-bar"></div>
+    <div class="tl-scenes" id="tl-scenes"></div>
+    <div class="tl-ticks"><span>0:00</span><span>0:15</span><span>0:30</span><span>0:45</span><span>1:00</span></div>
+  </div>
+</header>
+
+<main class="wrap" id="board"></main>
+
+<section class="wrap" id="script" style="padding-top:56px">
+  <h2>Full voiceover script</h2>
+  <p class="lead">About 120 words, which is a relaxed pace for 60 seconds and leaves room for the logo and end card to breathe.</p>
+  <div class="panel">
+    <div class="script" id="script-text"></div>
+    <button class="btn" id="copy-script">Copy script</button>
+  </div>
+</section>
+
+<section class="wrap" id="cutdowns" style="padding-top:56px">
+  <h2>Shorter versions</h2>
+  <p class="lead">Cut from the same footage, so they need no extra animation.</p>
+  <div class="grid2">
+    <div class="panel">
+      <h3 style="margin:0;color:var(--ink)">30 seconds · LinkedIn and paid social</h3>
+      <div class="cut"><span>02 Logo · 3s</span><span>03 Promise · 5s</span><span>04 Payroll · 5s</span><span>06 Receipts · 4s</span><span>07 Assistant · 5s</span><span>10 Demo · 4s</span><span>11 End card · 4s</span></div>
+      <p style="margin:0;color:var(--muted)">Drop the hook, leave and the team scenes. Trim each remaining scene by about a second.</p>
+    </div>
+    <div class="panel">
+      <h3 style="margin:0;color:var(--ink)">15 seconds · stories and pre-roll</h3>
+      <div class="cut"><span>03 Promise · 5s</span><span>06 Receipts · 4s</span><span>11 End card · 6s</span></div>
+      <p style="margin:0;color:var(--muted)">One idea: AI does the busywork. Put "Book a 30-minute demo" on the end card.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="production" style="padding-top:56px">
+  <h2>Production notes</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h3 style="margin:0;color:var(--ink)">Look and sound</h3>
+      <ul class="notes">
+        <li><b>Colours:</b> plum #6C3845, deep plum #2E1820, soft pink #F6EEF0. Green #0F8A5F only for "Approved" states.</li>
+        <li><b>Type:</b> Inter, bold for headlines, with the second half of each headline in the soft pink tint.</li>
+        <li><b>Motion:</b> smooth, short eases (300–500 ms). UI cards slide up 24px and fade in; list rows appear one after another.</li>
+        <li><b>Music:</b> light, modern electronic or piano at about 100–110 BPM. It builds into the products section and resolves on the end card.</li>
+        <li><b>Voiceover:</b> warm, confident and unhurried. One voice, no jargon.</li>
+        <li><b>Sound effects:</b> soft clicks on approvals and a gentle "whoosh" for the receipt scan only. Keep them subtle.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3 style="margin:0;color:var(--ink)">Formats and delivery</h3>
+      <ul class="notes">
+        <li><b>Master:</b> 16:9, 1920×1080, for the website, YouTube and demos.</li>
+        <li><b>LinkedIn feed:</b> 1:1 (1080×1080) or 4:5 (1080×1350). Keep key UI inside the centre square when animating the master.</li>
+        <li><b>Stories and Reels:</b> 9:16 (1080×1920) for the 15-second cut.</li>
+        <li><b>Captions:</b> burn them in. Most social video plays muted, and the on-screen text should still tell the story without sound.</li>
+        <li><b>UI:</b> use the real product screens where possible. The names and figures in these frames are the same sample data used on the website.</li>
+        <li><b>End card:</b> hold for at least 3 seconds with the URL hrconnect.ai/book-a-demo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">Internal planning page. It is blocked in robots.txt, marked noindex, and nothing on the site links to it.</footer>
+
+<div class="player" id="player" role="dialog" aria-modal="true" aria-label="Animatic player">
+  <div class="p-stage" id="p-stage"><div class="p-cap" id="p-cap"></div></div>
+  <div class="p-bar"><span id="p-prog"></span></div>
+  <div class="p-ctrl">
+    <button class="btn" id="p-prev" aria-label="Previous scene">◀</button>
+    <button class="btn" id="p-pause">Pause</button>
+    <button class="btn" id="p-next" aria-label="Next scene">▶</button>
+    <span id="p-time">0:00 / 1:00</span>
+    <button class="btn" id="p-close">Close</button>
+  </div>
+</div>
+
+<script>
+/* ---------- Small helpers ---------- */
+const P = {
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+  pay: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>',
+  cal: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  receipt: '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+  coins: '<circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18M7 6h1v4M16.71 13.88l.7.71-2.82 2.82"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>',
+  exit: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
+  self: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.66V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.66"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>',
+  spark: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4"/>',
+  case: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+  sheet: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>'
+};
+const ico = (k, size, bg, fg, r) => `<span class="ico" style="width:${size}px;height:${size}px;border-radius:${r ?? Math.round(size * .28)}px;background:${bg};color:${fg}"><svg viewBox="0 0 24 24">${P[k]}</svg></span>`;
+const mark = (size, onDark) => `<svg viewBox="0 0 32 32" width="${size}" height="${size}" style="flex:none"><rect width="32" height="32" rx="9" fill="${onDark ? '#fff' : '#6C3845'}"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="${onDark ? '#6C3845' : '#fff'}" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="${onDark ? '#B97A8A' : '#D9C8CC'}" stroke-width="2.6"/></svg>`;
+const brand = (size, onDark) => `<span style="display:inline-flex;align-items:center;gap:${size * .45}px;font-size:${size}px;font-weight:700;letter-spacing:-.02em;line-height:1;color:${onDark ? '#fff' : '#1B1620'}">${mark(size * 1.45, onDark)}<span>HRConnect<span style="color:${onDark ? '#D9C8CC' : '#6C3845'}">.AI</span></span></span>`;
+const rings = list => list.map(([x, y, d, w, c]) => `<span class="ring" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px;border:${w}px solid ${c}"></span>`).join('');
+const W = 'rgba(255,255,255,';
+const corner = (onDark) => `<div style="position:absolute;right:28px;top:24px;opacity:.9">${brand(15, onDark)}</div>`;
+const caption = (ey, title, onDark) => `<div style="position:absolute;left:56px;top:52px;width:300px">
+  <div class="ey" style="font-size:13px;color:${onDark ? '#D9C8CC' : '#6C3845'}">${ey}</div>
+  <div style="--hl:${onDark ? '#D9C8CC' : '#6C3845'};margin-top:12px;font-size:38px;font-weight:800;line-height:1.06;letter-spacing:-.035em;color:${onDark ? '#fff' : '#1B1620'}">${title}</div></div>`;
+
+/* ---------- Frames (960 × 540) ---------- */
+const F = {
+hook: `<div class="art" style="background:#EFEAEC;color:#1B1620">
+  ${[['sheet', 'Leave_tracker_FINAL_v3.xlsx', 70, 60, -5, '#0F8A5F'], ['mail', 'Re: Re: Fwd: expense receipts', 470, 40, 4, '#3B6FB6'], ['sheet', 'Payroll_Oct_check.xlsx', 120, 270, 3, '#0F8A5F'], ['file', 'Policy handbook 2019.pdf', 560, 250, -4, '#B3261E']].map(([k, t, x, y, r, c]) => `
+  <div class="card" style="position:absolute;left:${x}px;top:${y}px;width:330px;transform:rotate(${r}deg);border-radius:12px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#F4F1F2;border-bottom:1px solid #E5DFE1;font-size:13px;font-weight:600">${ico(k, 22, c, '#fff', 6)}${t}</div>
+    <div style="padding:12px;display:grid;gap:7px">${[90, 70, 82, 55].map(w => `<span style="display:block;height:9px;width:${w}%;background:#ECE6E8;border-radius:4px"></span>`).join('')}</div>
+  </div>`).join('')}
+  <div style="position:absolute;left:395px;top:205px;width:180px;transform:rotate(-6deg);background:#FFE58A;color:#5B4A00;font-size:16px;font-weight:700;line-height:1.3;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.18)">Who approved Jordan's leave??</div>
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:22px 56px;background:linear-gradient(0deg,rgba(27,22,32,.88),rgba(27,22,32,0));color:#fff;font-size:34px;font-weight:800;letter-spacing:-.03em">Too many tools. Too much admin.</div>
+</div>`,
+
+logo: `<div class="art bg-dark" style="display:grid;place-items:center">
+  ${rings([[-140, -160, 480, 60, W + '.05)'], [640, 260, 460, 60, W + '.04)']])}
+  <div style="position:relative;text-align:center">
+    <div style="display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:28px">
+      <svg viewBox="0 0 120 80" width="210" height="140"><circle cx="45" cy="40" r="26" fill="none" stroke="#fff" stroke-width="8"/><circle cx="75" cy="40" r="26" fill="none" stroke="#D9C8CC" stroke-width="8"/></svg>
+    </div>
+    ${brand(54, true)}
+    <div style="margin-top:22px;font-size:20px;color:${W}.7)">There's a simpler way.</div>
+  </div>
+  <div class="callout" style="left:610px;top:120px;background:#fff;color:#2E1820">Rings slide together, then the name types on</div>
+</div>`,
+
+promise: `<div class="art bg-dark">
+  ${rings([[560, -220, 640, 80, W + '.05)']])}
+  ${corner(true)}
+  <div style="position:absolute;left:64px;top:110px;width:760px">
+    <div class="ey" style="font-size:15px;color:#D9C8CC">AI-powered HR</div>
+    <div style="margin-top:16px;font-size:64px;font-weight:800;line-height:1.02;letter-spacing:-.04em">The AI-powered HR app that <b>connects everything</b></div>
+  </div>
+  <div style="position:absolute;left:64px;bottom:64px;display:flex;gap:10px">
+    ${['Records', 'Payroll', 'Leave', 'Expenses'].map((t, i) => `<span style="font-size:18px;font-weight:700;padding:10px 18px;border-radius:999px;background:${i === 1 ? '#fff' : W + '.1)'};color:${i === 1 ? '#4A2530' : '#fff'};border:1px solid ${W}.2)">${t}</span>`).join('<span style="align-self:center;width:26px;height:2px;background:rgba(255,255,255,.35)"></span>')}
+  </div>
+</div>`,
+
+payroll: `<div class="art bg-soft">
+  ${caption('Payroll', 'Monthly payroll, <b>approved and paid</b>', false)}${corner(false)}
+  <div class="card" style="position:absolute;left:390px;top:70px;width:520px;padding:22px 24px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:17px;font-weight:700">Payroll run · October 2026</div><span class="pill ok">Approved · ready to pay</span></div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div class="kpi"><small>Employees</small><strong>48</strong></div><div class="kpi"><small>Gross pay</small><strong>$398,400</strong></div><div class="kpi"><small>Net pay</small><strong>$301,250</strong></div>
+    </div>
+    <div style="margin-top:8px">
+      ${[['SM', 'Sarah Mitchell', 'Base salary + bonus', '$9,200'], ['AM', 'Ashley Martinez', 'Joined Oct 12 · pro-rated', '$3,980'], ['CN', 'Chris Nguyen', 'Loan installment deducted', '$6,150']].map(([i, n, d, v]) => `
+      <div class="li"><span class="av">${i}</span><div style="flex:1"><div style="font-size:15px;font-weight:700">${n}</div><div style="font-size:12.5px;color:#6B6470">${d}</div></div><div style="font-size:15px;font-weight:700">${v}</div><span class="pill ok">Approved</span></div>`).join('')}
+    </div>
+  </div>
+  <div class="callout" style="left:96px;top:300px">Loans, expenses and final pay flow in</div>
+  <div class="callout" style="left:150px;top:350px;background:#6C3845">Payslips go out when marked paid</div>
+</div>`,
+
+leave: `<div class="art bg-soft">
+  ${caption('Leave', 'Leave requests, <b>without the back-and-forth</b>', false)}${corner(false)}
+  <div class="card" style="position:absolute;left:390px;top:70px;width:520px;padding:22px 24px">
+    <div style="font-size:17px;font-weight:700">Time-off requests</div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div class="kpi"><small>Annual left</small><strong>14.5 days</strong></div><div class="kpi"><small>Sick used</small><strong>3 days</strong></div><div class="kpi"><small>Carried over</small><strong>5 days</strong></div>
+    </div>
+    <div style="margin-top:8px">
+      ${[['MB', 'Michael Brooks', 'Annual leave · 4 working days', 'pend', 'Pending'], ['EC', 'Emily Carter', 'Bereavement leave · 3 working days', 'ok', 'Approved'], ['JL', 'Jordan Lee', 'Sick leave · 1 working day', 'ok', 'Approved']].map(([i, n, d, c, s]) => `
+      <div class="li"><span class="av">${i}</span><div style="flex:1"><div style="font-size:15px;font-weight:700">${n}</div><div style="font-size:12.5px;color:#6B6470">${d}</div></div><span class="pill ${c}">${s}</span></div>`).join('')}
+    </div>
+  </div>
+  <div class="callout" style="left:96px;top:300px">Balance shown before they ask</div>
+  <div class="callout" style="left:150px;top:350px;background:#6C3845">Manager taps Approve</div>
+</div>`,
+
+receipt: `<div class="art bg-dark">
+  ${caption('Expenses', 'Snap the receipt. <b>AI fills in the claim.</b>', true)}${corner(true)}
+  <div style="position:absolute;left:410px;top:44px;width:230px;height:460px;border-radius:34px;background:#111;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.45)">
+    <div style="position:relative;height:100%;border-radius:26px;background:#2b2b2b;overflow:hidden;display:grid;place-items:center">
+      <div style="width:150px;background:#FFFDF7;color:#333;padding:16px 14px;font:11px/1.6 ui-monospace,Menlo,monospace;transform:rotate(-2deg)">
+        <div style="text-align:center;font-weight:700;font-size:12px">UNION STREET GRILL</div><div style="text-align:center">Nov 8</div>
+        <div style="border-top:1px dashed #bbb;margin:8px 0"></div><div>2x Lunch ..... 72.00</div><div>Drinks ....... 14.40</div>
+        <div style="border-top:1px dashed #bbb;margin:8px 0"></div><div style="font-weight:700">TOTAL ....... 86.40</div>
+      </div>
+      <div class="scan" style="top:52%"></div>
+    </div>
+  </div>
+  <div class="card" style="position:absolute;left:670px;top:150px;width:250px;padding:18px">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#6C3845">${ico('spark', 24, '#F6EEF0', '#6C3845', 7)}Read by AI</div>
+    ${[['Merchant', 'Union Street Grill'], ['Date', 'Nov 8'], ['Amount', '$86.40'], ['Category', 'Meals & entertainment']].map(([a, b]) => `<div style="margin-top:10px"><div style="font-size:11.5px;color:#6B6470">${a}</div><div style="font-size:15px;font-weight:700;background:#FBF8F9;border-radius:8px;padding:6px 9px;margin-top:3px">${b}</div></div>`).join('')}
+  </div>
+</div>`,
+
+assistant: `<div class="art bg-soft">
+  ${caption('HR AI assistant', 'Answers from <b>your own policies</b>', false)}${corner(false)}
+  <div class="card" style="position:absolute;left:390px;top:66px;width:520px;padding:22px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700">${ico('spark', 32, '#6C3845', '#fff', 10)}HR assistant</div>
+    <div style="align-self:flex-end;max-width:78%;background:#6C3845;color:#fff;border-radius:16px 16px 4px 16px;padding:12px 15px;font-size:15.5px">How much bereavement leave do I get?</div>
+    <div style="max-width:86%;background:#F6EEF0;border-radius:16px 16px 16px 4px;padding:13px 15px;font-size:15.5px;line-height:1.45">Under your company's Leave Policy you get <b style="color:#6C3845;font-weight:700">3 working days</b> of bereavement leave. Want me to start a request?
+      <div style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#6B6470;background:#fff;border-radius:999px;padding:4px 10px">${ico('file', 18, 'transparent', '#6C3845', 4)}Source: Leave Policy</div>
+    </div>
+    <div style="display:flex;gap:8px"><span class="pill" style="background:#6C3845;color:#fff;font-size:13px;padding:8px 14px">Start leave request</span><span class="pill" style="background:#fff;border:1px solid #ECE4E7;color:#1B1620;font-size:13px;padding:8px 14px">Read the policy</span></div>
+  </div>
+</div>`,
+
+teams: `<div class="art" style="background:#fff;color:#1B1620">
+  <div style="position:absolute;inset:0 0 auto 0;height:150px;background:linear-gradient(140deg,#7A4150,#4A2530)"></div>
+  <div style="position:absolute;left:56px;top:40px;color:#fff"><div class="ey" style="font-size:13px;color:#F1DDE2">Solutions</div><div style="--hl:#F1DDE2;margin-top:8px;font-size:38px;font-weight:800;letter-spacing:-.035em">Made for every team <b>that touches HR</b></div></div>
+  <div style="position:absolute;left:56px;right:56px;top:176px;bottom:96px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:16px">
+    ${[['users', 'HR Teams', 'Less admin, one source of truth'], ['pay', 'Finance & Payroll', 'Accurate payroll and spend control'], ['case', 'Business Owners', 'Your workforce at a glance'], ['self', 'Employees & Managers', 'Requests and approvals in one portal']].map(([k, t, d]) => `
+    <div style="display:flex;align-items:center;gap:20px;border:1px solid #ECE4E7;border-radius:20px;padding:26px;box-shadow:0 10px 30px -14px rgba(46,24,32,.25)">
+      ${ico(k, 64, '#F6EEF0', '#6C3845', 16)}
+      <div><div style="font-size:22px;font-weight:800;letter-spacing:-.02em">${t}</div><div style="margin-top:3px;font-size:16px;color:#6C3845;font-weight:600">${d}</div></div>
+    </div>`).join('')}
+  </div>
+</div>`,
+
+hub: `<div class="art bg-dark">
+  ${caption('One connected platform', 'Start with what you need. <b>Add more as you grow.</b>', true)}${corner(true)}
+  <svg style="position:absolute;left:0;top:0" width="960" height="540">
+    ${[[500, 130], [780, 130], [470, 290], [810, 290], [520, 440], [760, 440]].map(([x, y]) => `<line x1="640" y1="290" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="6 6"/>`).join('')}
+  </svg>
+  <div style="position:absolute;left:570px;top:226px;width:140px;height:128px;border-radius:24px;background:#fff;color:#4A2530;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:0 0 0 10px rgba(255,255,255,.08),0 20px 50px rgba(0,0,0,.4)">${ico('pay', 46, '#F6EEF0', '#6C3845', 13)}<div style="font-size:16px;font-weight:800">Payroll</div></div>
+  ${[['users', 'Core HR', 500, 130], ['cal', 'Leave', 780, 130], ['receipt', 'Expenses', 470, 290], ['coins', 'Loans', 810, 290], ['exit', 'Offboarding', 520, 440], ['spark', 'AI assistant', 760, 440]].map(([k, t, x, y]) => `
+  <div style="position:absolute;left:${x - 62}px;top:${y - 24}px;width:124px;display:flex;align-items:center;gap:8px;background:${W}.1);border:1px solid ${W}.2);border-radius:14px;padding:8px 10px">${ico(k, 28, '#fff', '#6C3845', 8)}<span style="font-size:13.5px;font-weight:700;white-space:nowrap">${t}</span></div>`).join('')}
+</div>`,
+
+demo: `<div class="art bg-soft">
+  <div style="position:absolute;left:56px;top:70px;width:390px">
+    <div class="ey" style="font-size:13px;color:#6C3845">Book a demo</div>
+    <div style="--hl:#6C3845;margin-top:12px;font-size:44px;font-weight:800;line-height:1.05;letter-spacing:-.035em">See it with <b>your own team's data</b></div>
+    <div style="margin-top:16px;font-size:18px;line-height:1.45;color:#6B6470">In 30 minutes, we'll show you payroll, leave and expenses set up the way your company works.</div>
+  </div>
+  ${corner(false)}
+  <div class="card" style="position:absolute;left:500px;top:80px;width:410px;padding:22px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:17px;font-weight:700">30-minute demo</div><span style="font-size:13px;color:#6B6470">December</span></div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center;font-size:12px;color:#6B6470">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].map(d => `<span>${d}</span>`).join('')}
+      ${Array.from({ length: 10 }, (_, i) => `<span style="padding:9px 0;border-radius:9px;font-size:14px;font-weight:600;${i === 7 ? 'background:#6C3845;color:#fff' : 'background:#FBF8F9;color:#1B1620'}">${i + 1}</span>`).join('')}
+    </div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${['10:00', '11:30', '14:00'].map((t, i) => `<span style="text-align:center;padding:9px 0;border-radius:9px;font-size:14px;font-weight:700;border:1.5px solid ${i === 1 ? '#6C3845' : '#ECE4E7'};color:${i === 1 ? '#6C3845' : '#1B1620'}">${t}</span>`).join('')}</div>
+    <div style="margin-top:16px;text-align:center;background:#6C3845;color:#fff;border-radius:999px;padding:12px;font-size:15px;font-weight:700">Confirm demo</div>
+  </div>
+</div>`,
+
+end: `<div class="art bg-dark" style="display:grid;place-items:center;text-align:center">
+  ${rings([[-160, 260, 520, 70, W + '.04)'], [660, -200, 520, 70, W + '.05)']])}
+  <div style="position:relative">
+    ${brand(50, true)}
+    <div style="margin-top:22px;font-size:26px;font-weight:600;color:${W}.85)">The AI-powered HR app that connects everything</div>
+    <div style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#4A2530;border-radius:999px;padding:15px 28px;font-size:20px;font-weight:800">Book a 30-minute demo <span class="ico" style="width:20px;height:20px"><svg viewBox="0 0 24 24" style="width:100%;height:100%;stroke-width:2.6">${P.arrow}</svg></span></div>
+    <div style="margin-top:16px;font-size:19px;font-weight:600;color:${W}.75)">hrconnect.ai/book-a-demo</div>
+  </div>
+</div>`
+};
+
+/* ---------- Storyboard data ---------- */
+const CHAPTERS = [
+  { id: 'introduction', title: 'Introduction', color: 'var(--c1)', sub: 'Name the pain in one beat, then introduce the brand and the promise.' },
+  { id: 'products', title: 'Products', color: 'var(--c2)', sub: 'Four quick product moments, each with one clear benefit. Payroll first, because everything flows into it.' },
+  { id: 'services', title: 'Services', color: 'var(--c3)', sub: 'Who it is for and how it grows with you, taken from the Solutions pages.' },
+  { id: 'demo', title: 'Book a demo', short: 'Demo', color: 'var(--c4)', sub: 'One clear call to action, held long enough to read.' }
+];
+const SCENES = [
+  { ch: 0, f: 'hook', dur: 4, title: 'The problem',
+    vo: 'Spreadsheets, email threads, five different tools.',
+    ost: 'Too many tools. Too much admin.',
+    visual: 'Fast cuts of messy spreadsheets, a long email chain and a sticky note. Windows pile up and tilt slightly.',
+    audio: 'Music starts low. Soft notification pings overlap, then cut out.' },
+  { ch: 0, f: 'logo', dur: 4, title: 'Logo reveal',
+    vo: 'There\'s a simpler way. Meet HRConnect.AI.',
+    ost: 'HRConnect.AI',
+    visual: 'The clutter collapses to the centre. Two rings slide together and link, then the name types on.',
+    audio: 'Music lifts. A single soft chime as the rings link.' },
+  { ch: 0, f: 'promise', dur: 6, title: 'The promise',
+    vo: 'The AI-powered HR app where records, payroll, leave and expenses share one set of data.',
+    ost: 'The AI-powered HR app that connects everything',
+    visual: 'Headline builds word by word. Four module chips appear and a line connects them, with Payroll lit up.',
+    audio: 'Beat comes in.' },
+  { ch: 1, f: 'payroll', dur: 6, title: 'Payroll',
+    vo: 'Run payroll with approvals. Loans, expenses and final settlements flow into every run.',
+    ost: 'Monthly payroll, approved and paid',
+    visual: 'Payroll card slides up. Rows appear one by one, each turning "Approved". Status changes to "Ready to pay".',
+    audio: 'Soft click on each approval.' },
+  { ch: 1, f: 'leave', dur: 5, title: 'Leave',
+    vo: 'Employees see their balance before they ask. Managers approve from one list.',
+    ost: 'Leave requests, without the back-and-forth',
+    visual: 'Balances count up. Michael\'s request is pending, then the cursor taps Approve and it turns green.',
+    audio: 'Click on Approve.' },
+  { ch: 1, f: 'receipt', dur: 5, title: 'Expenses with AI',
+    vo: 'Snap a receipt, and AI fills in the claim.',
+    ost: 'Snap the receipt. AI fills in the claim.',
+    visual: 'Phone camera frames a receipt. A scan line passes over it and the fields fill in on the right, one after another.',
+    audio: 'Gentle "whoosh" with the scan.' },
+  { ch: 1, f: 'assistant', dur: 6, title: 'HR AI assistant',
+    vo: 'Got a policy question? The HR assistant answers from your own policies.',
+    ost: 'Answers from your own policies',
+    visual: 'Employee types a question. The answer streams in with its source shown, then offers to start a leave request.',
+    audio: 'Light typing sounds, music continues.' },
+  { ch: 2, f: 'teams', dur: 7, title: 'For every team',
+    vo: 'Built for every team that touches HR: HR, finance, business owners and every employee.',
+    ost: 'Made for every team that touches HR',
+    visual: 'Four team cards flip in one after another, in time with the voiceover.',
+    audio: 'Four light beats, one per card.' },
+  { ch: 2, f: 'hub', dur: 6, title: 'One connected platform',
+    vo: 'Start with what you need, and switch on more modules as you grow.',
+    ost: 'Start with what you need. Add more as you grow.',
+    visual: 'Payroll sits in the centre. Modules light up around it and dotted lines connect each one to Payroll.',
+    audio: 'Music builds toward the close.' },
+  { ch: 3, f: 'demo', dur: 6, title: 'Book a demo',
+    vo: 'See it with your own team\'s data. Book a 30-minute demo.',
+    ost: 'See it with your own team\'s data',
+    visual: 'A calendar card slides in. A date and time are picked and the "Confirm demo" button pulses once.',
+    audio: 'Click on confirm.' },
+  { ch: 3, f: 'end', dur: 5, title: 'End card',
+    vo: 'HRConnect.AI. The HR app that connects everything.',
+    ost: 'Book a 30-minute demo · hrconnect.ai/book-a-demo',
+    visual: 'Logo centred, tagline below, then the call-to-action button and URL. Hold until the end.',
+    audio: 'Music resolves on the final chord.' }
+];
+
+/* ---------- Render ---------- */
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+let t = 0;
+SCENES.forEach((s, i) => { s.start = t; t += s.dur; s.end = t; s.n = String(i + 1).padStart(2, '0'); });
+const TOTAL = t;
+
+document.getElementById('board').innerHTML = CHAPTERS.map((c, ci) => {
+  const list = SCENES.filter(s => s.ch === ci);
+  return `<section class="chapter" id="${c.id}">
+    <div class="ch-head"><span class="ch-dot" style="background:${c.color}"></span><h2>${ci + 1}. ${c.title}</h2><span class="ch-time">${fmt(list[0].start)}–${fmt(list.at(-1).end)}</span></div>
+    <p class="ch-sub">${c.sub}</p>
+    ${list.map(s => `
+    <article class="scene" id="scene-${s.n}">
+      <div class="frame" data-scale>${F[s.f]}<span class="frame-tag">${fmt(s.start)}–${fmt(s.end)}</span></div>
+      <div>
+        <div class="sc-top"><span class="sc-num">Scene ${s.n}</span><span class="sc-time">${s.dur} seconds</span></div>
+        <h3>${s.title}</h3>
+        <dl class="rows">
+          <div class="row vo"><dt>Voiceover</dt><dd>"${s.vo}"</dd></div>
+          <div class="row ost"><dt>On screen</dt><dd>${s.ost}</dd></div>
+          <div class="row"><dt>Visual</dt><dd>${s.visual}</dd></div>
+          <div class="row"><dt>Audio</dt><dd>${s.audio}</dd></div>
+        </dl>
+      </div>
+    </article>`).join('')}
+  </section>`;
+}).join('');
+
+/* Timeline */
+document.getElementById('tl-bar').innerHTML = CHAPTERS.map((c, ci) => {
+  const d = SCENES.filter(s => s.ch === ci).reduce((a, s) => a + s.dur, 0);
+  return `<a href="#${c.id}" style="flex:${d};background:${c.color}" title="${c.title} · ${d}s"><span class="lg">${c.title}</span><span class="sm">${c.short || c.title}</span></a>`;
+}).join('');
+document.getElementById('tl-scenes').innerHTML = SCENES.map(s => `<a href="#scene-${s.n}" style="flex:${s.dur}" title="Scene ${s.n}: ${s.title} (${fmt(s.start)})"></a>`).join('');
+
+/* Script and facts */
+const scriptText = CHAPTERS.map((c, ci) => `${c.title.toUpperCase()}\n` + SCENES.filter(s => s.ch === ci).map(s => `[${fmt(s.start)}] ${s.vo}`).join('\n')).join('\n\n');
+document.getElementById('script-text').textContent = scriptText;
+const words = SCENES.reduce((a, s) => a + s.vo.split(/\s+/).length, 0);
+document.getElementById('f-words').textContent = words + ' words';
+document.getElementById('f-scenes').textContent = SCENES.length;
+document.getElementById('copy-script').addEventListener('click', async e => {
+  const b = e.currentTarget;
+  try { await navigator.clipboard.writeText(scriptText); b.textContent = 'Copied'; }
+  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById('script-text')); getSelection().removeAllRanges(); getSelection().addRange(r); b.textContent = 'Selected, press Ctrl/Cmd+C'; }
+  setTimeout(() => b.textContent = 'Copy script', 1800);
+});
+
+/* Scale frames */
+const ro = new ResizeObserver(es => es.forEach(e => e.target.style.setProperty('--s', e.contentRect.width / 960)));
+document.querySelectorAll('[data-scale]').forEach(el => ro.observe(el));
+
+/* ---------- Animatic player ---------- */
+const player = document.getElementById('player'), stage = document.getElementById('p-stage'), cap = document.getElementById('p-cap'),
+      prog = document.getElementById('p-prog'), time = document.getElementById('p-time'), pauseBtn = document.getElementById('p-pause');
+let idx = 0, elapsed = 0, last = 0, raf = 0, paused = false;
+ro.observe(stage); stage.dataset.scale = '';
+function show(i) {
+  idx = Math.max(0, Math.min(SCENES.length - 1, i));
+  elapsed = SCENES[idx].start;
+  stage.querySelectorAll('.art').forEach(n => n.remove());
+  stage.insertAdjacentHTML('afterbegin', F[SCENES[idx].f]);
+  cap.textContent = SCENES[idx].vo;
+}
+function tick(now) {
+  if (!paused) {
+    elapsed += (now - last) / 1000;
+    if (elapsed >= TOTAL) { elapsed = TOTAL; paused = true; pauseBtn.textContent = 'Replay'; }
+    else if (elapsed >= SCENES[idx].end) show(idx + 1), elapsed = SCENES[idx].start;
+  }
+  last = now;
+  prog.style.width = (elapsed / TOTAL * 100) + '%';
+  time.textContent = `${fmt(Math.floor(elapsed))} / ${fmt(TOTAL)}`;
+  raf = requestAnimationFrame(tick);
+}
+function open() {
+  player.classList.add('open'); document.body.style.overflow = 'hidden';
+  paused = false; pauseBtn.textContent = 'Pause'; show(0);
+  last = performance.now(); cancelAnimationFrame(raf); raf = requestAnimationFrame(tick);
+  pauseBtn.focus();
+}
+function close() { player.classList.remove('open'); document.body.style.overflow = ''; cancelAnimationFrame(raf); }
+document.getElementById('play').addEventListener('click', open);
+document.getElementById('p-close').addEventListener('click', close);
+document.getElementById('p-prev').addEventListener('click', () => show(idx - 1));
+document.getElementById('p-next').addEventListener('click', () => show(idx + 1));
+pauseBtn.addEventListener('click', () => {
+  if (elapsed >= TOTAL) { show(0); paused = false; pauseBtn.textContent = 'Pause'; return; }
+  paused = !paused; pauseBtn.textContent = paused ? 'Play' : 'Pause';
+});
+document.addEventListener('keydown', e => {
+  if (!player.classList.contains('open')) return;
+  if (e.key === 'Escape') close();
+  if (e.key === 'ArrowRight') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === ' ') { e.preventDefault(); pauseBtn.click(); }
+});
+</script>
+</body>
+</html>

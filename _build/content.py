@@ -107,9 +107,9 @@ M_SELF = {"title": "My dashboard", "kpis": [("Leave left", "17.5 d"), ("Next pay
                    ("Annual leave Dec 14–17", "Waiting for manager", "", "Pending"),
                    ("Expense claim · rideshare", "$42.00", "", "Approved")]}
 M_AI = {"title": "HR assistant", "rows": [("You", "How many days of annual leave can I carry over?", ""),
-                                          ("HR Connect AI", "Under the Leave Policy (section 4.2) you can carry over up to 5 days into next year.", ""),
+                                          ("HRConnect.AI", "Under the Leave Policy (section 4.2) you can carry over up to 5 days into next year.", "", None, "HC"),
                                           ("You", "Where do I download my payslip?", ""),
-                                          ("HR Connect AI", "Go to Me → Payslips, open the month and choose Download.", "")]}
+                                          ("HRConnect.AI", "Go to Me → Payslips, open the month and choose Download.", "", None, "HC")]}
 M_POLICY = {"title": "My policies", "rows": [("Leave Policy 2026", "Updated Jan 2, 2026 · PDF", "", "Read"),
                                              ("Code of Conduct", "Updated Mar 15, 2026 · PDF", "", "Read"),
                                              ("Travel & Expenses Policy", "Updated Oct 1, 2026 · PDF", "", "Unread")],
@@ -482,6 +482,10 @@ PAGES[""] = {"title": "HR Connect | HR, Payroll & Expense Software for Growing C
          "lead": "AI reads the merchant, date and amount from each receipt. Approved claims and cash advances are paid through payroll, so finance has one process.",
          "ctas": [("Explore expenses", P("expenses")), ("Book a demo", "/book-a-demo/")], "mock": M_EXPENSE},
     ]},
+    # 60-second promo video (assets/js/promo-video.js), storyboard in research/video-storyboard.html.
+    {"type": "video", "id": "video", "eyebrow": "See it in action", "title": "HRConnect.AI in 60 seconds",
+     "lead": "Payroll, leave, expenses and the AI assistant, all working from one set of data.",
+     "ctas": [("Book a demo", "/book-a-demo/"), ("Explore the platform", "/product/")]},
     SPOTLIGHT,
     {"type": "cards", "eyebrow": "One platform", "title": "Everything your HR team runs on", "lead": "Each module works on its own and gets better together.",
      "items": [(ic, n, d, P(s)) for s, n, d, ic in PRODUCTS[:6]], "cols": 3},
