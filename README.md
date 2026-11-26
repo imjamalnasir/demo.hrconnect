@@ -57,3 +57,9 @@ These features aren't live in the app yet, so the site doesn't offer them (payro
 ## Research
 
 `research/` holds the competitor analysis and the page plan. `robots.txt` asks search engines not to index it.
+
+`research/contracts.html` lists sample client contracts (MSA, Order Form, DPA, SLA) and employee and contractor contracts (offer letter, employment contract, contractor agreement, mutual NDA) as PDF and Word files. Nothing on the site links to it. To change the wording, edit `research/contracts/src/contracts.py` and rebuild everything, including the page:
+
+```bash
+python3 research/contracts/src/build_contracts.py
+```

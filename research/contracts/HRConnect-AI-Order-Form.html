@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<title>Order Form · HRConnect.AI sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:18mm 18mm 20mm;
+  @bottom-left{content:"HRConnect.AI \00b7  Order Form \00b7  Sample template";font:8pt Inter,system-ui,sans-serif;color:#8A8290}
+  @bottom-right{content:"Page " counter(page) " of " counter(pages);font:8pt Inter,system-ui,sans-serif;color:#8A8290}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#2E2833;font-size:9.6pt;line-height:1.55;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media screen{body{background:#EDE7EA}.doc{width:210mm;margin:24px auto;background:#fff;padding:18mm;box-shadow:0 10px 30px rgba(0,0,0,.12)}}
+.top{display:flex;align-items:center;justify-content:space-between;padding-bottom:4mm;border-bottom:1.5px solid #6C3845}
+.brand{display:flex;align-items:center;gap:7px;font-weight:700;font-size:11pt;color:#1B1620;letter-spacing:-.01em}
+.brand .ai{color:#6C3845}
+.kind{font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6C3845}
+h1{margin:7mm 0 2mm;font-size:22pt;line-height:1.1;letter-spacing:-.025em;color:#1B1620}
+.purpose{margin:0 0 4mm;color:#6B6470;font-size:10pt}
+.note{background:#F6EEF0;border-left:3px solid #6C3845;border-radius:4px;padding:2.6mm 3.6mm;font-size:8.4pt;color:#4A2530;margin-bottom:6mm}
+.parties p{margin:0 0 2.2mm}
+h2{font-size:11pt;color:#1B1620;margin:6mm 0 2mm;letter-spacing:-.01em;break-after:avoid}
+h2 .hn{color:#6C3845;display:inline-block;min-width:9mm}
+p{margin:0 0 2mm}
+p.num{padding-left:9mm;text-indent:-9mm}
+p.num .n{display:inline-block;width:9mm;text-indent:0;color:#6C3845;font-weight:600}
+p.plain,p.bul,table{margin-left:9mm}
+p.bul{padding-left:4mm;text-indent:-4mm;margin-left:13mm}
+p.bul::before{content:"\2022";display:inline-block;width:4mm;text-indent:0;color:#6C3845}
+.flat p.plain,.flat table{margin-left:0;width:100%}
+.letter h2{margin-top:5mm}
+.letter p.body,.letter p.bul{margin-left:0}
+.letter p.bul{margin-left:4mm}
+.letter table{margin-left:0;width:100%}
+.letter .parties p{margin-bottom:4mm}
+table{border-collapse:collapse;width:calc(100% - 9mm);margin-bottom:3mm;font-size:8.8pt;break-inside:auto}
+tr{break-inside:avoid}
+th,td{text-align:left;vertical-align:top;padding:1.6mm 2.4mm;border:1px solid #E2D7DB}
+table.kv th{width:34%;background:#FBF8F9;font-weight:600;color:#1B1620}
+table.grid thead th{background:#6C3845;color:#fff;font-weight:600;border-color:#6C3845}
+.ph{background:#F6E3E8;color:#6C3845;border-radius:2px;padding:0 1px;font-weight:500}
+thead .ph{background:rgba(255,255,255,.2);color:#fff}
+.sigs{break-inside:avoid;margin-top:8mm}
+.sigt{margin-bottom:4mm}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:10mm}
+.sig-h{font-weight:700;color:#1B1620;margin-bottom:1mm}
+.signote{font-size:8.8pt;color:#6B6470}
+.line{border-bottom:1px solid #B9AEB3;height:10mm;display:flex;align-items:flex-end;padding-bottom:1mm}
+.line span{font-size:7.8pt;color:#8A8290;text-transform:uppercase;letter-spacing:.08em}
+.schedule{break-before:page}
+.schedule h2{font-size:13pt;margin-top:0}
+.schedule + .schedule{break-before:auto;margin-top:10mm}
+.schedule table{margin-left:0;width:100%}
+.schedule p.bul{margin-left:4mm}
+</style></head>
+<body><div class="doc flat">
+<div class="top"><div class="brand"><svg width="20" height="20" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#6C3845"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="#fff" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="#D9C8CC" stroke-width="2.6"/></svg><span>HRConnect<span class="ai">.AI</span></span></div><div class="kind">Client contract · sample</div></div>
+<h1>Order Form</h1>
+<p class="purpose">What the customer is buying: modules, employee count, fees, term and start date. Signed for each new subscription or upgrade.</p>
+<div class="note">Sample template. Replace everything in <span class="ph">[brackets]</span>, delete what doesn&#x27;t apply, and have it reviewed by a qualified lawyer in your jurisdiction before use. It is not legal advice.</div>
+<section class="parties"><p>Order Form number: <span class="ph">[OF-0001]</span>  ·  Date: <span class="ph">[date]</span></p><p>This Order Form is made under the Master Subscription Agreement between <span class="ph">[HR Connect legal entity name]</span> (“HR Connect”) and the Customer named below, dated <span class="ph">[date]</span> (the “Agreement”). Terms defined in the Agreement have the same meaning here.</p></section>
+<h2>Customer details</h2><table class="kv"><tr><th>Customer legal name</th><td><span class="ph">[Customer legal name]</span></td></tr><tr><th>Registered address</th><td><span class="ph">[address]</span></td></tr><tr><th>Company number</th><td><span class="ph">[company number]</span></td></tr><tr><th>Tax registration number</th><td><span class="ph">[if applicable]</span></td></tr><tr><th>Billing contact</th><td><span class="ph">[name, email]</span></td></tr><tr><th>Notices contact</th><td><span class="ph">[name, email]</span></td></tr><tr><th>Account owner (admin)</th><td><span class="ph">[name, email]</span></td></tr></table><h2>Subscription</h2><table class="kv"><tr><th>Plan</th><td>☐ Basic   ☐ Premium</td></tr><tr><th>Modules included</th><td>Basic: core HR, payroll, leave, loans, offboarding, employee self-service, company policies, AI assistant, celebrations, reports and permissions. Premium adds expenses and advances, AI receipt scanning and expense analytics.</td></tr><tr><th>Number of employees</th><td><span class="ph">[number]</span> active employee records</td></tr><tr><th>Legal entities and locations</th><td><span class="ph">[number of entities / locations]</span></td></tr><tr><th>Start date</th><td><span class="ph">[date]</span></td></tr><tr><th>Initial term</th><td><span class="ph">[12]</span> months from the start date</td></tr><tr><th>Renewal</th><td>Renews automatically for the same period unless either party gives <span class="ph">[30]</span> days&#x27; notice</td></tr><tr><th>Service Level Agreement</th><td>☐ Standard   ☐ Attached</td></tr></table><h2>Fees</h2><table class="grid"><thead><tr><th>Item</th><th>Quantity</th><th>Unit price</th><th>Billing</th><th>Total</th></tr></thead><tbody><tr><td>Platform subscription</td><td><span class="ph">[number]</span> employees</td><td>$<span class="ph">[0.00]</span> per employee per month</td><td><span class="ph">[Monthly in advance]</span></td><td>$<span class="ph">[0.00]</span></td></tr><tr><td>Onboarding and data migration</td><td>1</td><td>$<span class="ph">[0.00]</span></td><td>One-off, on signature</td><td>$<span class="ph">[0.00]</span></td></tr><tr><td>Training sessions</td><td><span class="ph">[number]</span></td><td>$<span class="ph">[0.00]</span></td><td>One-off</td><td>$<span class="ph">[0.00]</span></td></tr><tr><td>Discount</td><td></td><td></td><td></td><td>−$<span class="ph">[0.00]</span></td></tr><tr><td>Total for the initial term</td><td></td><td></td><td></td><td>$<span class="ph">[0.00]</span></td></tr></tbody></table><p class="body">Additional employees above the number in this Order Form are charged at the same unit price, pro rata, and invoiced <span class="ph">[monthly / quarterly]</span> in arrears.</p><p class="body">Payment terms: invoices are due within <span class="ph">[30]</span> days. Currency: <span class="ph">[USD]</span>. Fees exclude taxes.</p><h2>Special terms</h2><p class="body"><span class="ph">[Any agreed changes to the Agreement, such as a price lock, a pilot period or custom onboarding. Write “None” if there are none.]</span></p>
+<section class="sigs"><h2 class="sigt">Signatures</h2><div class="sig-grid"><div class="sig"><div class="sig-h">Signed for and on behalf of HR Connect</div><div class="line"><span>Signature</span></div><div class="line"><span>Name</span></div><div class="line"><span>Title</span></div><div class="line"><span>Date</span></div></div><div class="sig"><div class="sig-h">Signed for and on behalf of the Customer</div><div class="line"><span>Signature</span></div><div class="line"><span>Name</span></div><div class="line"><span>Title</span></div><div class="line"><span>Date</span></div></div></div></section>
+
+</div></body></html>
