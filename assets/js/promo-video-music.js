@@ -1,4 +1,4 @@
-/* Background music for the HRConnect.AI promo video (research/promo-video.html only).
+/* Background music for the HRConnect.AI promo video (home page and research/promo-video.html).
 
    Source and license: an original composition made for HRConnect.AI and synthesised live in the
    browser with the Web Audio API. It uses no audio files, samples or third-party music, so there
@@ -10,7 +10,7 @@
    restarts with the video. Browsers block audio until the viewer interacts, so it starts on the
    first click or key press in the player (Play, the sound button, a chapter, and so on).
 
-   This file doesn't change assets/js/promo-video.js, which the public home page also uses. */
+   Load it after assets/js/promo-video.js, which sets up the player (root.pv) it attaches to. */
 (() => {
 'use strict';
 

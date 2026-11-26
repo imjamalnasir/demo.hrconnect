@@ -430,7 +430,7 @@ def render(path, page, nav, foot):
     if any(b["type"] == "calc" for b in page["blocks"]):
         scripts += '<script src="/assets/js/calculators.js" defer></script>'
     if any(b["type"] == "video" for b in page["blocks"]):
-        scripts += '\n<link rel="stylesheet" href="/assets/css/promo-video.css">\n<script src="/assets/js/promo-video.js" defer></script>'
+        scripts += '\n<link rel="stylesheet" href="/assets/css/promo-video.css">\n<script src="/assets/js/promo-video.js" defer></script>\n<script src="/assets/js/promo-video-music.js" defer></script>'
     canonical = C.SITE_URL + ("/" + path + "/" if path else "/")
     title = page["title"] if path == "" else f'{page["title"]} | HR Connect'
     doc = f"""<!doctype html>
