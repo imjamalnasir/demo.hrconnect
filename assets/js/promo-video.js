@@ -210,7 +210,8 @@ S.push({ ch: 3, dur: 5, bg: 'dark', hold: true, vo: 'HRConnect.AI. The HR app th
   html: A('0,0,.7', .15, 'left:0;width:960px;top:146px;text-align:center', `<span class="pv-glowf" data-k="logo" style="display:inline-block">${brand(52, true)}</span>`) +
     A('blur', .6, 'left:0;width:960px;top:236px;text-align:center;font-size:26px;font-weight:600;color:rgba(255,255,255,.88)', 'The AI-powered HR app that connects everything') +
     A('up', 1.0, 'left:0;width:960px;top:300px;text-align:center', `<span class="pv-shine pv-glow" data-k="cta" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#4A2530;border-radius:999px;padding:15px 28px;font-size:20px;font-weight:800">Book a 30-minute demo ${ico('arrow', 22, 'transparent', '#4A2530', 0)}</span>`) +
-    A('fade', 1.4, 'left:0;width:960px;top:384px;text-align:center;font-size:19px;font-weight:600;color:rgba(255,255,255,.75)', 'hrconnect.ai/book-a-demo') });
+    A('fade', 1.4, 'left:0;width:960px;top:384px;text-align:center;font-size:19px;font-weight:600;color:rgba(255,255,255,.75)', 'hrconnect.ai/book-a-demo') +
+    A('fade', 1.9, 'left:0;width:960px;top:112px;text-align:center;font-size:14px;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.7)', '<a class="pv-link" href="https://consultifyglobal.com/" target="_blank" rel="noopener" tabindex="-1">Consultify Global LLC.</a> presents') });
 
 /* ---------- Per-scene effects (driven by local time lt) ---------- */
 const FX = [
@@ -426,7 +427,8 @@ function init(root) {
   root.querySelector('[data-fs]').addEventListener('click', () => {
     if (document.fullscreenElement) document.exitFullscreen(); else root.requestFullscreen?.();
   });
-  stage.addEventListener('click', toggle);
+  // Links inside the video (the end card's company link) open without toggling play
+  stage.addEventListener('click', e => { if (!e.target.closest('a')) toggle(); });
   root.addEventListener('keydown', e => {
     if (e.target.closest('a')) return;
     if (e.key === ' ' || e.key === 'k') { e.preventDefault(); toggle(); }

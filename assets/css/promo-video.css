@@ -28,6 +28,8 @@
 .pv-scene{position:absolute;inset:0;display:none}
 .pv-scene.on{display:block}
 .pv-a{will-change:transform,opacity;opacity:0}
+.pv-stage a.pv-link{color:#fff;font-weight:600;text-decoration:none;pointer-events:auto;cursor:pointer}
+.pv-stage a.pv-link:hover{color:#fff;text-decoration:underline}
 .pv-ey{font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .pv-h{font-weight:800;letter-spacing:-.035em;line-height:1.05}
 .pv-card{background:#fff;color:#1B1620;border-radius:20px;box-shadow:0 26px 60px -18px rgba(46,24,32,.38),0 0 0 1px rgba(46,24,32,.06)}
