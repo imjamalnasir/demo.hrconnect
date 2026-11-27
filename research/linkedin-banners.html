@@ -9,7 +9,7 @@
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@700&display=swap" rel="stylesheet" crossorigin="anonymous">
 <style>
 :root{
   --brand:#6C3845; --brand-deep:#4A2530; --brand-ink:#2E1820;
@@ -60,7 +60,7 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:13px;border-top:1px soli
 .bg-plum{background:radial-gradient(800px 500px at 100% 0%,rgba(255,255,255,.12),transparent 60%),linear-gradient(140deg,#7A4150 0%,#5A2E3A 100%)}
 .bg-soft{background:radial-gradient(900px 600px at 90% 0%,#F1E2E6,transparent 60%),linear-gradient(180deg,#FFFFFF,#FBF8F9);color:var(--ink)}
 .ring{position:absolute;border-radius:50%;pointer-events:none}
-.brandmark{display:inline-flex;align-items:center;gap:.45em;font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.brandmark{font-family:Sora,Inter,sans-serif;display:inline-flex;align-items:center;gap:.45em;font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}
 .brandmark svg{width:1.45em;height:1.45em;flex:none}
 .brandmark .ai{color:var(--acc,#D9C8CC)}
 .ey{font-weight:700;letter-spacing:.14em;text-transform:uppercase}
@@ -117,7 +117,7 @@ const arrow = (size) => `<span class="chk" style="display:inline-block;width:${s
 /* Logo: current Linked Rings mark. light = for dark backgrounds */
 const brand = (size, onDark) => {
   const tile = onDark ? '#FFFFFF' : '#6C3845', r1 = onDark ? '#6C3845' : '#FFFFFF', r2 = onDark ? '#B97A8A' : '#D9C8CC';
-  return `<span class="brandmark" style="font-size:${size}px;color:${onDark ? '#fff' : '#1B1620'};--acc:${onDark ? '#D9C8CC' : '#6C3845'}"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="${tile}"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="${r1}" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="${r2}" stroke-width="2.6"/></svg><span>HRConnect<span class="ai">.AI</span></span></span>`;
+  return `<span class="brandmark" style="font-size:${size}px;color:${onDark ? '#fff' : '#1B1620'};--acc:${onDark ? '#D9C8CC' : '#6C3845'}"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="${tile}"/><path d="M14 13V35M34 13V35M14 24H34" fill="none" stroke="${r1}" stroke-width="2.4" stroke-linecap="round"/><circle cx="14" cy="13" r="3.4" fill="${r1}"/><circle cx="14" cy="35" r="3.4" fill="${r1}"/><circle cx="34" cy="13" r="3.4" fill="${r1}"/><circle cx="34" cy="35" r="3.4" fill="${r1}"/><circle cx="24" cy="24" r="4.4" fill="${r2}"/></svg><span>HRConnect<span class="ai">.AI</span></span></span>`;
 };
 const rings = (list) => list.map(([x, y, d, w, c]) => `<span class="ring" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px;border:${w}px solid ${c}"></span>`).join('');
 

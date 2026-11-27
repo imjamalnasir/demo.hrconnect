@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Spotlight Backgrounds</title>
+<meta name="description" content="Dark animated background options for the home page Solutions spotlight, based on the Neural H logo. Internal page, not linked from the website.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+/* ---- Page chrome ---- */
+.top{padding:56px 0 36px;background:var(--bg-alt);border-bottom:1px solid var(--line)}
+.top .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:5px 10px;border-radius:999px}
+.top h1{margin:14px 0 8px;font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.025em}
+.top p{max-width:720px;color:var(--muted);font-size:16px;margin:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;align-items:center}
+.toolbar > span{font-size:13px;color:var(--muted);margin-right:4px}
+.chip{font:inherit;font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;text-decoration:none}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.chip:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.jump a{font-size:13px;font-weight:500;color:var(--brand);text-decoration:none;padding:6px 12px;border-radius:999px;background:var(--brand-soft)}
+.opt-label{padding:40px 0 16px;scroll-margin-top:8px}
+.group-label{padding-top:64px}
+.group-label h2{font-size:clamp(26px,3.2vw,34px)}
+.opt-label .n{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.opt-label h2{margin:4px 0 6px;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em}
+.opt-label p{margin:0;color:var(--muted);max-width:760px}
+.opt-label .notes{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.opt-label .notes span{font-size:12px;padding:3px 9px;border-radius:6px;background:var(--brand-soft);color:var(--brand-deep)}
+.page-foot{padding:40px 0 56px;color:var(--muted);font-size:13px}
+
+/* ---- Dark spotlight sample ---- */
+.sb{position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  --bg-a:#1B1620;--bg-b:#2E1820;--shade:20,14,18;
+  background:radial-gradient(800px 500px at 80% 40%,rgba(108,56,69,.45),transparent 65%),linear-gradient(135deg,var(--bg-a),var(--bg-b))}
+body[data-pal="black"] .sb{--bg-a:#0A0A0A;--bg-b:#161616;--shade:8,8,8;background:radial-gradient(800px 500px at 80% 40%,rgba(255,255,255,.06),transparent 65%),linear-gradient(135deg,var(--bg-a),var(--bg-b))}
+.sb canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+/* Darkening behind the text column so copy always reads clearly */
+.sb::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(var(--shade),.82) 0%,rgba(var(--shade),.6) 34%,rgba(var(--shade),0) 62%),
+             linear-gradient(180deg,rgba(var(--shade),.55) 0%,rgba(var(--shade),0) 28%)}
+.sb > .wrap{position:relative;z-index:2}
+.sb .section-head h2{color:#fff}
+.sb .section-head p{color:rgba(255,255,255,.72)}
+.sb .eyebrow{color:var(--brand-tint)}
+body[data-pal="black"] .sb .eyebrow{color:#BDBDBD}
+.sb .sp-tab{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.78);backdrop-filter:blur(4px)}
+.sb .sp-tab:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+.sb .sp-tab[aria-selected="true"]{background:#fff;border-color:#fff;color:var(--brand)}
+body[data-pal="black"] .sb .sp-tab[aria-selected="true"]{color:#0A0A0A}
+.sb .sp-title{color:#fff}
+.sb .lead,.sb .split p.lead{color:rgba(255,255,255,.78)}
+.sb .checks li{color:rgba(255,255,255,.86)}
+.sb .checks li svg{color:var(--brand-tint)}
+body[data-pal="black"] .sb .checks li svg{color:#D4D4D4}
+.sb .mock{border-color:rgba(255,255,255,.18);box-shadow:0 30px 70px -20px rgba(0,0,0,.6),0 0 0 8px rgba(255,255,255,.06)}
+@media (max-width:900px){
+  .sb::before{background:linear-gradient(180deg,rgba(var(--shade),.78) 0%,rgba(var(--shade),.55) 55%,rgba(var(--shade),.15) 100%)}
+}
+/* Option 5: home hero lines with travelling dots (copied from .hs-lines in site.css) */
+.sb-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.sb-lines path{fill:none;stroke:rgba(255,255,255,.05);stroke-width:1;vector-effect:non-scaling-stroke}
+.sb-lines circle{fill:#F2B8C9;fill-opacity:.4;filter:drop-shadow(0 0 4px rgba(242,184,201,.35))}
+body[data-pal="black"] .sb-lines circle{fill:#DCDCDC;filter:drop-shadow(0 0 4px rgba(220,220,220,.35))}
+@media (prefers-reduced-motion:reduce){.sb-lines circle{display:none}}
+</style>
+</head>
+<body data-pal="brand">
+
+<header class="top">
+  <div class="wrap">
+    <span class="tag">Internal · not linked from the site</span>
+    <h1>Spotlight background animations</h1>
+    <p>Dark, animated backgrounds for the home page "Solutions" spotlight, built from the Neural H logo idea: nodes joined by lines, with light pulses travelling from one node to the next. Each sample uses the real spotlight content so you can judge how well the text and product card read on top.</p>
+    <div class="toolbar" role="group" aria-label="Palette">
+      <span>Palette</span>
+      <button class="chip" type="button" data-pal="brand" aria-pressed="true">Plum (current)</button>
+      <button class="chip" type="button" data-pal="black" aria-pressed="false">Black</button>
+    </div>
+    <nav class="jump" aria-label="Options">
+      <a href="#opt-drift">1 · Neural Drift</a>
+      <a href="#opt-lattice">2 · Neural H Lattice</a>
+      <a href="#opt-latticel">2A · Large H</a>
+      <a href="#opt-latticexl">2B · Extra-large H</a>
+      <a href="#opt-latticexxl">2C · Huge H</a>
+      <a href="#opt-latticegiant">2D · Giant H</a>
+      <a href="#opt-latticexlclear">2E · Extra-large H, clear left</a>
+      <a href="#opt-latticerota">2F · Gentle 3D tilt</a>
+      <a href="#opt-latticerotd">2I · Softer 3D tilt</a>
+      <a href="#opt-latticerotb">2G · Full 3D spin</a>
+      <a href="#opt-latticerotc">2H · Slow deep zoom</a>
+      <a href="#opt-layers">3 · Signal Layers</a>
+      <a href="#opt-hub">4 · Hub Constellation</a>
+      <a href="#opt-herolines">5 · Hero Lines (home)</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap opt-label" id="opt-drift">
+  <div class="n">Option 1</div>
+  <h2>Neural Drift</h2>
+  <p>Free-floating nodes drift slowly; lines fade in between close neighbours and light pulses hop from node to node. The most organic and "alive" option.</p>
+  <div class="notes"><span>Calm</span><span>Organic</span><span>~14 pulses</span></div>
+</div>
+<section class="sb" aria-label="Neural Drift background sample">
+  <canvas data-scene="drift" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-lattice">
+  <div class="n">Option 2</div>
+  <h2>Neural H Lattice</h2>
+  <p>A grid of large, faint Neural H marks: corner nodes, a bar and an accent centre. Pulses run along each H and jump to the next one; the centre node glows as a pulse passes. The most on-brand option.</p>
+  <div class="notes"><span>On-brand</span><span>Structured</span><span>~12 pulses</span></div>
+</div>
+<section class="sb" aria-label="Neural H Lattice background sample">
+  <canvas data-scene="lattice" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label group-label" id="h-sizes">
+  <div class="n">Option 2 at bigger sizes</div>
+  <h2>Neural H Lattice, bigger</h2>
+  <p>The same Neural H Lattice as option 2, scaled up. Each step makes every H bigger, so fewer of them fit in the section. Lines, dots and the moving light dots grow to match.</p>
+</div>
+<div class="wrap opt-label" id="opt-latticel">
+  <div class="n">Option 2A</div>
+  <h2>Large H</h2>
+  <p>Option 2 with each H cell at 240px (1.5× option 2). Same layout, colours and motion.</p>
+  <div class="notes"><span>Cell 240px</span><span>1.5× option 2</span></div>
+</div>
+<section class="sb" aria-label="Large H background sample">
+  <canvas data-scene="latticeL" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticexl">
+  <div class="n">Option 2B</div>
+  <h2>Extra-large H</h2>
+  <p>Option 2 with each H cell at 340px (about 2× option 2). Same layout, colours and motion.</p>
+  <div class="notes"><span>Cell 340px</span><span>about 2× option 2</span></div>
+</div>
+<section class="sb" aria-label="Extra-large H background sample">
+  <canvas data-scene="latticeXL" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticexxl">
+  <div class="n">Option 2C</div>
+  <h2>Huge H</h2>
+  <p>Option 2 with each H cell at 480px (3× option 2). Same layout, colours and motion.</p>
+  <div class="notes"><span>Cell 480px</span><span>3× option 2</span></div>
+</div>
+<section class="sb" aria-label="Huge H background sample">
+  <canvas data-scene="latticeXXL" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticegiant">
+  <div class="n">Option 2D</div>
+  <h2>Giant H</h2>
+  <p>Option 2 with each H cell at 700px (about 4.5× option 2). Same layout, colours and motion.</p>
+  <div class="notes"><span>Cell 700px</span><span>about 4.5× option 2</span></div>
+</div>
+<section class="sb" aria-label="Giant H background sample">
+  <canvas data-scene="latticeGiant" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticexlclear">
+  <div class="n">Option 2E · based on 2B</div>
+  <h2>Extra-large H, clear left side</h2>
+  <p>Option 2B's extra-large H marks (340px), but the H marks behind the text fade almost to nothing, then come up to full strength from the middle of the section to the product card. The text sits on a nearly plain dark background.</p>
+  <div class="notes"><span>Cell 340px</span><span>Left side ~6% strength</span><span>Full strength behind card</span></div>
+</div>
+<section class="sb" aria-label="Extra-large H, clear left side background sample">
+  <canvas data-scene="latticeXLClear" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticerota">
+  <div class="n">Option 2F · based on 2E</div>
+  <h2>Gentle 3D tilt</h2>
+  <p>Each H tilts back and forth in 3D (up to about 57°) around its own random axis, at a calm pace, and breathes in and out slightly. Like 2E, the left side stays nearly clear behind the text. Nearer parts of each H are drawn bigger and brighter.</p>
+  <div class="notes"><span>Cell 340px</span><span>Tilt ±57°</span><span>Slow</span><span>Zoom ±10%</span></div>
+</div>
+<section class="sb" aria-label="Gentle 3D tilt background sample">
+  <canvas data-scene="latticeRotA" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticerotd">
+  <div class="n">Option 2I · based on 2F</div>
+  <h2>Softer 3D tilt</h2>
+  <p>A calmer version of 2F. Each H tilts only slightly in 3D (up to about 32°), zooms in and out just a little, and everything moves slowly: the tilt, the zoom, the drift and the travelling light dots. Like 2E and 2F, the left side stays nearly clear behind the text.</p>
+  <div class="notes"><span>Cell 340px</span><span>Tilt ±32° (2F: ±57°)</span><span>About half 2F's speed</span><span>Zoom ±5% (2F: ±10%)</span><span>Dots 40% slower</span></div>
+</div>
+<section class="sb" aria-label="Softer 3D tilt background sample">
+  <canvas data-scene="latticeRotD" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticerotb">
+  <div class="n">Option 2G · based on 2E</div>
+  <h2>Full 3D spin</h2>
+  <p>Smaller H marks that spin all the way round in 3D, each on its own axis and direction, with the axis slowly wandering. A quicker zoom in and out. Like 2E, the left side stays nearly clear behind the text. Nearer parts of each H are drawn bigger and brighter.</p>
+  <div class="notes"><span>Cell 280px</span><span>Full spin</span><span>Medium-fast</span><span>Zoom ±18%</span></div>
+</div>
+<section class="sb" aria-label="Full 3D spin background sample">
+  <canvas data-scene="latticeRotB" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-latticerotc">
+  <div class="n">Option 2H · based on 2E</div>
+  <h2>Slow deep zoom</h2>
+  <p>The biggest H marks. Each one turns slowly through a wide angle (up to about 77°) and zooms far in and out, very slowly, so the depth changes gradually. Like 2E, the left side stays nearly clear behind the text. Nearer parts of each H are drawn bigger and brighter.</p>
+  <div class="notes"><span>Cell 440px</span><span>Tilt ±77°</span><span>Very slow</span><span>Zoom ±32%</span></div>
+</div>
+<section class="sb" aria-label="Slow deep zoom background sample">
+  <canvas data-scene="latticeRotC" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-layers">
+  <div class="n">Option 3</div>
+  <h2>Signal Layers</h2>
+  <p>A layered network like a neural-net diagram, set behind the product card. Signals flow left to right through the layers with a soft trail. Says "AI at work" most clearly.</p>
+  <div class="notes"><span>AI-forward</span><span>Directional</span><span>Right-weighted</span></div>
+</div>
+<section class="sb" aria-label="Signal Layers background sample">
+  <canvas data-scene="layers" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-hub">
+  <div class="n">Option 4</div>
+  <h2>Hub Constellation</h2>
+  <p>An accent hub sits behind the product card, with slowly turning rings of nodes. Pulses travel in and out along the spokes, and a soft wave ripples out from the hub every few seconds.</p>
+  <div class="notes"><span>Focus on product</span><span>Radial</span><span>Gentle waves</span></div>
+</div>
+<section class="sb" aria-label="Hub Constellation background sample">
+  <canvas data-scene="hub" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+<div class="wrap opt-label" id="opt-herolines">
+  <div class="n">Option 5</div>
+  <h2>Hero Lines (from the home page)</h2>
+  <p>The background from the home page hero slider: four faint lines cross the section and small pink dots travel along them, fading in and out. Pure SVG with no script, so it is the lightest option.</p>
+  <div class="notes"><span>Minimal</span><span>Already on the site</span><span>No JavaScript</span></div>
+</div>
+<section class="sb" aria-label="Hero Lines background sample">
+  <svg class="sb-lines" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path id="sbl-l0" d="M0 40 L1200 150"/><path id="sbl-l1" d="M820 0 L1200 420"/><path id="sbl-l2" d="M0 610 L1200 500"/><path id="sbl-l3" d="M0 230 L420 640"/><circle r="3" opacity="0"><animateMotion dur="11s" begin="0s" repeatCount="indefinite"><mpath href="#sbl-l0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.92;1" dur="11s" begin="0s" repeatCount="indefinite"/></circle><circle r="3" opacity="0"><animateMotion dur="11s" begin="5.5s" repeatCount="indefinite"><mpath href="#sbl-l0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.92;1" dur="11s" begin="5.5s" repeatCount="indefinite"/></circle><circle r="3" opacity="0"><animateMotion dur="7.5s" begin="3s" repeatCount="indefinite"><mpath href="#sbl-l1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.92;1" dur="7.5s" begin="3s" repeatCount="indefinite"/></circle><circle r="3" opacity="0"><animateMotion dur="12s" begin="1.5s" repeatCount="indefinite"><mpath href="#sbl-l2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.92;1" dur="12s" begin="1.5s" repeatCount="indefinite"/></circle><circle r="3" opacity="0"><animateMotion dur="9s" begin="6s" repeatCount="indefinite"><mpath href="#sbl-l3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.92;1" dur="9s" begin="6s" repeatCount="indefinite"/></circle></svg>
+  <div class="wrap"><div class="section-head center"><div class="eyebrow">Solutions</div><h2>Made for every team that touches HR</h2><p>See how HRConnect.AI works for the people who use it every day.</p></div><div class="sp-tabs" role="tablist" aria-label="Choose a solution"><button class="sp-tab" type="button" role="tab" aria-selected="true" tabindex="0">HR Teams</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Finance &amp; Payroll</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Business Owners</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Employees &amp; Managers</button><button class="sp-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Global Teams</button></div><div class="sp-slide"><div class="split"><div><div class="eyebrow">For HR Teams</div><h3 class="sp-title">Less admin, one source of truth</h3><p class="lead">Keep employee records, time off, offboarding and policies in one place, and let employees serve themselves.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Complete employee profiles with documents and org chart</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Time-off requests, balances and carry-over handled for you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Exit checklists that finish with a final settlement</span></li></ul><div class="sp-cta"><a class="btn btn-light" href="#">See HR Teams<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div><div><div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><b>People · Records</b></div><div class="mock-body"><div class=mock-kpis><div class="mock-kpi"><small>Employees</small><strong>128</strong></div><div class="mock-kpi"><small>On leave</small><strong>6</strong></div><div class="mock-kpi"><small>Docs expiring</small><strong>3</strong></div></div><div class="mock-row"><span class="av">EC</span><span class="t"><b>Emily Carter</b><span>Certification expires in 21 days</span></span><span class="pill warn">Renew</span></div><div class="mock-row"><span class="av">DR</span><span class="t"><b>Daniel Reyes</b><span>Joined Nov 3 · profile complete</span></span><span class="pill ok">Done</span></div><div class="mock-row"><span class="av">JL</span><span class="t"><b>Jessica Lee</b><span>Annual leave · 5 days</span></span><span class="pill ok">Approved</span></div><div class="mock-foot">All records up to date except <b>3 documents</b></div></div></div></div></div></div></div>
+</section>
+</main>
+
+<footer class="page-foot"><div class="wrap">Internal design reference. This page is blocked in robots.txt, marked noindex, and nothing on the site links to it. Animations pause when off screen and show a still frame when the visitor prefers reduced motion.</div></footer>
+
+<script>
+(() => {
+const TAU = Math.PI * 2;
+const rnd = (a, b) => a + Math.random() * (b - a);
+const pick = a => a[(Math.random() * a.length) | 0];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Colours for each palette: line, node, accent node, pulse core, pulse glow.
+const PALS = {
+  brand: { line: '217,200,204', node: '217,200,204', accent: '185,122,138', core: '255,255,255', glow: '231,185,198' },
+  black: { line: '210,210,210', node: '220,220,220', accent: '160,160,160', core: '255,255,255', glow: '200,200,200' }
+};
+let P = PALS.brand;
+let FADE = () => 1; // optional left-side dimming, set per scene each frame
+
+/* ---------- Shared graph + pulse engine ----------
+   A scene supplies: build(w,h), update(t,dt), nodes[], neighbours(i) and drawBase(ctx,t).
+   The engine moves pulses along edges from node to node and draws glows. */
+function makeEngine(canvas, scene) {
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0, dpr = 1, pulses = [], last = 0, t = 0, running = false, visible = false, raf = 0;
+
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, r.width); h = Math.max(1, r.height);
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    scene.build(w, h);
+    pulses = [];
+    if (reduce || !running) { warm(); draw(); }
+  }
+
+  function spawn() {
+    const start = scene.startNode ? scene.startNode() : (Math.random() * scene.nodes.length) | 0;
+    if (start < 0) return;
+    const nb = scene.neighbours(start, -1);
+    if (!nb.length) return;
+    pulses.push({ a: start, b: pick(nb), t: 0, speed: rnd(scene.speed[0], scene.speed[1]), trail: [], hops: 0 });
+  }
+
+  function step(dt) {
+    t += dt;
+    scene.update(t, dt);
+    for (const n of scene.nodes) n.glow = Math.max(0, (n.glow || 0) - dt * 1.6);
+    const target = scene.pulseCount(w, h);
+    for (let tries = 0; pulses.length < target && tries < 20; tries++) spawn();
+    for (let i = pulses.length - 1; i >= 0; i--) {
+      const p = pulses[i];
+      const A = scene.nodes[p.a], B = scene.nodes[p.b];
+      if (!A || !B) { pulses.splice(i, 1); continue; }
+      const len = Math.hypot(B.x - A.x, B.y - A.y) || 1;
+      p.t += (p.speed * dt) / len;
+      if (scene.edgeAlive && !scene.edgeAlive(p.a, p.b)) { pulses.splice(i, 1); continue; }
+      if (p.t >= 1) {
+        B.glow = 1;
+        p.hops++;
+        const nb = scene.neighbours(p.b, p.a);
+        if (!nb.length || p.hops > (scene.maxHops || 12) || Math.random() < (scene.dieChance || 0.04)) { pulses.splice(i, 1); continue; }
+        p.a = p.b; p.b = pick(nb); p.t = 0;
+      }
+      const a2 = scene.nodes[p.a], b2 = scene.nodes[p.b];
+      p.x = a2.x + (b2.x - a2.x) * p.t; p.y = a2.y + (b2.y - a2.y) * p.t;
+      p.trail.push(p.x, p.y);
+      if (p.trail.length > (scene.trail || 10) * 2) p.trail.splice(0, 2);
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    FADE = scene.fade ? x => scene.fade(x, w) : () => 1;
+    scene.drawBase(ctx, t, w, h);
+    const ps = scene.pulseSize || 1;
+    // node glows (scaled by the node's depth: n.z = brightness, n.s = size)
+    for (const n of scene.nodes) {
+      if (n.glow > 0.02) {
+        const z = (n.z ?? 1) * FADE(n.x), r = (n.r || 2) * 5 * (n.s ?? 1) * ps;
+        if (z < 0.02) continue;
+        const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r);
+        g.addColorStop(0, `rgba(${P.glow},${0.55 * n.glow * z})`);
+        g.addColorStop(1, `rgba(${P.glow},0)`);
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, TAU); ctx.fill();
+      }
+    }
+    // pulses with soft trail
+    for (const p of pulses) {
+      if (p.x == null) continue;
+      const A = scene.nodes[p.a] || {}, z = (A.z ?? 1) * FADE(p.x), sz = (A.s ?? 1) * ps;
+      if (z < 0.02) continue;
+      const tr = p.trail;
+      for (let k = 0; k < tr.length - 2; k += 2) {
+        const f = k / tr.length;
+        ctx.strokeStyle = `rgba(${P.glow},${0.55 * f * z})`;
+        ctx.lineWidth = (2 * f + 0.4) * sz;
+        ctx.beginPath(); ctx.moveTo(tr[k], tr[k + 1]); ctx.lineTo(tr[k + 2], tr[k + 3]); ctx.stroke();
+      }
+      const R = 9 * sz;
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R);
+      g.addColorStop(0, `rgba(${P.glow},${0.8 * z})`); g.addColorStop(1, `rgba(${P.glow},0)`);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, R, 0, TAU); ctx.fill();
+      ctx.fillStyle = `rgba(${P.core},${0.95 * z})`; ctx.beginPath(); ctx.arc(p.x, p.y, 1.8 * sz, 0, TAU); ctx.fill();
+    }
+  }
+
+  // Run the simulation briefly so a still frame already has pulses in flight.
+  function warm() { for (let i = 0; i < 90; i++) step(1 / 30); }
+
+  function loop(now) {
+    if (!running) return;
+    const dt = Math.min(0.05, (now - (last || now)) / 1000);
+    last = now;
+    step(dt); draw();
+    raf = requestAnimationFrame(loop);
+  }
+  function setRunning(on) {
+    on = on && !reduce && !document.hidden && visible;
+    if (on === running) return;
+    running = on;
+    if (on) { last = 0; raf = requestAnimationFrame(loop); } else cancelAnimationFrame(raf);
+  }
+
+  new ResizeObserver(resize).observe(canvas);
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; setRunning(true); }, { rootMargin: '80px' }).observe(canvas);
+  document.addEventListener('visibilitychange', () => setRunning(true));
+  return { redraw: () => { if (!running) draw(); } };
+}
+
+/* Helpers for scenes */
+const line = (ctx, a, b, alpha, width = 1) => {
+  ctx.strokeStyle = `rgba(${P.line},${alpha * FADE((a.x + b.x) / 2)})`; ctx.lineWidth = width;
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+};
+const dot = (ctx, n, r, alpha, col = P.node) => {
+  ctx.fillStyle = `rgba(${col},${alpha * FADE(n.x)})`; ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, TAU); ctx.fill();
+};
+const narrow = w => w < 700;
+// Bias x toward the right half on wide screens (the text sits on the left).
+const biasX = w => narrow(w) ? rnd(0, w) : w * (0.18 + 0.82 * Math.sqrt(Math.random()));
+
+/* 1 · Neural Drift: free-floating nodes; links appear between near neighbours. */
+function driftScene() {
+  const s = { nodes: [], speed: [70, 120], trail: 12, dieChance: 0.05, maxHops: 10, links: [] };
+  let D = 150;
+  s.build = (w, h) => {
+    D = narrow(w) ? 120 : 160;
+    const count = Math.round(Math.min(80, Math.max(26, (w * h) / 15000)));
+    s.nodes = Array.from({ length: count }, () => ({
+      x: biasX(w), y: rnd(0, h), vx: rnd(-12, 12), vy: rnd(-12, 12), r: rnd(1.4, 2.6), w, h
+    }));
+    s.W = w; s.H = h; s.relink();
+  };
+  s.relink = () => {
+    const N = s.nodes; s.adj = N.map(() => []);
+    s.links = [];
+    for (let i = 0; i < N.length; i++) for (let j = i + 1; j < N.length; j++) {
+      const d = Math.hypot(N[i].x - N[j].x, N[i].y - N[j].y);
+      if (d < D) { s.adj[i].push(j); s.adj[j].push(i); s.links.push([i, j, 1 - d / D]); }
+    }
+  };
+  s.update = (t, dt) => {
+    for (const n of s.nodes) {
+      n.x += n.vx * dt; n.y += n.vy * dt;
+      if (n.x < -20) n.x = s.W + 20; if (n.x > s.W + 20) n.x = -20;
+      if (n.y < -20) n.y = s.H + 20; if (n.y > s.H + 20) n.y = -20;
+    }
+    s.relink();
+  };
+  s.neighbours = (i, from) => s.adj[i].filter(j => j !== from);
+  s.edgeAlive = (a, b) => s.adj[a] && s.adj[a].includes(b);
+  s.pulseCount = (w, h) => narrow(w) ? 7 : 14;
+  s.drawBase = ctx => {
+    for (const [i, j, k] of s.links) line(ctx, s.nodes[i], s.nodes[j], 0.3 * k);
+    for (const n of s.nodes) dot(ctx, n, n.r, 0.6);
+  };
+  return s;
+}
+
+/* 2 · Neural H Lattice: a grid of large, faint "H" marks (4 corner nodes, bar, accent centre). */
+function latticeScene(S0 = 160, opts = {}) {
+  const s = { nodes: [], speed: [60, 95], trail: 14, dieChance: 0.02, maxHops: 18, edges: [] };
+  if (opts.clearLeft) {
+    // H marks fade almost to nothing behind the text column, and come up to full strength behind the card.
+    s.fade = (x, w) => {
+      if (narrow(w)) return 0.55;
+      const k = Math.max(0, Math.min(1, (x - w * 0.3) / (w * 0.6 - w * 0.3)));
+      return 0.06 + 0.94 * k * k * (3 - 2 * k);
+    };
+  }
+  s.build = (w, h) => {
+    const S = narrow(w) ? Math.min(S0 * 0.75, w * 1.1) : S0;   // cell size (one H per cell)
+    const k = S / 160; s.k = k;                // everything scales with the cell
+    const ps = opts.pulseSpeed || 1; s.speed = [60 * Math.pow(k, 0.7) * ps, 95 * Math.pow(k, 0.7) * ps]; s.pulseSize = 1 + (k - 1) * 0.45; s.trail = Math.round(14 + 4 * (k - 1));
+    const cols = Math.ceil(w / S) + 1, rows = Math.ceil(h / S) + 1;
+    const ox = (w - (cols - 1) * S) / 2 - S * 0.5, oy = (h - (rows - 1) * S) / 2 - S * 0.5;
+    const N = [], E = [], idx = {}, G = [];
+    const R = opts.rot, Z = opts.zoom;
+    const add = (key, x, y, kind) => { const g = G[G.length - 1]; idx[key] = N.length; N.push({ x, y, bx: x, by: y, kind, r: (kind === 'c' ? 4 : kind === 'k' ? 3 : 0) * k, gi: G.length - 1, lx: x - g.cx, ly: y - g.cy }); return idx[key]; };
+    const edge = (a, b, k = 1) => E.push([a, b, k]);
+    const hw = S * 0.2, hh = S * 0.26;
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const cx = ox + c * S + S * 0.5, cy = oy + r * S + S * 0.5, id = `${r}_${c}`;
+      // each H gets its own random 3D axis (in the screen plane), turn speed and zoom timing
+      G.push({ cx, cy, th: rnd(0, TAU), ph: rnd(0, TAU), ph2: rnd(0, TAU), dir: Math.random() < 0.5 ? -1 : 1,
+        sp: R ? rnd(R.speed[0], R.speed[1]) : 0, zs: Z ? rnd(0.7, 1.3) : 0 });
+      const tl = add(id + 'tl', cx - hw, cy - hh, 'k'), bl = add(id + 'bl', cx - hw, cy + hh, 'k');
+      const tr = add(id + 'tr', cx + hw, cy - hh, 'k'), br = add(id + 'br', cx + hw, cy + hh, 'k');
+      const ml = add(id + 'ml', cx - hw, cy, 'm'), mr = add(id + 'mr', cx + hw, cy, 'm');
+      const cc = add(id + 'c', cx, cy, 'c');
+      edge(tl, ml); edge(ml, bl); edge(tr, mr); edge(mr, br); edge(ml, cc); edge(cc, mr);
+    }
+    // Links between neighbouring H marks, drawn fainter.
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const id = `${r}_${c}`;
+      if (c + 1 < cols) edge(idx[id + 'mr'], idx[`${r}_${c + 1}ml`], 0.45);
+      if (r + 1 < rows && c + 1 < cols) edge(idx[id + 'br'], idx[`${r + 1}_${c + 1}tl`], 0.45);
+      if (r + 1 < rows && c > 0) edge(idx[id + 'bl'], idx[`${r + 1}_${c - 1}tr`], 0.45);
+    }
+    s.nodes = N; s.edges = E; s.adj = N.map(() => []);
+    for (const [a, b] of E) { s.adj[a].push(b); s.adj[b].push(a); }
+    s.W = w; s.H = h; s.S = S; s.G = G;
+  };
+  s.update = t => {
+    // Very slow, gentle sway of the whole lattice.
+    const sw = opts.sway ?? 1, dx = Math.sin(t * 0.08 * sw) * 10 * s.k, dy = Math.cos(t * 0.06 * sw) * 8 * s.k;
+    if (!opts.rot && !opts.zoom) { for (const n of s.nodes) { n.x = n.bx + dx; n.y = n.by + dy; } return; }
+    // 3D: rotate each H about its own axis, project with perspective, then zoom it in and out.
+    const R = opts.rot, Z = opts.zoom, D = s.S * 1.15;
+    for (const g of s.G) {
+      const a = !R ? 0 : R.mode === 'spin' ? g.dir * t * g.sp + g.ph : R.max * Math.sin(t * g.sp + g.ph);
+      g.ca = Math.cos(a); g.sa = Math.sin(a); g.ux = Math.cos(g.th); g.uy = Math.sin(g.th);
+      if (R && R.drift) g.th += R.drift * 0.016;          // axis slowly wanders
+      g.zm = Z ? 1 + Z.amp * Math.sin(t * Z.speed * g.zs + g.ph2) : 1;
+    }
+    for (const n of s.nodes) {
+      const g = s.G[n.gi], d = g.ux * n.lx + g.uy * n.ly;
+      const x = n.lx * g.ca + g.ux * d * (1 - g.ca), y = n.ly * g.ca + g.uy * d * (1 - g.ca);
+      const z = (g.ux * n.ly - g.uy * n.lx) * g.sa, pz = D / (D - z), sc = pz * g.zm;
+      n.x = g.cx + x * sc + dx; n.y = g.cy + y * sc + dy;
+      n.s = sc;                                             // nearer = bigger dots and pulses
+      n.z = Math.max(0.45, Math.min(1, (0.85 + 1.1 * (pz - 1)) * (0.88 + 0.22 * g.zm)));  // nearer = brighter, flat ≈ full
+    }
+  };
+  s.neighbours = (i, from) => s.adj[i].filter(j => j !== from);
+  s.startNode = () => {
+    // Prefer starting away from the text column on wide screens.
+    for (let k = 0; k < 8; k++) { const i = (Math.random() * s.nodes.length) | 0; if (narrow(s.W) || s.nodes[i].x > s.W * 0.4) return i; }
+    return (Math.random() * s.nodes.length) | 0;
+  };
+  s.pulseCount = w => narrow(w) ? 6 : (s.k > 2.5 ? 10 : 12);
+  s.drawBase = ctx => {
+    ctx.lineCap = 'round';
+    const K = s.k;
+    for (const [a, b, k] of s.edges) {
+      const A = s.nodes[a], B = s.nodes[b], z = Math.min(A.z ?? 1, B.z ?? 1), sc = ((A.s ?? 1) + (B.s ?? 1)) / 2;
+      line(ctx, A, B, (k === 1 ? 0.3 : 0.07) * z, k === 1 ? 2.4 * K * sc : Math.min(2, K));
+    }
+    for (const n of s.nodes) {
+      const z = n.z ?? 1, sc = n.s ?? 1;
+      if (n.kind === 'k') dot(ctx, n, 3.6 * K * sc, 0.55 * z);
+      else if (n.kind === 'c') { dot(ctx, n, 5 * K * sc, (0.45 + 0.5 * (n.glow || 0)) * z, P.accent); }
+    }
+  };
+  return s;
+}
+
+/* 3 · Signal Layers: columns of nodes like a neural-net diagram; signals flow left to right. */
+function layersScene() {
+  const s = { nodes: [], speed: [130, 190], trail: 16, dieChance: 0, maxHops: 99, edges: [] };
+  s.build = (w, h) => {
+    const nw = narrow(w);
+    const L = nw ? 4 : 5, x0 = nw ? w * 0.08 : w * 0.42, x1 = w * 0.96;
+    const counts = nw ? [4, 6, 6, 3] : [5, 8, 9, 7, 4];
+    const N = [], layers = [];
+    for (let l = 0; l < L; l++) {
+      const x = x0 + (x1 - x0) * (l / (L - 1)), n = counts[l], ids = [];
+      const pad = h * 0.12, span = h - pad * 2;
+      for (let k = 0; k < n; k++) {
+        const y = pad + span * ((k + 0.5) / n);
+        ids.push(N.length);
+        N.push({ x, y, bx: x, by: y, ph: rnd(0, TAU), layer: l, r: l === 0 || l === L - 1 ? 3.2 : 2.6 });
+      }
+      layers.push(ids);
+    }
+    const E = [];
+    for (let l = 0; l < L - 1; l++) for (const a of layers[l]) for (const b of layers[l + 1]) E.push([a, b]);
+    s.nodes = N; s.layers = layers; s.edges = E; s.W = w; s.H = h;
+  };
+  s.update = t => { for (const n of s.nodes) { n.x = n.bx + Math.sin(t * 0.5 + n.ph) * 3; n.y = n.by + Math.cos(t * 0.4 + n.ph) * 6; } };
+  s.startNode = () => pick(s.layers[0]);
+  s.neighbours = i => { const l = s.nodes[i].layer; return l + 1 < s.layers.length ? s.layers[l + 1] : []; };
+  s.pulseCount = w => narrow(w) ? 6 : 11;
+  s.drawBase = ctx => {
+    for (const [a, b] of s.edges) line(ctx, s.nodes[a], s.nodes[b], 0.1);
+    for (const n of s.nodes) {
+      dot(ctx, n, n.r + 4, 0.1);
+      dot(ctx, n, n.r, 0.6 + 0.4 * (n.glow || 0));
+    }
+  };
+  return s;
+}
+
+/* 4 · Hub Constellation: an accent hub behind the product card with rotating rings of nodes. */
+function hubScene() {
+  const s = { nodes: [], speed: [80, 130], trail: 14, dieChance: 0.08, maxHops: 8, edges: [], waves: [] };
+  s.build = (w, h) => {
+    const nw = narrow(w);
+    s.cx = nw ? w * 0.5 : w * 0.74; s.cy = nw ? h * 0.72 : h * 0.52;
+    const base = Math.min(nw ? w * 0.9 : w * 0.5, h * 1.1);
+    s.rings = [{ r: base * 0.2, n: 6, sp: 0.06 }, { r: base * 0.38, n: 12, sp: -0.04 }, { r: base * 0.58, n: 18, sp: 0.025 }, { r: base * 0.8, n: 24, sp: -0.015 }];
+    const N = [{ x: s.cx, y: s.cy, hub: true, r: 7 }], E = [], ringIds = [];
+    s.rings.forEach((R, ri) => {
+      const ids = [];
+      for (let k = 0; k < R.n; k++) { ids.push(N.length); N.push({ ring: ri, k, a0: (k / R.n) * TAU + ri * 0.3, r: ri === 0 ? 3.4 : 2.4 }); }
+      for (let k = 0; k < R.n; k++) E.push([ids[k], ids[(k + 1) % R.n], 0.5]);    // ring arcs
+      ringIds.push(ids);
+    });
+    for (const id of ringIds[0]) E.push([0, id, 1]);                              // spokes from hub
+    for (let ri = 1; ri < ringIds.length; ri++) {
+      const inner = ringIds[ri - 1], outer = ringIds[ri];
+      outer.forEach((id, k) => E.push([inner[Math.floor(k * inner.length / outer.length)], id, 1]));
+    }
+    s.nodes = N; s.edges = E; s.ringIds = ringIds; s.adj = N.map(() => []);
+    for (const [a, b] of E) { s.adj[a].push(b); s.adj[b].push(a); }
+    s.W = w; s.H = h; s.nextWave = 0; s.waves = [];
+  };
+  s.update = (t, dt) => {
+    for (const n of s.nodes) {
+      if (n.hub) continue;
+      const R = s.rings[n.ring], a = n.a0 + t * R.sp;
+      n.x = s.cx + Math.cos(a) * R.r; n.y = s.cy + Math.sin(a) * R.r * 0.78;
+    }
+    if (t > s.nextWave) { s.waves.push(t); s.nextWave = t + 4.5; s.nodes[0].glow = 1; }
+    s.waves = s.waves.filter(w0 => t - w0 < 4);
+    s.t = t;
+  };
+  s.startNode = () => Math.random() < 0.55 ? 0 : pick(s.ringIds[s.ringIds.length - 1]);
+  s.neighbours = (i, from) => {
+    // Pulses travel outward from the hub, or inward from the outer ring.
+    const n = s.nodes[i], f = from >= 0 ? s.nodes[from] : null;
+    const ring = n.hub ? -1 : n.ring, fromRing = f ? (f.hub ? -1 : f.ring) : null;
+    const out = fromRing === null ? (n.hub ? 1 : -1) : Math.sign(ring - fromRing) || 1;
+    return s.adj[i].filter(j => { const m = s.nodes[j], r2 = m.hub ? -1 : m.ring; return j !== from && (r2 - ring) === out; });
+  };
+  s.pulseCount = w => narrow(w) ? 6 : 12;
+  s.drawBase = ctx => {
+    // radial waves from the hub
+    for (const w0 of s.waves) {
+      const k = (s.t - w0) / 4, r = 20 + k * s.rings[3].r * 1.1;
+      ctx.strokeStyle = `rgba(${P.glow},${0.3 * (1 - k)})`; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.ellipse(s.cx, s.cy, r, r * 0.78, 0, 0, TAU); ctx.stroke();
+    }
+    const halo = ctx.createRadialGradient(s.cx, s.cy, 0, s.cx, s.cy, s.rings[1].r);
+    halo.addColorStop(0, `rgba(${P.accent},.22)`); halo.addColorStop(1, `rgba(${P.accent},0)`);
+    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(s.cx, s.cy, s.rings[1].r, 0, TAU); ctx.fill();
+    for (const [a, b, k] of s.edges) line(ctx, s.nodes[a], s.nodes[b], k === 1 ? 0.2 : 0.11);
+    for (const n of s.nodes) {
+      if (n.hub) { dot(ctx, n, 12, 0.18, P.accent); dot(ctx, n, 6, 0.75, P.accent); }
+      else dot(ctx, n, n.r, 0.6);
+    }
+  };
+  return s;
+}
+
+const SCENES = { drift: driftScene, lattice: () => latticeScene(160), layers: layersScene, hub: hubScene,
+  latticeL: () => latticeScene(240), latticeXL: () => latticeScene(340), latticeXXL: () => latticeScene(480), latticeGiant: () => latticeScene(700), latticeXLClear: () => latticeScene(340, { clearLeft: true }),
+  latticeRotA: () => latticeScene(340, { clearLeft: true, rot: { mode: 'swing', max: 1.0, speed: [0.25, 0.5] }, zoom: { amp: 0.1, speed: 0.35 } }),
+  latticeRotD: () => latticeScene(340, { clearLeft: true, rot: { mode: 'swing', max: 0.55, speed: [0.1, 0.18] }, zoom: { amp: 0.05, speed: 0.16 }, pulseSpeed: 0.6, sway: 0.6 }),
+  latticeRotB: () => latticeScene(280, { clearLeft: true, rot: { mode: 'spin', speed: [0.5, 1.0], drift: 0.15 }, zoom: { amp: 0.18, speed: 0.7 } }),
+  latticeRotC: () => latticeScene(440, { clearLeft: true, rot: { mode: 'swing', max: 1.35, speed: [0.12, 0.22] }, zoom: { amp: 0.32, speed: 0.18 } }) };
+const engines = [...document.querySelectorAll('canvas[data-scene]')].map(c => makeEngine(c, SCENES[c.dataset.scene]()));
+
+document.querySelectorAll('.chip[data-pal]').forEach(btn => btn.addEventListener('click', () => {
+  document.body.dataset.pal = btn.dataset.pal;
+  P = PALS[btn.dataset.pal];
+  document.querySelectorAll('.chip[data-pal]').forEach(x => x.setAttribute('aria-pressed', x === btn));
+  engines.forEach(e => e.redraw());
+}));
+})();
+</script>
+</body>
+</html>

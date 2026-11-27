@@ -145,10 +145,13 @@
     var interval = parseInt(root.getAttribute("data-interval"), 10) || 6000;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var current = 0, timer = null, hovering = false, focused = false;
+    var bgRun = function () {};
 
     function go(i) {
       var n = slides.length;
       current = (i + n) % n;
+      // Background lines stay hidden on slide 1, which has its own hub animation
+      root.classList.toggle("hs-first", current === 0);
       track.style.transform = "translateX(" + (-100 * current) + "%)";
       for (var k = 0; k < n; k++) {
         var on = k === current;
@@ -162,6 +165,7 @@
         }
       }
       schedule();
+      bgRun();
     }
 
     function schedule() {
@@ -204,6 +208,102 @@
       startX = null;
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(current + (dx < 0 ? 1 : -1));
     }, { passive: true });
+
+    // Background for slides 2+: lines from the logo (centred behind the
+    // dashboard image) out to every edge of the section, with dots that pick
+    // a random line and speed each time they set off and travel outward.
+    var bg = root.querySelector(".hs-bg");
+    var svg = bg && bg.querySelector(".hs-lines");
+    var col = slides[1].querySelector(".hero-grid > div:last-child");
+    if (bg && svg && col) {
+      var NS = "http://www.w3.org/2000/svg";
+      var LINES = 14, DOTS = 12;
+      var jitter = [];
+      for (var j = 0; j < LINES; j++) jitter.push((Math.random() - 0.5) * 0.6);
+      var lines = [], dotsBg = [], raf = null, last = 0, onScreen = false;
+
+      var launch = function (d, anywhere) {
+        d.line = lines[Math.floor(Math.random() * lines.length)];
+        d.speed = 30 + Math.random() * 70;         // px per second
+        d.p = anywhere ? Math.random() : 0;        // progress 0..1 along the trip
+        d.wait = anywhere ? 0 : Math.random() * 2; // short random pause before setting off
+      };
+
+      var layout = function () {
+        var r = root.getBoundingClientRect();
+        var s = slides[1].getBoundingClientRect();
+        var v = viewport.getBoundingClientRect();
+        var c = col.getBoundingClientRect();
+        var w = r.width, h = r.height;
+        if (!w || !h || !c.width) return;
+        // Slide 2 sits off to the side of the track; measure it relative to
+        // its own slide, then place that slide where the viewport is.
+        var cx = c.left - s.left + c.width / 2 + (v.left - r.left);
+        var cy = c.top - s.top + c.height / 2 + (v.top - r.top);
+        bg.style.setProperty("--hs-cx", cx + "px");
+        bg.style.setProperty("--hs-cy", cy + "px");
+        svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+        lines = [];
+        for (var i = 0; i < LINES; i++) {
+          var a = (i + 0.5 + jitter[i]) / LINES * Math.PI * 2;
+          var dx = Math.cos(a), dy = Math.sin(a);
+          // Distance along the ray to the section's edge
+          var t = Math.min(dx > 0 ? (w - cx) / dx : dx < 0 ? -cx / dx : Infinity,
+                           dy > 0 ? (h - cy) / dy : dy < 0 ? -cy / dy : Infinity);
+          var ln = document.createElementNS(NS, "line");
+          ln.setAttribute("x1", cx); ln.setAttribute("y1", cy);
+          ln.setAttribute("x2", cx + dx * t); ln.setAttribute("y2", cy + dy * t);
+          svg.appendChild(ln);
+          lines.push({ x: cx, y: cy, dx: dx, dy: dy, len: t });
+        }
+        dotsBg = [];
+        if (reduce) return;
+        for (var k = 0; k < DOTS; k++) {
+          var el = document.createElementNS(NS, "circle");
+          el.setAttribute("r", 3);
+          el.setAttribute("opacity", 0);
+          svg.appendChild(el);
+          var d = { el: el };
+          launch(d, true);
+          dotsBg.push(d);
+        }
+      };
+
+      var frame = function (now) {
+        var dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
+        last = now;
+        for (var k = 0; k < dotsBg.length; k++) {
+          var d = dotsBg[k], ln = d.line;
+          if (d.wait > 0) { d.wait -= dt; continue; }
+          d.p += d.speed * dt / ln.len;
+          if (d.p >= 1) { launch(d, false); d.el.setAttribute("opacity", 0); continue; }
+          var dist = d.p * ln.len; // always from the logo out to the edge
+          d.el.setAttribute("cx", ln.x + ln.dx * dist);
+          d.el.setAttribute("cy", ln.y + ln.dy * dist);
+          d.el.setAttribute("opacity", Math.min(1, d.p / 0.08, (1 - d.p) / 0.08));
+        }
+        raf = requestAnimationFrame(frame);
+      };
+
+      bgRun = function () {
+        var run = !reduce && onScreen && !document.hidden && current !== 0 && dotsBg.length > 0;
+        if (run && !raf) { last = 0; raf = requestAnimationFrame(frame); }
+        else if (!run && raf) { cancelAnimationFrame(raf); raf = null; }
+      };
+
+      layout();
+      var resizeTimer = null;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () { layout(); bgRun(); }, 150);
+      });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layout(); bgRun(); });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) { onScreen = entries[0].isIntersecting; bgRun(); }).observe(root);
+      } else { onScreen = true; }
+      document.addEventListener("visibilitychange", bgRun);
+    }
 
     go(0);
   });

@@ -41,8 +41,11 @@ def ico(name, size, bg="#F6EEF0", fg="#6C3845", r=None):
 
 def logo(size, dark):
     tile, r1, r2 = ("#fff", "#6C3845", "#B97A8A") if dark else ("#6C3845", "#fff", "#D9C8CC")
-    return (f'<svg width="{size}" height="{size}" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="{tile}"/>'
-            f'<circle cx="12.5" cy="16" r="6" fill="none" stroke="{r1}" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="{r2}" stroke-width="2.6"/></svg>')
+    return (f'<svg width="{size}" height="{size}" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="{tile}"/>'
+            f'<path d="M14 13V35M34 13V35M14 24H34" fill="none" stroke="{r1}" stroke-width="2.4" stroke-linecap="round"/>'
+            f'<circle cx="14" cy="13" r="3.4" fill="{r1}"/><circle cx="14" cy="35" r="3.4" fill="{r1}"/>'
+            f'<circle cx="34" cy="13" r="3.4" fill="{r1}"/><circle cx="34" cy="35" r="3.4" fill="{r1}"/>'
+            f'<circle cx="24" cy="24" r="4.4" fill="{r2}"/></svg>')
 
 CHECK = '<span style="flex:none;width:22px;height:22px;border-radius:50%;background:#E5F6EF;display:inline-grid;place-items:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F8A5F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>'
 CROSS = '<span style="flex:none;width:22px;height:22px;border-radius:50%;background:#F4EFF1;display:inline-grid;place-items:center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9A8F97" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>'

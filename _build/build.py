@@ -61,9 +61,12 @@ def icon(name, cls=""):
     return (f'<svg{f" class={chr(34)}{cls}{chr(34)}" if cls else ""} viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>')
 
-LOGO = ('<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#6C3845"/>'
-        '<circle cx="12.5" cy="16" r="6" fill="none" stroke="#fff" stroke-width="2.6"/>'
-        '<circle cx="19.5" cy="16" r="6" fill="none" stroke="#D9C8CC" stroke-width="2.6"/></svg>')
+LOGO = ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#6C3845"/>'
+        '<path d="M14 13V35M34 13V35M14 24H34" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>'
+        '<circle cx="14" cy="13" r="3.4" fill="#fff"/><circle cx="14" cy="35" r="3.4" fill="#fff"/>'
+        '<circle cx="34" cy="13" r="3.4" fill="#fff"/><circle cx="34" cy="35" r="3.4" fill="#fff"/>'
+        '<circle cx="24" cy="24" r="4.4" fill="#D9C8CC"/></svg>')
+WORDMARK = '<span class="wm">HRConnect<span class="ai">.AI</span></span>'
 
 # --------------------------------------------------------------------------- blocks
 def md(s):
@@ -124,7 +127,7 @@ def ai_hub(nodes):
         left, top = 50 + 37.5 * math.cos(a), 50 + 37.5 * math.sin(a)
         pills.append(f'<span class="hub-node" style="left:{left:.2f}%;top:{top:.2f}%"><span class="hub-ic">{icon(ic)}</span>{e(label)}</span>')
     svg = f'<svg class="hub-links" viewBox="0 0 400 400">{"".join(lines)}{"".join(pulses)}</svg>'
-    core = f'<span class="hub-core">{LOGO.replace("<svg ", '<svg class="hub-logo" ', 1)}<b>HRConnect.AI</b></span>'
+    core = f'<span class="hub-core">{LOGO.replace("<svg ", '<svg class="hub-logo" ', 1)}<b>HRConnect<span class="ai">.AI</span></b></span>'
     return f'<div class="hub" aria-hidden="true">{svg}{core}{"".join(pills)}</div>'
 
 def b_hero(b, page):
@@ -142,6 +145,15 @@ def b_hero(b, page):
     solo = "" if side else " solo"
     return (f'<section class="hero{solo}{" dark" if dark else ""}"><div class="wrap hero-grid"><div>{crumbs}{eyebrow}<h1>{md(b["title"])}</h1>'
             f'<p class="lead">{md(b["lead"])}</p>{ctas}{trust}</div>{f"<div>{side}</div>" if side else ""}</div></section>')
+
+# Hero slider background (slides 2+): the logo in a white circle sits behind the
+# dashboard image, with faint lines running from it to the section edges and
+# light dots travelling along them. Lines and dots are drawn by site.js, since
+# they depend on where the image sits on screen.
+def hs_lines():
+    logo = LOGO.replace("<svg ", '<svg class="hs-logo" ', 1)
+    return (f'<div class="hs-bg" aria-hidden="true"><svg class="hs-lines" focusable="false"></svg>'
+            f'<span class="hs-core">{logo}</span></div>')
 
 def b_hero_slider(b, page):
     """Rotating dark hero: one slide per message, arrows and dots below.
@@ -166,8 +178,8 @@ def b_hero_slider(b, page):
     # the slides (beside the dots on phones); dots stay centred below.
     arrows = (f'<button class="hs-arrow hs-prev" type="button" data-hs="prev" aria-label="Previous slide">{icon("chev-left")}</button>'
               f'<button class="hs-arrow hs-next" type="button" data-hs="next" aria-label="Next slide">{icon("chev-right")}</button>')
-    return (f'<section class="hero dark hero-slider" aria-roledescription="carousel" aria-label="{e(b.get("label", "Product highlights"))}" '
-            f'data-interval="{int(b.get("interval", 6000))}"><span class="hs-orb" aria-hidden="true"></span><div class="hs-stage"><div class="hs-viewport"><div class="hs-track">{"".join(out)}</div></div>{arrows}</div>'
+    return (f'<section class="hero dark hero-slider hs-first" aria-roledescription="carousel" aria-label="{e(b.get("label", "Product highlights"))}" '
+            f'data-interval="{int(b.get("interval", 6000))}">{hs_lines()}<div class="hs-stage"><div class="hs-viewport"><div class="hs-track">{"".join(out)}</div></div>{arrows}</div>'
             f'<div class="wrap"><div class="hs-controls"><div class="hs-dots">{dots}</div></div></div></section>')
 
 def head(b, center=False):
@@ -385,7 +397,7 @@ def nav_html():
             mobile.append(f'<details><summary>{e(label)}</summary>' + "".join(f'<a href="{h}">{e(t)}</a>' for t, h, ic, d in menu) + "</details>")
     return f"""<header class="site-header">
   <div class="wrap nav">
-    <a class="logo" href="/">{LOGO}<span>HRConnect.AI</span></a>
+    <a class="logo" href="/">{LOGO}{WORDMARK}</a>
     <ul class="nav-links">{"".join(items)}</ul>
     <div class="nav-cta"><a class="login" href="{C.APP_URL}">Log in</a><a class="btn btn-primary" href="/book-a-demo/">Book a demo</a></div>
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">{icon("menu")}</button>
@@ -398,7 +410,7 @@ def footer_html():
     return f"""<footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
-      <div class="foot-about"><a class="logo" href="/">{LOGO}<span>HRConnect.AI</span></a><p>{e(C.TAGLINE)}</p></div>
+      <div class="foot-about"><a class="logo" href="/">{LOGO}{WORDMARK}</a><p>{e(C.TAGLINE)}</p></div>
       {cols}
     </div>
     <div class="foot-legal"><span>Copyright © <span id="year">{date.today().year}</span> HRConnect.AI</span><span class="foot-copy">Powered by <a href="https://consultifyglobal.com/" target="_blank" rel="noopener noreferrer">Consultify Global LLC.</a></span></div>
@@ -449,7 +461,7 @@ def render(path, page, nav, foot):
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css">
 {scripts}
 </head>

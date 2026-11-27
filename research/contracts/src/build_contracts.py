@@ -50,9 +50,11 @@ SAMPLE_NOTE = ("Sample template. Replace everything in [brackets], delete what d
 
 
 def logo(size):
-    return (f'<svg width="{size}" height="{size}" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#6C3845"/>'
-            f'<circle cx="12.5" cy="16" r="6" fill="none" stroke="#fff" stroke-width="2.6"/>'
-            f'<circle cx="19.5" cy="16" r="6" fill="none" stroke="#D9C8CC" stroke-width="2.6"/></svg>')
+    return (f'<svg width="{size}" height="{size}" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#6C3845"/>'
+            '<path d="M14 13V35M34 13V35M14 24H34" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>'
+            '<circle cx="14" cy="13" r="3.4" fill="#fff"/><circle cx="14" cy="35" r="3.4" fill="#fff"/>'
+            '<circle cx="34" cy="13" r="3.4" fill="#fff"/><circle cx="34" cy="35" r="3.4" fill="#fff"/>'
+            '<circle cx="24" cy="24" r="4.4" fill="#D9C8CC"/></svg>')
 
 
 def chrome(*args):
@@ -138,7 +140,7 @@ html,body{margin:0;padding:0}
 body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#2E2833;font-size:9.6pt;line-height:1.55;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 @media screen{body{background:#EDE7EA}.doc{width:210mm;margin:24px auto;background:#fff;padding:18mm;box-shadow:0 10px 30px rgba(0,0,0,.12)}}
 .top{display:flex;align-items:center;justify-content:space-between;padding-bottom:4mm;border-bottom:1.5px solid #6C3845}
-.brand{display:flex;align-items:center;gap:7px;font-weight:700;font-size:11pt;color:#1B1620;letter-spacing:-.01em}
+.brand{font-family:Sora,Inter,sans-serif;display:flex;align-items:center;gap:7px;font-weight:700;font-size:11pt;color:#1B1620;letter-spacing:-.01em}
 .brand .ai{color:#6C3845}
 .kind{font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6C3845}
 h1{margin:7mm 0 2mm;font-size:22pt;line-height:1.1;letter-spacing:-.025em;color:#1B1620}
@@ -195,7 +197,7 @@ def build_html(c):
 <html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
 <title>{html.escape(c['title'])} · HRConnect.AI sample</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@700&display=swap" rel="stylesheet">
 <style>{css}</style></head>
 <body><div class="doc{' letter' if c.get('letter') else ''}{'' if numbered else ' flat'}">
 <div class="top"><div class="brand">{logo(20)}<span>HRConnect<span class="ai">.AI</span></span></div><div class="kind">{KIND[c['group']]} · sample</div></div>

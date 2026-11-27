@@ -9,6 +9,7 @@ const IN = 0.7, OUT = 0.55, GAP = 0.12;
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const eOut = t => 1 - Math.pow(1 - t, 3);
 const eIn = t => t * t * t;
+const eBack = t => t <= 0 ? 0 : 1 + 2.7 * Math.pow(t - 1, 3) + 1.7 * Math.pow(t - 1, 2);
 const eIO = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const prog = (lt, a, b) => clamp((lt - a) / (b - a));
 const pulse = (lt, at, len = .9) => { const p = (lt - at) / len; return p < 0 || p > 1 ? 0 : Math.sin(Math.PI * p); };
@@ -43,16 +44,16 @@ const P = {
   arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>'
 };
 const ico = (k, size, bg, fg, r) => `<span class="pv-ico" style="width:${size}px;height:${size}px;border-radius:${r ?? Math.round(size * .28)}px;background:${bg};color:${fg}"><svg viewBox="0 0 24 24">${P[k]}</svg></span>`;
-const mark = (size, onDark) => `<svg viewBox="0 0 32 32" width="${size}" height="${size}" style="flex:none;display:block"><rect width="32" height="32" rx="9" fill="${onDark ? '#fff' : '#6C3845'}"/><circle cx="12.5" cy="16" r="6" fill="none" stroke="${onDark ? '#6C3845' : '#fff'}" stroke-width="2.6"/><circle cx="19.5" cy="16" r="6" fill="none" stroke="${onDark ? '#B97A8A' : '#D9C8CC'}" stroke-width="2.6"/></svg>`;
-const brand = (size, onDark) => `<span style="display:inline-flex;align-items:center;gap:${size * .42}px;font-size:${size}px;font-weight:700;letter-spacing:-.02em;line-height:1;color:${onDark ? '#fff' : '#1B1620'}">${mark(size * 1.45, onDark)}<span>HRConnect<span style="color:${onDark ? '#E6CFD5' : '#6C3845'}">.AI</span></span></span>`;
+const mark = (size, onDark) => `<svg viewBox="0 0 48 48" width="${size}" height="${size}" style="flex:none;display:block"><rect width="48" height="48" rx="13" fill="${onDark ? '#fff' : '#6C3845'}"/><path d="M14 13V35M34 13V35M14 24H34" fill="none" stroke="${onDark ? '#6C3845' : '#fff'}" stroke-width="2.4" stroke-linecap="round"/><circle cx="14" cy="13" r="3.4" fill="${onDark ? '#6C3845' : '#fff'}"/><circle cx="14" cy="35" r="3.4" fill="${onDark ? '#6C3845' : '#fff'}"/><circle cx="34" cy="13" r="3.4" fill="${onDark ? '#6C3845' : '#fff'}"/><circle cx="34" cy="35" r="3.4" fill="${onDark ? '#6C3845' : '#fff'}"/><circle cx="24" cy="24" r="4.4" fill="${onDark ? '#B97A8A' : '#D9C8CC'}"/></svg>`;
+const brand = (size, onDark) => `<span style="display:inline-flex;align-items:center;gap:${size * .42}px;font-size:${size}px;font-weight:700;letter-spacing:-.02em;line-height:1;color:${onDark ? '#fff' : '#1B1620'}">${mark(size * 1.45, onDark)}<span style="font-family:Sora,Inter,sans-serif">HRConnect<span style="color:${onDark ? '#D9C8CC' : '#6C3845'}">.AI</span></span></span>`;
 /* Animated element: absolute at scene level, or nested (relative) inside another */
 const A = (a, d, style, html, k = '') => `<div class="pv-a" ${a.includes(',') ? `data-in="${a.split('|')[0]}" data-out="${a.split('|')[1] || ''}"` : `data-a="${a}"`} data-d="${d}"${k ? ` data-k="${k}"` : ''} style="position:absolute;${style}">${html}</div>`;
 const N = (a, d, html, style = '', k = '') => `<div class="pv-a" data-a="${a}" data-d="${d}"${k ? ` data-k="${k}"` : ''} style="position:relative;${style}">${html}</div>`;
 const W = 'rgba(255,255,255,';
 const wm = onDark => A('fade', .2, 'right:28px;top:24px;opacity:.9', brand(15, onDark));
 const caption = (ey, title, onDark) =>
-  A('left', .1, `left:56px;top:96px;width:300px`, `<div class="pv-ey" style="font-size:13px;color:${onDark ? '#E6CFD5' : '#6C3845'}">${ey}</div>`) +
-  A('left', .25, `left:56px;top:124px;width:310px;--hl:${onDark ? '#E6CFD5' : '#6C3845'}`, `<div class="pv-h ${onDark ? 'pv-gt' : ''}" style="font-size:40px;color:${onDark ? '#fff' : '#1B1620'}">${title}</div>`);
+  A('left', .1, `left:56px;top:96px;width:300px`, `<div class="pv-ey" style="font-size:13px;color:${onDark ? '#D9C8CC' : '#6C3845'}">${ey}</div>`) +
+  A('left', .25, `left:56px;top:124px;width:310px;--hl:${onDark ? '#D9C8CC' : '#6C3845'}`, `<div class="pv-h ${onDark ? 'pv-gt' : ''}" style="font-size:40px;color:${onDark ? '#fff' : '#1B1620'}">${title}</div>`);
 
 /* ---------- Scenes ---------- */
 const CHAPTERS = ['Introduction', 'Products', 'Services', 'Book a demo'];
@@ -73,21 +74,19 @@ S.push({ ch: 0, dur: 4, bg: 'paper', vo: 'Spreadsheets, email threads, five diff
         <div style="padding:12px;display:grid;gap:7px">${[90, 70, 82, 55].map(w => `<span style="display:block;height:9px;width:${w}%;background:#ECE6E8;border-radius:4px"></span>`).join('')}</div>
       </div>`)).join('') +
       A('0,0,.4,-20|0,0,.2,25', .85, 'left:392px;top:200px;width:186px', `<div style="transform:rotate(-6deg);background:#FFE58A;color:#5B4A00;font-size:17px;font-weight:700;line-height:1.3;padding:16px;box-shadow:0 12px 26px rgba(0,0,0,.2)">Who approved Jordan's leave??</div>`) +
-      A('up', 1.2, 'left:0;right:0;bottom:0;padding:26px 56px;background:linear-gradient(0deg,rgba(27,22,32,.9),rgba(27,22,32,0))', `<div class="pv-h" style="font-size:36px;color:#fff">Too many tools. Too much admin.</div>`);
+      A('up', 1.2, 'left:0;right:0;bottom:0;padding:26px 56px 75px;text-align:center;background:linear-gradient(0deg,rgba(27,22,32,.9),rgba(27,22,32,0))', `<div class="pv-h" style="font-size:36px;color:#fff">Too many tools. Too much admin.</div>`);
   })() });
 
 /* 02 · Logo reveal */
 S.push({ ch: 0, dur: 4, bg: 'dark', vo: 'There\'s a simpler way. Meet HRConnect.AI.',
-  html: A('0,0,.3|0,0,1.4', .8, 'left:300px;top:20px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(240,170,195,.55),rgba(240,170,195,0) 65%)', '', 'burst') +
-    A('-320,0|0,-30', .1, 'left:362px;top:100px', `<svg class="pv-glowf" data-k="r1" width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="56" fill="none" stroke="#fff" stroke-width="16"/></svg>`) +
-    A('320,0|0,-30', .1, 'left:438px;top:100px', `<svg class="pv-glowf" data-k="r2" width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="56" fill="none" stroke="#E6CFD5" stroke-width="16"/></svg>`) +
-    A('fade', .95, 'left:0;width:960px;top:300px;text-align:center', `<span data-k="word" class="pv-gt" style="display:inline-block;clip-path:inset(0 100% 0 0);font-size:60px;font-weight:800;letter-spacing:-.03em">HRConnect<span style="color:#E6CFD5">.AI</span></span>`) +
-    A('blur', 1.75, 'left:0;width:960px;top:392px;text-align:center;font-size:22px;color:rgba(255,255,255,.78)', 'There\'s a simpler way.') });
+  html: A('0,0,.3|0,0,1.4', 1.05, 'left:300px;top:20px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(240,170,195,.55),rgba(240,170,195,0) 65%)', '', 'burst') +
+    A('0,0|0,-30', .05, 'left:370px;top:60px', `<svg class="pv-glowf" data-k="h" width="220" height="220" viewBox="0 0 48 48" style="display:block;overflow:visible"><path data-k="v0" d="M14 13V35" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path data-k="v1" d="M34 13V35" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path data-k="b0" d="M14 24H24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path data-k="b1" d="M34 24H24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle data-k="n0" cx="14" cy="13" r="3.4" fill="#fff" style="transform-box:fill-box;transform-origin:center;transform:scale(0)"/><circle data-k="n1" cx="34" cy="13" r="3.4" fill="#fff" style="transform-box:fill-box;transform-origin:center;transform:scale(0)"/><circle data-k="n2" cx="14" cy="35" r="3.4" fill="#fff" style="transform-box:fill-box;transform-origin:center;transform:scale(0)"/><circle data-k="n3" cx="34" cy="35" r="3.4" fill="#fff" style="transform-box:fill-box;transform-origin:center;transform:scale(0)"/><circle data-k="c" cx="24" cy="24" r="4.4" fill="#D9C8CC" style="transform-box:fill-box;transform-origin:center;transform:scale(0)"/></svg>`) +
+    A('fade', 1.15, 'left:0;width:960px;top:300px;text-align:center', `<span data-k="word" class="pv-gt" style="display:inline-block;clip-path:inset(0 100% 0 0);font-size:60px;font-weight:800;letter-spacing:-.03em">HRConnect<span style="color:#D9C8CC">.AI</span></span>`) +
+    A('blur', 1.95, 'left:0;width:960px;top:392px;text-align:center;font-size:22px;color:rgba(255,255,255,.78)', 'There\'s a simpler way.') });
 
 /* 03 · The promise */
 S.push({ ch: 0, dur: 6, bg: 'dark', vo: 'The AI-powered HR app where records, payroll, leave and expenses share one set of data.',
-  html: A('zoom', 0, 'left:600px;top:-170px;width:580px;height:580px', `<div class="pv-rot" style="width:100%;height:100%;border-radius:50%;border:72px solid rgba(255,255,255,.05);border-top-color:rgba(255,255,255,.1)"></div>`) +
-    wm(true) +
+  html: wm(true) +
     A('blur', .15, 'left:64px;top:104px', `<div class="pv-ey" style="font-size:15px;color:#E6CFD5">AI-powered HR</div>`) +
     A('blur', .35, 'left:64px;top:140px;white-space:nowrap', `<div class="pv-h" style="font-size:64px">The AI-powered HR app</div>`) +
     A('blur', .55, 'left:64px;top:212px;white-space:nowrap', `<div class="pv-h" style="font-size:64px">that <b class="pv-gt">connects everything</b></div>`) +
@@ -208,9 +207,7 @@ S.push({ ch: 3, dur: 6, bg: 'soft', vo: 'See it with your own team\'s data. Book
 
 /* 11 · End card */
 S.push({ ch: 3, dur: 5, bg: 'dark', hold: true, vo: 'HRConnect.AI. The HR app that connects everything.',
-  html: A('zoom', 0, 'left:-170px;top:260px;width:540px;height:540px', `<div class="pv-rot" style="width:100%;height:100%;border-radius:50%;border:70px solid rgba(255,255,255,.045);border-left-color:rgba(255,255,255,.1)"></div>`) +
-    A('zoom', 0, 'left:650px;top:-210px;width:540px;height:540px', `<div class="pv-rot" style="width:100%;height:100%;border-radius:50%;border:70px solid rgba(255,255,255,.05);border-right-color:rgba(255,255,255,.1)"></div>`) +
-    A('0,0,.7', .15, 'left:0;width:960px;top:146px;text-align:center', `<span class="pv-glowf" data-k="logo" style="display:inline-block">${brand(52, true)}</span>`) +
+  html: A('0,0,.7', .15, 'left:0;width:960px;top:146px;text-align:center', `<span class="pv-glowf" data-k="logo" style="display:inline-block">${brand(52, true)}</span>`) +
     A('blur', .6, 'left:0;width:960px;top:236px;text-align:center;font-size:26px;font-weight:600;color:rgba(255,255,255,.88)', 'The AI-powered HR app that connects everything') +
     A('up', 1.0, 'left:0;width:960px;top:300px;text-align:center', `<span class="pv-shine pv-glow" data-k="cta" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#4A2530;border-radius:999px;padding:15px 28px;font-size:20px;font-weight:800">Book a 30-minute demo ${ico('arrow', 22, 'transparent', '#4A2530', 0)}</span>`) +
     A('fade', 1.4, 'left:0;width:960px;top:384px;text-align:center;font-size:19px;font-weight:600;color:rgba(255,255,255,.75)', 'hrconnect.ai/book-a-demo') });
@@ -218,10 +215,14 @@ S.push({ ch: 3, dur: 5, bg: 'dark', hold: true, vo: 'HRConnect.AI. The HR app th
 /* ---------- Per-scene effects (driven by local time lt) ---------- */
 const FX = [
   null,
-  (lt, k) => { // logo
-    const g = pulse(lt, .75, 1.1);
-    k.r1.style.setProperty('--g', g); k.r2.style.setProperty('--g', g);
-    k.word.style.clipPath = `inset(0 ${(1 - eIO(prog(lt, 1.0, 1.75))) * 100}% 0 0)`;
+  (lt, k) => { // logo: the Neural H builds node by node, then the name types on
+    for (let i = 0; i < 4; i++) k['n' + i].style.transform = `scale(${eBack(prog(lt, .1 + i * .1, .45 + i * .1))})`;
+    const v = 1 - eIO(prog(lt, .45, .95)), b = 1 - eOut(prog(lt, .85, 1.15));
+    k.v0.style.strokeDashoffset = v; k.v1.style.strokeDashoffset = v;
+    k.b0.style.strokeDashoffset = b; k.b1.style.strokeDashoffset = b;
+    k.c.style.transform = `scale(${eBack(prog(lt, 1.05, 1.4))})`;
+    k.h.style.setProperty('--g', pulse(lt, 1.05, 1.1));
+    k.word.style.clipPath = `inset(0 ${(1 - eIO(prog(lt, 1.2, 1.95))) * 100}% 0 0)`;
   },
   (lt, k) => { // promise
     for (let i = 0; i < 3; i++) k['c' + i].style.transform = `scaleX(${eOut(prog(lt, 1.45 + i * .28, 1.85 + i * .28))})`;
